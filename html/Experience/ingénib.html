@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vice-présidente Forum Ingénib 2026-2027 — Emma Kerguillec">
+  <meta name="author" content="Emma Kerguillec">
+  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../style/styleExp.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <title>Vice-présidente Ingénib — Emma Kerguillec</title>
+
+  <style>
+
+    /* ── PAGE WRAPPER ── */
+    .detail-page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      padding: 140px 8% 100px;
+      overflow: hidden;
+    }
+
+    .detail-page::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      top: -80px; right: -150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,211,252,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .detail-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      margin-bottom: 48px;
+      transition: color 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+
+    .back-link:hover { color: #7dd3fc; }
+
+    .back-link svg {
+      width: 14px; height: 14px;
+      transition: transform 0.3s;
+    }
+
+    .back-link:hover svg { transform: translateX(-3px); }
+
+    /* ── HERO ── */
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: flex-start;
+      gap: 60px;
+      margin-bottom: 72px;
+      opacity: 0;
+      animation: fadeUp 0.85s ease 0.1s forwards;
+    }
+
+    .detail-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .detail-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      color: #f1f5f9;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .detail-title em {
+      color: #7dd3fc;
+      font-style: italic;
+    }
+
+    .detail-subtitle {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* meta pills */
+    .meta-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 180px;
+    }
+
+    .meta-pill {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: right;
+    }
+
+    .meta-pill-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+
+    .meta-pill-value {
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    /* ── SKILL TAGS ── */
+    .detail-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .detail-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 50px;
+      background: rgba(125,211,252,0.07);
+      border: 1px solid rgba(125,211,252,0.18);
+      color: #7dd3fc;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── DIVIDER ── */
+    .detail-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 56px 0;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.3s forwards;
+    }
+
+    /* ── SECTIONS BLOC ── */
+    .detail-section {
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.85s ease forwards;
+    }
+
+    .detail-section:nth-child(1) { animation-delay: 0.2s; }
+    .detail-section:nth-child(2) { animation-delay: 0.3s; }
+    .detail-section:nth-child(3) { animation-delay: 0.4s; }
+    .detail-section:nth-child(4) { animation-delay: 0.5s; }
+    .detail-section:nth-child(5) { animation-delay: 0.6s; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #475569;
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 400;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+
+    .section-title em { color: #7dd3fc; font-style: italic; }
+
+    .section-body {
+      font-size: 14.5px;
+      color: #94a3b8;
+      line-height: 1.8;
+    }
+
+    /* ── RESPONSABILITÉS CARDS ── */
+    .responsibilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .resp-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 24px 26px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, #7dd3fc, transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 0 0 0 18px;
+    }
+
+    .resp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      border-color: rgba(125,211,252,0.15);
+    }
+
+    .resp-card:hover::before { opacity: 1; }
+
+    .resp-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(125,211,252,0.07);
+      border: 1px solid rgba(125,211,252,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .resp-icon svg { width: 18px; height: 18px; }
+
+    .resp-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+
+    .resp-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.65;
+    }
+
+    /* ── PÔLES GRID ── */
+    .poles-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pole-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 400;
+    }
+
+    .pole-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #7dd3fc;
+      flex-shrink: 0;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(125,211,252,0.05) 100%);
+      border: 1px solid rgba(125,211,252,0.15);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-top: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-box::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(125,211,252,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .highlight-box p {
+      font-size: 14.5px;
+      color: #94a3b8;
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .highlight-box p strong {
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    /* ── PLANNING TIMELINE ── */
+    .timeline {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, #7dd3fc22, #7dd3fc44 50%, #7dd3fc11);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      padding: 0 0 28px 0;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 38px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 2px;
+    }
+
+    .timeline-dot-inner {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #7dd3fc;
+      border: 2px solid #0f172a;
+      box-shadow: 0 0 0 3px rgba(125,211,252,0.15);
+      margin: 3px 0 0 14px;
+      flex-shrink: 0;
+    }
+
+
+    .timeline-period {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .timeline-text {
+      font-size: 13.5px;
+      color: #94a3b8;
+      line-height: 1.65;
+    }
+
+    /* ── FOOTER ── */
+    .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 55px 20px;
+      margin-top: 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(15,23,42,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .detail-hero { grid-template-columns: 1fr; gap: 32px; }
+      .meta-pills { flex-direction: row; flex-wrap: wrap; }
+      .meta-pill { text-align: left; }
+    }
+
+    @media (max-width: 560px) {
+      .detail-page { padding: 120px 5% 80px; }
+      .responsibilities-grid { grid-template-columns: 1fr; }
+      .footer-detail { flex-direction: column; gap: 18px; align-items: center; }
+      .highlight-box { padding: 24px 22px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="close-icon">&#10005;</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+            <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
+            <a href="../Experience/Experience.html" class="nav-link"><strong><em>EXPERIENCE</em></strong></a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+            <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
+            <style>
+              .navbar .navbar-nav a[href="../Experience/Experience.html"] {
+                color: white !important;
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                text-shadow: 0 0 8px rgba(255,255,255,.9), 0 0 20px rgba(255,255,255,.5) !important;
+              }
+            </style>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="detail-page">
+    <div class="detail-inner">
+
+      <!-- Back -->
+      <a href="../Experience/Experience.html" class="back-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 7H2M2 7l5-5M2 7l5 5"/>
+        </svg>
+        Retour aux expériences
+      </a>
+
+      <!-- HERO -->
+      <div class="detail-hero">
+        <div>
+          <p class="detail-eyebrow">Engagement associatif · 2026–2027</p>
+          <h1 class="detail-title">Vice-présidente<br><em>Forum Ingénib</em></h1>
+          <p class="detail-subtitle">
+            Ingénib est un forum étudiants × entreprises co-organisé par l'ENSC et l'ENSEIRB-MATMECA, réunissant plus de 80 entreprises partenaires — THALES, Dassault, Safran, Ariane Group, CapGemini, Technicatome…
+          </p>
+          <div class="detail-tags">
+            <span class="detail-tag">#management</span>
+            <span class="detail-tag">#gestion de projet</span>
+            <span class="detail-tag">#RH</span>
+            <span class="detail-tag">#interécoles</span>
+            <span class="detail-tag">#pilotage stratégique</span>
+          </div>
+        </div>
+        <div class="meta-pills">
+          <div class="meta-pill">
+            <div class="meta-pill-label">Mandat</div>
+            <div class="meta-pill-value">2026 – 2027</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Structure</div>
+            <div class="meta-pill-value">ENSC × ENSEIRB</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Poste</div>
+            <div class="meta-pill-value">Vice-présidente</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Entreprises</div>
+            <div class="meta-pill-value">80+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-divider"></div>
+
+      <!-- CONTENT SECTIONS -->
+      <div>
+
+        <!-- Contexte -->
+        <div class="detail-section">
+          <p class="section-label">Contexte</p>
+          <h2 class="section-title">Un forum inter-écoles à <em>double enjeu</em></h2>
+          <p class="section-body">
+            Ingénib est le forum de recrutement et de networking de l'ENSEIRB-MATMECA et de l'ENSC, deux grandes écoles d'ingénieurs de Bordeaux INP. La participation de l'ENSC à ce forum étant récente, mon rôle dépasse le simple pilotage opérationnel : il s'agit aussi de légitimer et de valoriser la présence de mon école, de faire entendre la voix de ses étudiant·e·s, et de démontrer la valeur des compétences en cognitique auprès d'entreprises de pointe.
+          </p>
+          <div class="highlight-box">
+            <p>
+              En tant que <strong>responsable ENSC</strong>, je porte un double mandat : celui de vice-présidente du forum dans son ensemble, et celui d'ambassadrice de mon école au sein d'une structure historiquement centrée sur l'ENSEIRB. Cela implique de <strong>gérer la répartition du budget entre les deux établissements</strong>, d'assurer la représentation équitable des élèves de l'ENSC et de mettre en avant nos spécificités auprès des entreprises partenaires.
+            </p>
+          </div>
+        </div>
+
+        <!-- Recrutement & formation -->
+        <div class="detail-section">
+          <p class="section-label">Recrutement & montée en compétences</p>
+          <h2 class="section-title">Constituer et <em>former</em> l'équipe</h2>
+          <p class="section-body">
+            La première mission du mandat a été de constituer l'équipe projet. J'ai conduit les <strong>entretiens individuels de sélection</strong> des membres, en évaluant motivations, compétences et complémentarité des profils. Une fois l'équipe formée, j'ai suivi une <strong>formation complète sur l'ensemble des pôles</strong> du forum afin d'être en mesure de superviser chaque dimension du projet :
+          </p>
+          <div class="poles-grid">
+            <div class="pole-chip"><span class="pole-dot"></span>Bureau (coordination générale)</div>
+            <div class="pole-chip"><span class="pole-dot"></span>Pôle Relations entreprises</div>
+            <div class="pole-chip"><span class="pole-dot"></span>Pôle Logistique</div>
+            <div class="pole-chip"><span class="pole-dot"></span>Pôle Communication</div>
+            <div class="pole-chip"><span class="pole-dot"></span>Pôle Web</div>
+          </div>
+        </div>
+
+        <!-- Responsabilités -->
+        <div class="detail-section">
+          <p class="section-label">Responsabilités</p>
+          <h2 class="section-title">Pilotage <em>opérationnel</em></h2>
+          <div class="responsibilities-grid">
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+              </div>
+              <p class="resp-title">Rétro-planning & organisation</p>
+              <p class="resp-desc">Conception du rétro-planning du projet, réorganisation des processus de gestion interne pour fluidifier le travail de l'équipe sur toute la durée du mandat.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <p class="resp-title">Ressources humaines</p>
+              <p class="resp-desc">Recrutement des membres par entretiens individuels, encadrement des équipes, gestion des relations humaines au sein du mandat et suivi de l'avancement de chaque pôle.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <p class="resp-title">Logistique & accès</p>
+              <p class="resp-desc">Gestion des accès à l'école et au local, coordination logistique des événements, mise en place de la boîte mail partagée en collaboration avec la DSI de Bordeaux INP.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                </svg>
+              </div>
+              <p class="resp-title">Interface administration</p>
+              <p class="resp-desc">Lien entre le mandat étudiant et l'administration des deux écoles. Réunions mensuelles, puis hebdomadaires durant les deux mois précédant le forum (septembre et octobre).</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                </svg>
+              </div>
+              <p class="resp-title">Budget inter-écoles</p>
+              <p class="resp-desc">Gestion de la répartition budgétaire entre l'ENSC et l'ENSEIRB-MATMECA, en veillant à l'équité de représentation et à la viabilité financière de chaque volet.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 014.98 3h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 17z"/>
+                </svg>
+              </div>
+              <p class="resp-title">Permanence estivale</p>
+              <p class="resp-desc">Assurance d'une permanence pendant l'été pour garantir la continuité du contact avec les entreprises partenaires, sans interruption dans le suivi des relations commerciales.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Réunions & pilotage -->
+        <div class="detail-section">
+          <p class="section-label">Gouvernance & suivi</p>
+          <h2 class="section-title">Réunions & <em>supervision</em></h2>
+          <p class="section-body">
+            Je supervise l'avancement de tous les pôles et je coordonne la communication interne et externe du forum.
+          </p>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+              <div class="timeline-content">
+                <p class="timeline-period">Tout au long du mandat</p>
+                <p class="timeline-text">Réunions <strong>hebdomadaires</strong> avec le mandat (bureau + responsables de pôle) pour le suivi opérationnel, l'arbitrage des décisions et la coordination inter-pôles.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+              <div class="timeline-content">
+                <p class="timeline-period">Tout au long du mandat</p>
+                <p class="timeline-text">Réunions <strong>mensuelles</strong> avec l'administration des deux écoles pour rendre compte de l'avancement, valider les décisions stratégiques et maintenir la confiance institutionnelle.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+              <div class="timeline-content">
+                <p class="timeline-period">Septembre & Octobre — Mois du forum</p>
+                <p class="timeline-text">Passage en réunions <strong>hebdomadaires avec l'administration</strong> pour assurer une réactivité maximale dans la dernière ligne droite avant l'événement.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+              <div class="timeline-content">
+                <p class="timeline-period">Été</p>
+                <p class="timeline-text"><strong>Permanence</strong> assurée pour maintenir le lien avec les entreprises partenaires et garantir la continuité du suivi relationnel pendant la période estivale.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Valorisation ENSC -->
+        <div class="detail-section">
+          <p class="section-label">Rôle spécifique ENSC</p>
+          <h2 class="section-title">Porter et valoriser <em>l'ENSC</em></h2>
+          <p class="section-body">
+            La cognitique, discipline à l'interface des sciences humaines, de l'ingénierie et du numérique, est encore peu connue du monde industriel. Dans ce cadre, je joue un rôle actif de <strong>médiation et de valorisation</strong> : expliquer nos compétences, défendre notre place dans un forum historiquement dominé par les profils ENSEIRB, et convaincre les entreprises de la valeur ajoutée des ingénieurs en cognitique.
+          </p>
+          <div class="highlight-box">
+            <p>
+              Cette expérience m'a confrontée à des enjeux de <strong>diplomatie interne</strong>, de négociation budgétaire et de représentation institutionnelle. Elle m'a appris à porter les intérêts d'un groupe tout en maintenant une dynamique de collaboration saine avec un partenaire de longue date.
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <!-- /CONTENT -->
+
+    </div>
+
+    <img src="../../images/logo et image ingénib/Banniere.png" alt="bandeau ingénib" style="width: 100%; height: auto; display: block; margin-top: 90px;"/>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-detail">
+    <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>CV
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+    <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>LINKEDIN
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+  </footer>
+
+  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

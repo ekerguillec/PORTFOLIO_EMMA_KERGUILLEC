@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Service National Universel — Emma Kerguillec">
+  <meta name="author" content="Emma Kerguillec">
+  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../style/styleExp.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <title>SNU — Emma Kerguillec</title>
+
+  <style>
+    .detail-page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      padding: 140px 8% 100px;
+      overflow: hidden;
+    }
+
+    .detail-page::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      top: -80px; right: -150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,211,252,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .detail-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      margin-bottom: 48px;
+      transition: color 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+    .back-link:hover { color: #7dd3fc; }
+    .back-link svg { width: 14px; height: 14px; transition: transform 0.3s; }
+    .back-link:hover svg { transform: translateX(-3px); }
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: flex-start;
+      gap: 60px;
+      margin-bottom: 72px;
+      opacity: 0;
+      animation: fadeUp 0.85s ease 0.1s forwards;
+    }
+
+    .detail-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .detail-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      color: #f1f5f9;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .detail-title em { color: #7dd3fc; font-style: italic; }
+
+    .detail-subtitle {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .meta-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 180px;
+    }
+    .meta-pill {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: right;
+    }
+    .meta-pill-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+    .meta-pill-value {
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .detail-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .detail-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 50px;
+      background: rgba(125,211,252,0.07);
+      border: 1px solid rgba(125,211,252,0.18);
+      color: #7dd3fc;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .detail-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 56px 0;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.3s forwards;
+    }
+
+    .detail-section {
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.85s ease forwards;
+    }
+    .detail-section:nth-child(1) { animation-delay: 0.2s; }
+    .detail-section:nth-child(2) { animation-delay: 0.3s; }
+    .detail-section:nth-child(3) { animation-delay: 0.4s; }
+    .detail-section:nth-child(4) { animation-delay: 0.5s; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #475569;
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 400;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+    .section-title em { color: #7dd3fc; font-style: italic; }
+
+    .section-body {
+      font-size: 14.5px;
+      color: #94a3b8;
+      line-height: 1.8;
+    }
+
+    /* ── PHASES DU SÉJOUR ── */
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .phase-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 26px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    }
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, #7dd3fc, transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .phase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      border-color: rgba(125,211,252,0.15);
+    }
+    .phase-card:hover::before { opacity: 1; }
+
+    .phase-number {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .phase-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+    .phase-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.65;
+    }
+
+    /* ── VALEURS GRID ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .value-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 20px 18px;
+      text-align: center;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .value-card:hover {
+      border-color: rgba(125,211,252,0.2);
+      background: rgba(125,211,252,0.03);
+    }
+    .value-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .value-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 4px;
+    }
+    .value-desc {
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    /* ── COMPÉTENCES ACQUISES ── */
+    .skills-acquired {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .skill-row:hover {
+      border-color: rgba(125,211,252,0.15);
+      background: rgba(125,211,252,0.02);
+    }
+    .skill-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #7dd3fc;
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(125,211,252,0.4);
+    }
+    .skill-text {
+      font-size: 13.5px;
+      color: #94a3b8;
+      line-height: 1.55;
+    }
+    .skill-text strong { color: #e2e8f0; font-weight: 500; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(125,211,252,0.05) 100%);
+      border: 1px solid rgba(125,211,252,0.15);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-top: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-box::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(125,211,252,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .highlight-box p {
+      font-size: 14.5px;
+      color: #94a3b8;
+      line-height: 1.85;
+      margin: 0;
+    }
+    .highlight-box p strong { color: #e2e8f0; font-weight: 500; }
+
+    .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 55px 20px;
+      margin-top: 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(15,23,42,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .detail-hero { grid-template-columns: 1fr; gap: 32px; }
+      .meta-pills { flex-direction: row; flex-wrap: wrap; }
+      .meta-pill { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .detail-page { padding: 120px 5% 80px; }
+      .phases-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-detail { flex-direction: column; gap: 18px; align-items: center; }
+      .highlight-box { padding: 24px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="close-icon">&#10005;</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a href="../Accueil/Accueil.html" class="nav-link">ACCUEIL</a>
+            <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+            <a href="../Projets/Projets.html" class="nav-link">PROJETS</a>
+            <a href="../Experience/Experience.html" class="nav-link"><strong><em>EXPERIENCE</em></strong></a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+            <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
+            <style>
+              .navbar .navbar-nav a[href="../Experience/Experience.html"] {
+                color: white !important;
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                text-shadow: 0 0 8px rgba(255,255,255,.9), 0 0 20px rgba(255,255,255,.5) !important;
+              }
+            </style>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="detail-page">
+    <div class="detail-inner">
+
+      <a href="../Experience/Experience.html" class="back-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 7H2M2 7l5-5M2 7l5 5"/>
+        </svg>
+        Retour aux expériences
+      </a>
+
+      <!-- HERO -->
+      <div class="detail-hero">
+        <div>
+          <p class="detail-eyebrow">Engagement citoyen · État français</p>
+          <h1 class="detail-title">Service National<br><em>Universel</em></h1>
+          <p class="detail-subtitle">
+            Le SNU est un dispositif d'engagement civique proposé par l'État à la jeunesse française. Fondé sur la cohésion nationale, le dépassement de soi et l'engagement volontaire, il m'a confrontée à des réalités collectives éloignées de mon quotidien.
+          </p>
+          <div class="detail-tags">
+            <span class="detail-tag">#engagement citoyen</span>
+            <span class="detail-tag">#cohésion d'équipe</span>
+            <span class="detail-tag">#discipline</span>
+            <span class="detail-tag">#dépassement de soi</span>
+            <span class="detail-tag">#vivre-ensemble</span>
+          </div>
+        </div>
+        <div class="meta-pills">
+          <div class="meta-pill">
+            <div class="meta-pill-label">Dispositif</div>
+            <div class="meta-pill-value">SNU — État</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Format</div>
+            <div class="meta-pill-value">Séjour de cohésion</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Durée</div>
+            <div class="meta-pill-value">12 jours</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Statut</div>
+            <div class="meta-pill-value">Volontaire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-divider"></div>
+
+      <div>
+
+        <!-- Contexte -->
+        <div class="detail-section">
+          <p class="section-label">Contexte</p>
+          <h2 class="section-title">Qu'est-ce que le <em>SNU</em> ?</h2>
+          <p class="section-body">
+            Le Service National Universel est un programme civique volontaire destiné aux jeunes de 15 à 17 ans. Il s'articule autour d'un séjour de cohésion de 12 jours en internat, suivi d'une mission d'intérêt général. Loin d'un simple stage, il s'agit d'une véritable immersion dans un collectif hétérogène — mixité sociale, géographique et culturelle — avec un cadre structuré, des activités physiques, des ateliers citoyens et des moments de vie commune intenses.
+          </p>
+          <div class="highlight-box">
+            <p>
+              Participer au SNU, c'est choisir volontairement de <strong>sortir de sa zone de confort</strong> pour se confronter à l'altérité, à la vie en collectivité et aux exigences d'un cadre discipliné. C'est une expérience fondatrice qui dit quelque chose sur <strong>qui l'on est et ce que l'on est prêt·e à donner</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Phases -->
+        <div class="detail-section">
+          <p class="section-label">Déroulement</p>
+          <h2 class="section-title">Les temps <em>forts</em></h2>
+          <div class="phases-grid">
+
+            <div class="phase-card">
+              <p class="phase-number">Phase 01</p>
+              <p class="phase-title">Séjour de cohésion</p>
+              <p class="phase-desc">12 jours en internat avec des jeunes de toute la France. Réveil matinal, activités physiques, ateliers citoyens, vie en maisonnée — un rythme soutenu qui forge l'esprit d'équipe.</p>
+            </div>
+
+            <div class="phase-card">
+              <p class="phase-number">Phase 02</p>
+              <p class="phase-title">Ateliers thématiques</p>
+              <p class="phase-desc">Sessions de sensibilisation sur des thèmes variés : défense nationale, premiers secours (PSC1), développement durable, égalité, laïcité — des sujets qui ancrent le séjour dans la citoyenneté active.</p>
+            </div>
+
+            <div class="phase-card">
+              <p class="phase-number">Phase 03</p>
+              <p class="phase-title">Mission d'intérêt général</p>
+              <p class="phase-desc">Engagement au service d'une structure locale (association, collectivité, établissement public) pour mettre ses compétences au service d'un intérêt commun.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Valeurs -->
+        <div class="detail-section">
+          <p class="section-label">Ce que ça représente</p>
+          <h2 class="section-title">Des valeurs <em>incarnées</em></h2>
+          <p class="section-body">
+            Le SNU ne transmet pas des valeurs abstraites — il les met à l'épreuve du quotidien collectif. Voici ce que ces 12 jours m'ont appris à vivre concrètement.
+          </p>
+          <div class="values-grid">
+            <div class="value-card">
+              <span class="value-icon">🤝</span>
+              <p class="value-name">Cohésion</p>
+              <p class="value-desc">Construire un collectif soudé à partir de parcours radicalement différents.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">🎯</span>
+              <p class="value-name">Discipline</p>
+              <p class="value-desc">Respecter un cadre rigoureux, tenir ses engagements même dans l'inconfort.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">🌱</span>
+              <p class="value-name">Engagement</p>
+              <p class="value-desc">Choisir de contribuer à quelque chose qui dépasse son intérêt individuel.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">⚡</span>
+              <p class="value-name">Dépassement</p>
+              <p class="value-desc">Aller au-delà de ses limites perçues, physiques et relationnelles.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">🌍</span>
+              <p class="value-name">Mixité</p>
+              <p class="value-desc">Vivre et travailler aux côtés de jeunes aux origines et réalités très diverses.</p>
+            </div>
+            <div class="value-card">
+              <span class="value-icon">🏛️</span>
+              <p class="value-name">Citoyenneté</p>
+              <p class="value-desc">Comprendre son rôle en tant que membre actif de la société française.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compétences -->
+        <div class="detail-section">
+          <p class="section-label">Compétences développées</p>
+          <h2 class="section-title">Ce que j'en <em>retiens</em></h2>
+          <p class="section-body">
+            Au-delà de l'expérience humaine, le SNU a été un terrain d'entraînement pour des compétences comportementales que je mobilise dans tous mes engagements depuis.
+          </p>
+          <div class="skills-acquired">
+            <div class="skill-row">
+              <div class="skill-dot"></div>
+              <p class="skill-text"><strong>Adaptabilité</strong> — S'intégrer rapidement dans un groupe inconnu, avec un cadre imposé et des règles de vie collectives non négociables.</p>
+            </div>
+            <div class="skill-row">
+              <div class="skill-dot"></div>
+              <p class="skill-text"><strong>Résilience</strong> — Maintenir son engagement et son attitude positive face à la fatigue, aux contraintes et aux moments difficiles.</p>
+            </div>
+            <div class="skill-row">
+              <div class="skill-dot"></div>
+              <p class="skill-text"><strong>Écoute & empathie</strong> — Cohabiter avec des personnes très différentes de soi oblige à développer une écoute authentique et une véritable ouverture à l'autre.</p>
+            </div>
+            <div class="skill-row">
+              <div class="skill-dot"></div>
+              <p class="skill-text"><strong>Leadership informel</strong> — Dans les activités collectives, prendre des initiatives, fédérer et motiver sans rôle hiérarchique formel.</p>
+            </div>
+            <div class="skill-row">
+              <div class="skill-dot"></div>
+              <p class="skill-text"><strong>Premiers secours (PSC1)</strong> — Formation aux gestes de premiers secours, compétence concrète et directement transférable.</p>
+            </div>
+            <div class="skill-row">
+              <div class="skill-dot"></div>
+              <p class="skill-text"><strong>Sens du collectif</strong> — Comprendre que la performance d'un groupe dépend de chaque maillon, et que s'investir pour les autres est une forme d'efficacité.</p>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <p>
+              Le SNU a été l'une de mes premières expériences de <strong>vie en collectivité intense</strong>. Elle a posé les fondations de mon rapport aux équipes et à l'engagement : je n'intègre pas un projet pour en faire partie, je l'intègre pour <strong>y contribuer pleinement</strong>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-detail">
+    <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>CV
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+    <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>LINKEDIN
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+  </footer>
+
+  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

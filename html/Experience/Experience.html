@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique spécialisé en Cognitique.">
+    <meta name="author" content="Emma Kerguillec">
+    <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../style/styleExp.css">
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Expériences professionnelles</title>
+
+    <style>
+        /* ── BADGES DE COMPÉTENCES ── */
+        .skill-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: #eff6ff;
+            color: #1e40af;
+            font-family: 'Sora', sans-serif;
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.1px;
+            line-height: 1.4;
+            white-space: nowrap;
+        }
+
+        .skill-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 16px;
+            padding-top: 14px;
+        }
+
+        /* Structure des cartes avec image */
+        a.card-telegramme {
+            padding: 0 !important;
+            overflow: hidden !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+        a.card-telegramme .experience-icon {
+            width: 100% !important;
+            height: 160px !important;
+            margin-bottom: 0 !important;
+            overflow: hidden !important;
+        }
+
+        a.card-telegramme .experience-icon img.news {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+        }
+
+        a.card-telegramme .experience-title {
+            padding: 20px 24px 0 !important;
+        }
+
+        a.card-telegramme .experience-details {
+            padding: 8px 24px 0 !important;
+            flex: 1;
+        }
+
+        a.card-telegramme .skill-badges {
+            padding: 0 24px 24px !important;
+            margin-top: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-0">
+                <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="close-icon">&#10005;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+                        <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
+                        <a href="../Experience/Experience.html" class="nav-link"><strong><em>EXPERIENCE</em></strong></a>
+                        <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+                        <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
+                        <style>
+                            .navbar .navbar-nav a[href="../Experience/Experience.html"] {
+                                color: white !important;
+                                font-size: 16px !important;
+                                font-weight: 600 !important;
+                                text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.5) !important;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="experience-home">
+        <div class="experience-grid">
+
+            <div class="experience-home-header">
+                <span class="about-badge">Expériences professionnelles</span>
+                <div class="h1f">
+                    Des expériences qui ont façonné mon parcours, développé mes compétences et renforcé mon goût pour les projets concrets et l'engagement.
+                </div>
+            </div>
+
+            <!-- INGÉNIB -->
+            <a href="ingénib.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/8.png" alt="Forum Ingénib" class="news"/>
+                </div>
+                <div class="experience-title">Vice-présidente – Forum Ingénib</div>
+                <div class="experience-details">Organisation d'un forum avec l'ENSEIRB-MATMECA regroupant 80 entreprises, dont THALES, Technicatome, Dassault, Safran, CapGemini ou encore Ariane Group</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Ressources humaines (RH)</span>
+                    <span class="skill-badge">Relation avec les entreprises</span>
+                    <span class="skill-badge">Management</span>
+                    <span class="skill-badge">Gestion de projet</span>
+                </div>
+            </a>
+
+            <!-- I2C -->
+            <a href="i2c.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/con.jpeg" alt="i2c Junior-Entreprise" class="news"/>
+                </div>
+                <div class="experience-title">Comptable – i2c</div>
+                <div class="experience-details">Junior-Entreprise de l'ENSC, i2c est la seule Junior-Entreprise spécialisée dans l'intégration du facteur humain au cœur de l'innovation technologique.</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Comptabilité</span>
+                    <span class="skill-badge">Facturation électronique</span>
+                    <span class="skill-badge">Gestion d'un budget</span>
+                    <span class="skill-badge">Déclaration de la TVA</span>
+                    <span class="skill-badge">Analyse financière</span>
+                    <span class="skill-badge">Excel</span>
+                    <span class="skill-badge">Travail en équipe</span>
+                </div>
+            </a>
+
+            <!-- BDE -->
+            <a href="BDE.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/BDE/PoupleBDE.png" alt="Logo du BDE de l'ENSC" class="news"/>
+                </div>
+                <div class="experience-title">Membre du Bureau des élèves – BDE</div>
+                <div class="experience-details">Gestion de projets associatifs et de la vie étudiante : organisation d'événements, coordination d'équipes et communication entre différents acteurs.</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Gestion de projet</span>
+                    <span class="skill-badge">Coordination d'équipe</span>
+                    <span class="skill-badge">Organisation d'événements</span>
+                    <span class="skill-badge">Communication</span>
+                </div>
+            </a>
+
+            <!-- LE TÉLÉGRAMME -->
+            <a href="Le Télégramme.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/logo et images journal/news.jpg" alt="Le Télégramme" class="news"/>
+                </div>
+                <div class="experience-title">Imprimerie & expédition – Le Télégramme</div>
+                <div class="experience-details">Technicité, logistique et travail d'équipe de nuit au journal breton</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Logistique</span>
+                    <span class="skill-badge">Industrie d'impression</span>
+                    <span class="skill-badge">Travail en équipe</span>
+                </div>
+            </a>
+
+            <!-- SNU -->
+            <a href="SNU.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/logo et image SNU/bannière.svg" alt="Bandeau du SNU" class="news"/>
+                </div>
+                <div class="experience-title">Service National Universel – SNU</div>
+                <div class="experience-details">Engagement, cohésion et responsabilités citoyennes au sein du SNU</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Engagement citoyen</span>
+                    <span class="skill-badge">Cohésion d'équipe</span>
+                    <span class="skill-badge">Discipline</span>
+                </div>
+            </a>
+
+            <!-- E.LECLERC -->
+            <a href="E.Leclerc.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/logo et image rayon/epuree.webp" alt="E.Leclerc" class="news"/>
+                </div>
+                <div class="experience-title">Mise en rayon – E.Leclerc</div>
+                <div class="experience-details">2 étés, gestion de rayon alimentaire, polyvalence & service client</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Gestion de rayon</span>
+                    <span class="skill-badge">Service client</span>
+                    <span class="skill-badge">Polyvalence</span>
+                </div>
+            </a>
+
+            <!-- MAM -->
+            <a href="Mam.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/logo et image MAM/2.jpg" alt="Maison d'assistante maternelle" class="news"/>
+                </div>
+                <div class="experience-title">Stage en maison d'assistante maternelle – MAM</div>
+                <div class="experience-details">Accompagnement, animation et sécurité auprès des tout-petits</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Accompagnement</span>
+                    <span class="skill-badge">Animation</span>
+                    <span class="skill-badge">Sécurité</span>
+                </div>
+            </a>
+
+            <!-- PHARMACIE -->
+            <a href="Pharmacie.html" class="experience-card card-telegramme">
+                <div class="experience-icon">
+                    <img src="../../images/pharma.webp" alt="Pharmacie Kerboriou" class="news"/>
+                </div>
+                <div class="experience-title">Stage en officine – Pharmacie Kerboriou</div>
+                <div class="experience-details">Préparation et conseil, découverte du métier de pharmacien</div>
+                <div class="skill-badges">
+                    <span class="skill-badge">Préparation officinale</span>
+                    <span class="skill-badge">Conseil patient</span>
+                    <span class="skill-badge">Rigueur</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <footer class="footer-experience">
+        <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
+            <span><em><strong>CV
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+                    <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+                        <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+                        <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+                    </g>
+                </svg>
+            </strong></em></span>
+        </a>
+        <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
+            <em><strong>LINKEDIN
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+                    <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+                        <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+                        <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+                    </g>
+                </svg>
+            </strong></em>
+        </a>
+    </footer>
+
+    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

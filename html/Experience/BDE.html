@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chargée logistique BDE ENSC — Emma Kerguillec">
+  <meta name="author" content="Emma Kerguillec">
+  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../style/styleExp.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <title>Chargée logistique BDE — Emma Kerguillec</title>
+
+  <style>
+    .detail-page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      padding: 140px 8% 100px;
+      overflow: hidden;
+    }
+
+    .detail-page::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      top: -80px; right: -150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,211,252,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .detail-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      margin-bottom: 48px;
+      transition: color 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+    .back-link:hover { color: #7dd3fc; }
+    .back-link svg { width: 14px; height: 14px; transition: transform 0.3s; }
+    .back-link:hover svg { transform: translateX(-3px); }
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: flex-start;
+      gap: 60px;
+      margin-bottom: 72px;
+      opacity: 0;
+      animation: fadeUp 0.85s ease 0.1s forwards;
+    }
+
+    .detail-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .detail-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      color: #f1f5f9;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .detail-title em { color: #7dd3fc; font-style: italic; }
+
+    .detail-subtitle {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .meta-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 180px;
+    }
+    .meta-pill {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: right;
+    }
+    .meta-pill-label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+    .meta-pill-value {
+      font-size: 13px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .detail-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .detail-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 50px;
+      background: rgba(125,211,252,0.07);
+      border: 1px solid rgba(125,211,252,0.18);
+      color: #7dd3fc;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .detail-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 56px 0;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.3s forwards;
+    }
+
+    .detail-section {
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.85s ease forwards;
+    }
+    .detail-section:nth-child(1) { animation-delay: 0.2s; }
+    .detail-section:nth-child(2) { animation-delay: 0.3s; }
+    .detail-section:nth-child(3) { animation-delay: 0.4s; }
+    .detail-section:nth-child(4) { animation-delay: 0.5s; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #475569;
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 400;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+    .section-title em { color: #7dd3fc; font-style: italic; }
+
+    .section-body {
+      font-size: 14.5px;
+      color: #94a3b8;
+      line-height: 1.8;
+    }
+
+    .responsibilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .resp-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 24px 26px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .resp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, #7dd3fc, transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .resp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      border-color: rgba(125,211,252,0.15);
+    }
+    .resp-card:hover::before { opacity: 1; }
+
+    .resp-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(125,211,252,0.07);
+      border: 1px solid rgba(125,211,252,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .resp-icon svg { width: 18px; height: 18px; }
+
+    .resp-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+    .resp-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.65;
+    }
+
+    /* Event cards */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .event-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .event-card:hover {
+      border-color: rgba(125,211,252,0.2);
+      background: rgba(125,211,252,0.03);
+    }
+    .event-emoji {
+      font-size: 22px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .event-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #e2e8f0;
+      margin-bottom: 4px;
+    }
+    .event-desc {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.55;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(125,211,252,0.05) 100%);
+      border: 1px solid rgba(125,211,252,0.15);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-top: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-box::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(125,211,252,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .highlight-box p {
+      font-size: 14.5px;
+      color: #94a3b8;
+      line-height: 1.85;
+      margin: 0;
+    }
+    .highlight-box p strong { color: #e2e8f0; font-weight: 500; }
+
+    .footer-detail {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 55px 20px;
+      margin-top: 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(15,23,42,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .detail-hero { grid-template-columns: 1fr; gap: 32px; }
+      .meta-pills { flex-direction: row; flex-wrap: wrap; }
+      .meta-pill { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .detail-page { padding: 120px 5% 80px; }
+      .responsibilities-grid { grid-template-columns: 1fr; }
+      .footer-detail { flex-direction: column; gap: 18px; align-items: center; }
+      .highlight-box { padding: 24px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="close-icon">&#10005;</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+            <a href="../Projets/Projets.html" class="nav-link">PROJETS</a>
+            <a href="../Experience/Experience.html" class="nav-link"><strong><em>EXPERIENCE</em></strong></a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+            <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
+            <style>
+              .navbar .navbar-nav a[href="../Experience/Experience.html"] {
+                color: white !important;
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                text-shadow: 0 0 8px rgba(255,255,255,.9), 0 0 20px rgba(255,255,255,.5) !important;
+              }
+            </style>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="detail-page">
+    <div class="detail-inner">
+
+      <a href="../Experience/Experience.html" class="back-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 7H2M2 7l5-5M2 7l5 5"/>
+        </svg>
+        Retour aux expériences
+      </a>
+
+      <div class="detail-hero">
+        <div>
+          <p class="detail-eyebrow">Engagement associatif · ENSC</p>
+          <h1 class="detail-title">Chargée <em>logistique</em><br>— BDE</h1>
+          <p class="detail-subtitle">
+            Le Bureau des Élèves de l'ENSC est le cœur de la vie associative de l'école. En tant que chargée logistique, j'assure la faisabilité concrète de chaque événement — de la réservation des espaces à la coordination des équipes sur le terrain.
+          </p>
+          <div class="detail-tags">
+            <span class="detail-tag">#logistique</span>
+            <span class="detail-tag">#organisation d'événements</span>
+            <span class="detail-tag">#coordination</span>
+            <span class="detail-tag">#vie étudiante</span>
+            <span class="detail-tag">#travail en équipe</span>
+          </div>
+        </div>
+        <div class="meta-pills">
+          <div class="meta-pill">
+            <div class="meta-pill-label">Structure</div>
+            <div class="meta-pill-value">BDE — ENSC</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Poste</div>
+            <div class="meta-pill-value">Chargée logistique</div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-pill-label">Cadre</div>
+            <div class="meta-pill-value">Associatif</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-divider"></div>
+
+      <div>
+
+        <!-- Contexte -->
+        <div class="detail-section">
+          <p class="section-label">Contexte</p>
+          <h2 class="section-title">La vie associative au <em>quotidien</em></h2>
+          <p class="section-body">
+            Le BDE de l'ENSC est l'association centrale de la vie étudiante : il organise les événements qui rythment l'année, fédère les promotions et représente les élèves auprès de l'administration. Mon rôle de chargée logistique est le garant silencieux de chaque événement réussi — celui qui anticipe, organise et résout les imprévus pour que tout se passe sans accroc le jour J.
+          </p>
+          <div class="highlight-box">
+            <p>
+              La logistique, c'est l'art de <strong>rendre possible ce que les autres imaginent</strong>. Chaque événement commence par une idée créative ; mon rôle est de la transformer en réalité concrète en gérant contraintes, ressources et timing avec précision.
+            </p>
+          </div>
+        </div>
+
+        <!-- Responsabilités -->
+        <div class="detail-section">
+          <p class="section-label">Missions</p>
+          <h2 class="section-title">Ce que <em>j'assure</em></h2>
+          <div class="responsibilities-grid">
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <p class="resp-title">Réservation des espaces</p>
+              <p class="resp-desc">Gestion des réservations de salles, d'espaces communs et des équipements nécessaires à chaque événement auprès de l'école et des prestataires externes.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                </svg>
+              </div>
+              <p class="resp-title">Planification & anticipation</p>
+              <p class="resp-desc">Établissement des plannings logistiques, identification des besoins en amont et anticipation des contraintes pour chaque projet associatif.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                </svg>
+              </div>
+              <p class="resp-title">Coordination des équipes</p>
+              <p class="resp-desc">Organisation et briefing des bénévoles le jour des événements, coordination des différents pôles du BDE pour garantir une exécution fluide.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              </div>
+              <p class="resp-title">Gestion du matériel</p>
+              <p class="resp-desc">Inventaire, prêt et transport du matériel associatif (sono, décoration, mobilier…), suivi de l'état des équipements et organisation des achats nécessaires.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <p class="resp-title">Gestion des imprévus</p>
+              <p class="resp-desc">Réactivité et prise de décision rapide face aux aléas du terrain — premier point de contact pour tout problème logistique pendant les événements.</p>
+            </div>
+
+            <div class="resp-card">
+              <div class="resp-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                </svg>
+              </div>
+              <p class="resp-title">Communication interne</p>
+              <p class="resp-desc">Interface entre les membres du bureau, les prestataires, l'administration de l'école et les autres associations pour assurer la cohérence logistique de chaque projet.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Événements -->
+        <div class="detail-section">
+          <p class="section-label">Exemples d'événements</p>
+          <h2 class="section-title">Des projets <em>concrets</em></h2>
+          <p class="section-body">
+            La vie associative de l'ENSC se traduit par une multitude d'événements tout au long de l'année, chacun avec ses propres exigences logistiques.
+          </p>
+          <div class="events-grid">
+            <div class="event-card">
+              <span class="event-emoji">🎉</span>
+              <p class="event-name">Week-end d'intégration</p>
+              <p class="event-desc">Accueil des nouvelles promotions, organisation complète sur plusieurs jours.</p>
+            </div>
+            <div class="event-card">
+              <span class="event-emoji">🎭</span>
+              <p class="event-name">Soirées étudiantes</p>
+              <p class="event-desc">Coordination des espaces, du matériel son/lumière et de la sécurité.</p>
+            </div>
+            <div class="event-card">
+              <span class="event-emoji">🏆</span>
+              <p class="event-name">Tournois & défis sportifs</p>
+              <p class="event-desc">Planification des créneaux, arbitrage logistique et remise des récompenses.</p>
+            </div>
+            <div class="event-card">
+              <span class="event-emoji">🎄</span>
+              <p class="event-name">Événements saisonniers</p>
+              <p class="event-desc">Repas de Noël, gala, événements thématiques tout au long de l'année.</p>
+            </div>
+            <div class="event-card">
+              <span class="event-emoji">🤝</span>
+              <p class="event-name">Partenariats & inter-BDE</p>
+              <p class="event-desc">Coordination logistique avec les BDE d'autres écoles pour les événements communs.</p>
+            </div>
+            <div class="event-card">
+              <span class="event-emoji">🎓</span>
+              <p class="event-name">Cérémonies officielles</p>
+              <p class="event-desc">Support logistique aux événements officiels de l'école : remises de diplômes, journées portes ouvertes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compétences -->
+        <div class="detail-section">
+          <p class="section-label">Ce que j'en retire</p>
+          <h2 class="section-title">Compétences <em>développées</em></h2>
+          <p class="section-body">
+            Cette expérience m'a forgé un sens aigu de l'organisation et de la rigueur opérationnelle. Gérer la logistique d'une association étudiante active, c'est apprendre à jongler avec des ressources limitées, des délais serrés et des équipes bénévoles — un terrain d'entraînement idéal pour de futures responsabilités professionnelles.
+          </p>
+          <div class="highlight-box">
+            <p>
+              Au-delà des compétences techniques, le BDE m'a appris à <strong>travailler sous pression avec bienveillance</strong> : maintenir la cohésion d'équipe, communiquer avec clarté dans l'urgence, et transformer les contraintes en opportunités créatives. La logistique, c'est finalement une forme de <strong>design de l'expérience vécue</strong>.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-detail">
+    <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>CV
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+    <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>LINKEDIN
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+  </footer>
+
+  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

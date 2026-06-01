@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./style/styleIndex.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <section class="hero">
+
+        <!-- CIRCUIT LINES SVG — référence image 2 (coins + lignes PCB) -->
+        <svg class="circuit-lines" viewBox="0 0 1440 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="rgba(125,211,252,0.28)" stroke-width="1" fill="none">
+
+            <!-- TOP RIGHT cluster -->
+            <path d="M1100 0 L1100 40 L1180 40 L1180 0"/>
+            <path d="M1220 0 L1220 60 L1300 60 L1300 20 L1380 20 L1380 0"/>
+            <path d="M1300 60 L1350 60 L1350 90 L1440 90"/>
+            <path d="M1150 40 L1150 80 L1250 80 L1250 55"/>
+            <path d="M1380 20 L1440 20"/>
+            <path d="M1180 40 L1200 40 L1200 0"/>
+
+            <!-- BOTTOM LEFT cluster -->
+            <path d="M0 620 L80 620 L80 680 L160 680 L160 800"/>
+            <path d="M0 700 L60 700 L60 740 L140 740 L140 800"/>
+            <path d="M80 620 L80 580 L170 580 L170 640 L260 640 L260 800"/>
+            <path d="M140 740 L200 740 L200 800"/>
+            <path d="M170 580 L230 580 L230 560 L0 560"/>
+            <path d="M60 700 L50 700 L50 760 L0 760"/>
+            <path d="M260 640 L300 640 L300 680 L380 680"/>
+
+            <!-- extra horizontal runs bottom-left -->
+            <path d="M0 640 L45 640"/>
+            <path d="M0 680 L30 680"/>
+            </g>
+
+            <!-- glowing dots at intersections -->
+            <circle class="dot" cx="1180" cy="40"  r="3"/>
+            <circle class="dot" cx="1300" cy="60"  r="3"/>
+            <circle class="dot" cx="80"   cy="620" r="3"/>
+            <circle class="dot" cx="160"  cy="680" r="3"/>
+            <circle class="dot" cx="170"  cy="580" r="3"/>
+            <circle class="dot" cx="260"  cy="640" r="3"/>
+            <circle class="dot" cx="140"  cy="740" r="3"/>
+        </svg>
+
+        <!-- CONTENU GAUCHE -->
+        <div class="hero-left">
+            <h1>Emma KERGUILLEC</h1>
+            <h2>Ingénieure Cogniticienne</h2>
+            <p>
+            Je transforme des problématiques complexes<br>
+            en solutions techniques efficaces, durables et pensées pour l'Homme.
+            </p>
+            <div class="buttons">
+            <a href="./html/Experience/Experience.html" class="btn-primary">Découvrir mes projets &rsaquo;</a>
+            <a href="./html/Contact/Contact.html" class="btn-secondary">Me contacter</a>
+            </div>
+        </div>
+
+        <!-- PHOTO DROITE -->
+        <div class="hero-right">
+            <div class="halo-wrapper">
+            <div class="halo">
+                <img src="images/MaPhotoCorrigee.png" alt="Portrait">
+            </div>
+            </div>
+        </div>
+
+        </section>
+    </body>
+</html>

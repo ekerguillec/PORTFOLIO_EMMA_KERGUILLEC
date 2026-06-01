@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="bg" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#1a3a6e"/>
+      <stop offset="100%" stop-color="#0b1220"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- E (cyan) -->
+  <line x1="16" y1="20" x2="16" y2="44" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round"/>
+  <line x1="16" y1="20" x2="28" y2="20" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round"/>
+  <line x1="16" y1="32" x2="26" y2="32" stroke="#7dd3fc" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="16" y1="44" x2="28" y2="44" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round"/>
+  <!-- K (blanc) -->
+  <line x1="36" y1="20" x2="36" y2="44" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="36" y1="32" x2="49" y2="20" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="36" y1="32" x2="49" y2="44" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+</svg>

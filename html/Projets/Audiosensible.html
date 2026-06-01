@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projet Ombre Sensible — sensibilisation au handicap auditif — Emma Kerguillec">
+  <meta name="author" content="Emma Kerguillec">
+  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../style/styleExp.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <title>Ombre Sensible — Emma Kerguillec</title>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      min-height: 100vh;
+      color: #e6edf3;
+      background:
+        radial-gradient(circle at 75% 15%, rgba(125,211,252,0.10) 0%, transparent 50%),
+        radial-gradient(circle at 10% 80%, rgba(125,211,252,0.07), transparent 50%),
+        linear-gradient(145deg, #0f172a 0%, #172554 55%, #1e293b 100%);
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── NAVBAR ── */
+    .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 10; }
+    .navbar {
+      padding: 22px 8%;
+      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .navbar-brand { font-size: 21px; font-weight: 600; letter-spacing: 1px; color: #f1f5f9; text-decoration: none; transition: color 0.3s; }
+    .navbar-brand:hover { color: #93c5fd; }
+    .nav-link { color: #cbd5f5; margin-left: 26px; font-size: 14px; letter-spacing: 0.4px; transition: color 0.3s; }
+    .nav-link:hover { color: #93c5fd; }
+    .navbar-toggler { border: none; background: transparent; }
+    .navbar-toggler .close-icon { display: none; color: #f1f5f9; font-size: 20px; }
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon { display: none; }
+    .navbar-toggler:not(.collapsed) .close-icon { display: block; }
+
+    /* ── PAGE ── */
+    .project-page { position: relative; z-index: 2; padding: 130px 8% 100px; }
+    .project-inner { max-width: 1060px; margin: 0 auto; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb-nav {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 52px;
+      opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards;
+    }
+    .breadcrumb-nav a { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #475569; text-decoration: none; transition: color 0.3s; }
+    .breadcrumb-nav a:hover { color: #7dd3fc; }
+    .breadcrumb-nav span { font-size: 12px; color: #334155; }
+    .breadcrumb-nav .current { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #7dd3fc; }
+
+    /* ── HERO ── */
+    .hero-block { margin-bottom: 64px; opacity: 0; animation: fadeUp 0.75s ease 0.1s forwards; }
+
+    .project-eyebrow { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: #7dd3fc; font-weight: 500; margin-bottom: 16px; }
+
+    .project-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 400; color: #f1f5f9;
+      line-height: 1.1; margin-bottom: 28px;
+    }
+    .project-title em { color: #7dd3fc; font-style: italic; }
+
+    .hero-body {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 44px;
+      align-items: start;
+    }
+
+    .project-desc { font-size: 17px; color: #94a3b8; line-height: 1.8; margin-bottom: 28px; }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 34px; }
+    .project-tag {
+      display: inline-block; padding: 6px 16px; border-radius: 50px;
+      background: rgba(125,211,252,0.07); border: 1px solid rgba(125,211,252,0.20);
+      color: #7dd3fc; font-size: 13px; font-weight: 500;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary-action {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 14px 28px; border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white; text-decoration: none;
+      font-weight: 500; font-size: 15px; font-family: 'Sora', sans-serif;
+      box-shadow: 0 8px 24px rgba(59,130,246,0.28);
+      transition: all 0.25s ease;
+    }
+    .btn-primary-action:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(59,130,246,0.42); color: white; }
+
+    .btn-secondary-action {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 14px 28px; border-radius: 12px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(125,211,252,0.22);
+      color: #e2eeff; text-decoration: none;
+      font-weight: 400; font-size: 15px; font-family: 'Sora', sans-serif;
+      transition: all 0.25s ease;
+    }
+    .btn-secondary-action:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); color: white; }
+
+    /* Info card */
+    .info-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px; padding: 30px 32px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .info-section-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #475569; font-weight: 500; margin-bottom: 12px; }
+
+    .concept-box {
+      border-left: 3px solid #7dd3fc; background: rgba(125,211,252,0.06);
+      border-radius: 0 12px 12px 0; padding: 20px 24px;
+    }
+    .concept-box p {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 17px; font-style: italic; color: #e2e8f0; line-height: 1.6;
+    }
+    .concept-box p em { color: #7dd3fc; font-style: normal; }
+
+    /* ── QR CARD ── */
+    .qr-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px; padding: 28px 32px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      transition: border-color 0.25s, transform 0.25s;
+      text-decoration: none;
+    }
+    .qr-card:hover { border-color: rgba(125,211,252,0.3); transform: translateY(-3px); }
+
+    .qr-label-top { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #475569; font-weight: 500; }
+
+    #qr-canvas {
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
+      width: 160px; height: 160px;
+      display: block;
+    }
+
+    .qr-url {
+      font-size: 12px; color: #7dd3fc;
+      letter-spacing: 0.3px; text-align: center;
+      word-break: break-all; line-height: 1.5;
+    }
+
+    .qr-hint {
+      font-size: 12px; color: #475569;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .qr-hint svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(125,211,252,0.18), transparent);
+      margin: 60px 0;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      display: inline-block; padding: 5px 14px; border-radius: 50px;
+      border: 1px solid rgba(125,211,252,0.28); color: #7dd3fc;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 500; background: rgba(125,211,252,0.06); margin-bottom: 28px;
+    }
+
+    /* ── SITE PREVIEW ── */
+    .site-section { opacity: 0; animation: fadeUp 0.75s ease 0.2s forwards; }
+
+    .site-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .site-card:hover { border-color: rgba(125,211,252,0.2); }
+
+    .site-card-header {
+      background: rgba(0,0,0,0.25);
+      padding: 14px 20px;
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dot {
+      width: 11px; height: 11px; border-radius: 50%;
+    }
+    .dot-red { background: rgba(255,95,87,0.6); }
+    .dot-yellow { background: rgba(255,189,46,0.6); }
+    .dot-green { background: rgba(40,200,64,0.6); }
+
+    .browser-url {
+      flex: 1; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 6px 14px;
+      font-size: 13px; color: #94a3b8;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .browser-url svg { width: 12px; height: 12px; flex-shrink: 0; color: #64748b; }
+
+    .browser-open-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border-radius: 8px;
+      background: rgba(125,211,252,0.10); border: 1px solid rgba(125,211,252,0.22);
+      color: #7dd3fc; text-decoration: none;
+      font-size: 13px; font-weight: 500; font-family: 'Sora', sans-serif;
+      transition: all 0.2s ease; white-space: nowrap;
+    }
+    .browser-open-btn:hover { background: rgba(125,211,252,0.18); color: #7dd3fc; }
+    .browser-open-btn svg { width: 12px; height: 12px; }
+
+    .site-body {
+      padding: 36px 40px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
+    }
+
+    .site-desc-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 22px; color: #f1f5f9; margin-bottom: 12px; line-height: 1.3;
+    }
+    .site-desc-title em { color: #7dd3fc; font-style: italic; }
+    .site-desc-text { font-size: 15px; color: #64748b; line-height: 1.75; margin-bottom: 20px; }
+
+    .site-features { display: flex; flex-direction: column; gap: 10px; }
+    .site-feature {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: #94a3b8; line-height: 1.5;
+    }
+    .feature-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #7dd3fc; flex-shrink: 0; margin-top: 7px; opacity: 0.6;
+    }
+
+    .qr-standalone {
+      display: flex; flex-direction: column; align-items: center; gap: 14px;
+    }
+    #qr-canvas-2 {
+      border-radius: 12px; padding: 14px; background: #fff;
+      width: 180px; height: 180px; display: block;
+    }
+    .qr-cta {
+      font-size: 13px; color: #64748b; text-align: center; line-height: 1.5;
+    }
+    .qr-cta a { color: #7dd3fc; text-decoration: none; }
+    .qr-cta a:hover { text-decoration: underline; }
+
+    /* ── STEPS ── */
+    .steps-section { opacity: 0; animation: fadeUp 0.75s ease 0.25s forwards; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; padding: 32px 28px 28px;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: transform 0.3s cubic-bezier(.22,.68,0,1.15), border-color 0.25s, background 0.25s;
+    }
+    .step-card:hover { transform: translateY(-5px); border-color: rgba(125,211,252,0.25); background: rgba(125,211,252,0.04); }
+
+    .step-number {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(125,211,252,0.10); border: 1px solid rgba(125,211,252,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 500; color: #7dd3fc; flex-shrink: 0;
+    }
+
+    .step-meta { font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: #475569; font-weight: 500; }
+
+    .step-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 21px; font-weight: 400; color: #f1f5f9; line-height: 1.3;
+    }
+    .step-title em { color: #7dd3fc; font-style: italic; }
+
+    .step-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 8px; flex: 1;
+    }
+    .step-list li {
+      font-size: 14px; color: #64748b; line-height: 1.6;
+      padding-left: 16px; position: relative;
+    }
+    .step-list li::before {
+      content: ''; position: absolute; left: 0; top: 9px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(125,211,252,0.4);
+    }
+    .step-list li b { color: #94a3b8; font-weight: 500; }
+
+    .step-desc { font-size: 14.5px; color: #64748b; line-height: 1.72; flex: 1; }
+
+    /* ── COMPÉTENCES ── */
+    .skills-section { opacity: 0; animation: fadeUp 0.75s ease 0.45s forwards; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .skill-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 20px 22px;
+      display: flex; align-items: center; gap: 16px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .skill-card:hover { border-color: rgba(125,211,252,0.22); transform: translateY(-2px); }
+
+    .skill-icon-wrap {
+      width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(125,211,252,0.08); border: 1px solid rgba(125,211,252,0.16);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .skill-icon-wrap svg { width: 19px; height: 19px; color: #7dd3fc; }
+
+    .skill-name { font-size: 15px; color: #94a3b8; line-height: 1.4; }
+
+    /* ── BILAN ── */
+    .bilan-section { opacity: 0; animation: fadeUp 0.75s ease 0.55s forwards; }
+
+    .bilan-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(125,211,252,0.14);
+      border-radius: 20px; padding: 40px 44px;
+      position: relative; overflow: hidden;
+    }
+    .bilan-card::before {
+      content: ''; position: absolute;
+      width: 360px; height: 360px; top: -140px; right: -60px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,211,252,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bilan-card p { font-size: 16px; color: #94a3b8; line-height: 1.9; position: relative; z-index: 1; }
+    .bilan-card strong { color: #e2e8f0; font-weight: 500; }
+    .bilan-card em { color: #7dd3fc; font-style: normal; }
+
+    /* ── FOOTER ── */
+    .footer-project {
+      display: flex; justify-content: center; gap: 40px;
+      padding: 55px 20px; margin-top: 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(15,23,42,0.6); backdrop-filter: blur(6px);
+    }
+    .social-link { color: #cbd5f5; text-decoration: none; font-size: 15px; transition: color 0.3s; font-family: 'Sora', sans-serif; }
+    .social-link:hover { color: #93c5fd; }
+    .social-link svg { margin-left: 6px; fill: #93c5fd; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 740px) {
+      .hero-body { grid-template-columns: 1fr; gap: 32px; }
+      .site-body { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 600px) {
+      .project-page { padding: 110px 5% 72px; }
+      .bilan-card { padding: 28px 24px; }
+      .footer-project { flex-direction: column; gap: 16px; align-items: center; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary-action, .btn-secondary-action { justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="close-icon">&#10005;</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+            <a href="../Projets/Main.html" class="nav-link"><strong><em>PROJETS</em></strong></a>
+            <a href="../Experience/Experience.html" class="nav-link">EXPERIENCE</a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+            <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <div class="project-inner">
+
+      <nav class="breadcrumb-nav" aria-label="fil d'Ariane">
+        <a href="../Projets/Projets.html">Projets</a>
+        <span>›</span>
+        <span class="current">Ombre Sensible</span>
+      </nav>
+
+      <!-- ── HERO ── -->
+      <div class="hero-block">
+        <p class="project-eyebrow">Projet de sensibilisation · ENSC</p>
+        <h1 class="project-title">Ombre Sensible —<br><em>ressentir le handicap auditif</em></h1>
+
+        <div class="hero-body">
+          <div>
+            <p class="project-desc">Permettre à chacun de vivre de l'intérieur les altérations sonores vécues par les personnes atteintes de surdité partielle, d'hyperacousie ou de perte sélective de fréquences — par le son, en temps réel.</p>
+
+            <div class="project-tags">
+              <span class="project-tag">#acoustique</span>
+              <span class="project-tag">#traitement du signal</span>
+              <span class="project-tag">#cognition</span>
+              <span class="project-tag">#accessibilité</span>
+              <span class="project-tag">#sensibilisation</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="https://audiosensible.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+                Visiter le site
+                <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M2 12L12 2M12 2H5M12 2v7"/></svg>
+              </a>
+              <a href="../Projets/Main.html" class="btn-secondary-action">← Retour aux projets</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div>
+              <p class="info-section-title">Contexte</p>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="font-size:15px;color:#64748b"><strong style="color:#94a3b8;font-weight:500">Cadre :</strong> ENSC — CPBx</div>
+                <div style="font-size:15px;color:#64748b"><strong style="color:#94a3b8;font-weight:500">Domaine :</strong> Ingénierie humaine &amp; accessibilité</div>
+              </div>
+            </div>
+            <div>
+              <p class="info-section-title">Objectif</p>
+              <div class="concept-box">
+                <p>Susciter une prise de conscience <em>sensorielle et empathique</em> sur la fragilité de l'écoute.</p>
+              </div>
+            </div>
+            <div>
+              <p class="info-section-title">Accès rapide</p>
+              <a href="https://audiosensible.netlify.app" target="_blank" rel="noopener noreferrer" class="qr-card">
+                <span class="qr-label-top">Scanner pour visiter</span>
+                <canvas id="qr-canvas" width="160" height="160" aria-label="QR code vers audiosensible.netlify.app"></canvas>
+                <span class="qr-url">audiosensible.netlify.app</span>
+                <span class="qr-hint">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                  Cliquer pour ouvrir
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ── SITE WEB ── -->
+      <section class="site-section">
+        <span class="section-label">Site interactif</span>
+        <div class="site-card">
+          <div class="site-card-header">
+            <div class="browser-dots">
+              <div class="browser-dot dot-red"></div>
+              <div class="browser-dot dot-yellow"></div>
+              <div class="browser-dot dot-green"></div>
+            </div>
+            <div class="browser-url">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+              audiosensible.netlify.app
+            </div>
+            <a href="https://audiosensible.netlify.app" target="_blank" rel="noopener noreferrer" class="browser-open-btn">
+              Ouvrir
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12L12 2M12 2H5M12 2v7"/></svg>
+            </a>
+          </div>
+          <div class="site-body">
+            <div>
+              <h2 class="site-desc-title">Expérience auditive <em>interactive</em></h2>
+              <p class="site-desc-text">Le site permet à l'utilisateur de simuler différents profils de handicap auditif directement depuis son navigateur — sans installation, sans matériel spécifique.</p>
+              <div class="site-features">
+                <div class="site-feature"><div class="feature-dot"></div>Simulation de surdité partielle, hyperacousie et perte fréquentielle</div>
+                <div class="site-feature"><div class="feature-dot"></div>Traitement du signal audio en temps réel (Web Audio API)</div>
+                <div class="site-feature"><div class="feature-dot"></div>Interface accessible sur desktop et mobile</div>
+                <div class="site-feature"><div class="feature-dot"></div>Contenu pédagogique intégré sur le handicap auditif</div>
+              </div>
+            </div>
+            <div class="qr-standalone">
+              <canvas id="qr-canvas-2" width="180" height="180" aria-label="QR code vers audiosensible.netlify.app"></canvas>
+              <p class="qr-cta">
+                Scanner ou <a href="https://audiosensible.netlify.app" target="_blank" rel="noopener noreferrer">cliquer ici</a><br>pour accéder au site
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ── ÉTAPES ── -->
+      <section class="steps-section">
+        <span class="section-label">Démarche du projet</span>
+        <div class="steps-grid">
+
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <p class="step-meta">Concept &amp; fonctionnement</p>
+            <h2 class="step-title">Architecture <em>technique</em></h2>
+            <ul class="step-list">
+              <li>Casque audio neutre à forte isolation</li>
+              <li>2 microphones directionnels intégrés</li>
+              <li>Traitement du signal en temps réel (filtres passe-haut, passe-bas, passe-bande)</li>
+              <li>Interface physique ou numérique pour choisir les profils auditifs</li>
+            </ul>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <p class="step-meta">Caractéristiques techniques</p>
+            <h2 class="step-title">Stack &amp; <em>matériel</em></h2>
+            <ul class="step-list">
+              <li>Traitement sur ordinateur (Web Audio API)</li>
+              <li>Connectivité câble ou Bluetooth</li>
+              <li>Matériaux modifiés pour intégrer l'électronique</li>
+              <li>Confort et isolation optimisés pour l'usage terrain</li>
+            </ul>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <p class="step-meta">Deux configurations</p>
+            <h2 class="step-title">Casque &amp; <em>module externe</em></h2>
+            <ul class="step-list">
+              <li><b>Casque embarqué :</b> préserve la perception spatiale naturelle</li>
+              <li><b>Module externe :</b> simule le trajet du son dans un modèle de boîte crânienne imprimée en 3D</li>
+            </ul>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <p class="step-meta">Portée &amp; perspectives</p>
+            <h2 class="step-title">Usages &amp; <em>diffusion</em></h2>
+            <ul class="step-list">
+              <li>Actions de sensibilisation : écoles, musées, événements de santé publique</li>
+              <li>Outil éducatif en sciences cognitives et acoustique</li>
+              <li>Base technologique pour des dispositifs d'entraînement auditif</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ── COMPÉTENCES ── -->
+      <section class="skills-section">
+        <span class="section-label">Compétences mobilisées</span>
+        <div class="skills-grid">
+
+          <div class="skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <span class="skill-name">Traitement du signal audio</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            </div>
+            <span class="skill-name">Développement web (Web Audio API)</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+            </div>
+            <span class="skill-name">Sciences cognitives &amp; acoustique</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <span class="skill-name">Conception 3D &amp; fabrication</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <span class="skill-name">Communication &amp; médiation</span>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <span class="skill-name">Design d'expérience &amp; empathie</span>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ── BILAN ── -->
+      <section class="bilan-section">
+        <span class="section-label">Bilan</span>
+        <div class="bilan-card">
+          <p>Ombre Sensible m'a permis d'explorer la <strong>dimension humaine et sociale de l'ingénierie</strong> — concevoir non pas pour optimiser une performance, mais pour <em>faire ressentir</em>. Travailler sur la simulation du handicap auditif a profondément renforcé ma conviction que la <strong>cognitique</strong> est avant tout un pont entre technologie et vécu : comprendre comment le cerveau traite le son, et utiliser cette compréhension pour <em>changer le regard</em> des autres sur ceux qui l'entendent différemment.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer-project">
+    <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>CV
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+    <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>LINKEDIN
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
+            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
+            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
+          </g>
+        </svg>
+      </strong></em>
+    </a>
+  </footer>
+
+  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- QR Code generator (qrcodejs, CDN autorisé) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script>
+    const URL = "https://audiosensible.netlify.app";
+
+    function drawQR(canvasId, size) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      try {
+        QRCode.toCanvas(canvas, URL, {
+          width: size,
+          margin: 1,
+          color: { dark: "#0f172a", light: "#ffffff" }
+        });
+      } catch (e) {
+        canvas.style.display = "none";
+      }
+    }
+
+    if (typeof QRCode !== "undefined" && QRCode.toCanvas) {
+      drawQR("qr-canvas", 160);
+      drawQR("qr-canvas-2", 180);
+    } else {
+      document.querySelectorAll("script").forEach(function(s) {
+        if (s.src && s.src.includes("qrcode")) {
+          s.addEventListener("load", function() {
+            drawQR("qr-canvas", 160);
+            drawQR("qr-canvas-2", 180);
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
