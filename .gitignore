@@ -1,9 +1,10 @@
 # Fichiers générés
 graphify-out/
 
-# Coordonnées personnelles
+# Coordonnées personnelles et fichiers lourds
 documents/CV.pdf
 documents/Rapport technique.pdf
+documents/*.mp4
 config/contact.js
 
 # Fichiers système macOS
