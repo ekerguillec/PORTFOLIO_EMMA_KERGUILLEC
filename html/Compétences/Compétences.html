@@ -1,73 +1,733 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique spécialisé en Cognitique.">
-    <meta name="author" content="Emma Kerguillec">
-    <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../style/styleExp.css">
-    <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
-    <link rel="icon" type="image/x-icon" href="favicon.ico"> 
-    <title> Expériences professionnelles - i2c </title> 
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compétences d'Emma Kerguillec — ingénierie cognitive, facteur humain, programmation, systèmes embarqués, IA.">
+  <meta name="author" content="Emma Kerguillec">
+  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../style/styleExp.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <title>Compétences — Emma Kerguillec</title>
+
+  <style>
+    /* ── PAGE ── */
+    .skills-page{position:relative;z-index:2;min-height:100vh;padding:140px 8% 100px;overflow:hidden;}
+    .skills-page::before{content:'';position:absolute;width:700px;height:700px;top:-80px;right:-180px;border-radius:50%;background:radial-gradient(circle,rgba(125,211,252,0.07) 0%,transparent 70%);pointer-events:none;z-index:0;}
+    .skills-page::after{content:'';position:absolute;width:500px;height:500px;bottom:-100px;left:-100px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.05) 0%,transparent 70%);pointer-events:none;z-index:0;}
+    .skills-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;}
+
+    /* ── HEADER ── */
+    .skills-header{margin-bottom:72px;opacity:0;animation:fadeUp 0.9s ease forwards;display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:center;}
+    .skills-eyebrow{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7dd3fc;font-weight:500;margin-bottom:16px;}
+    .skills-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(42px,5.5vw,64px);font-weight:400;color:#f1f5f9;line-height:1.12;margin-bottom:20px;}
+    .skills-title em{color:#7dd3fc;font-style:italic;}
+    .skills-sub{font-size:15px;color:#aabcce;line-height:1.85;}
+
+    /* ── HEADER RIGHT : stats ── */
+    .skills-header-right{display:flex;flex-direction:column;gap:12px;}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+    .stat-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;transition:border-color 0.3s,background 0.3s;}
+    .stat-card:hover{border-color:rgba(125,211,252,0.2);background:rgba(125,211,252,0.04);}
+    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7dd3fc,transparent);opacity:0;transition:opacity 0.3s;}
+    .stat-card:hover::before{opacity:1;}
+    .stat-num{font-family:'DM Serif Display',Georgia,serif;font-size:36px;color:#f1f5f9;line-height:1;margin-bottom:4px;}
+    .stat-num em{color:#7dd3fc;font-style:normal;}
+    .stat-lbl{font-size:11px;color:#9ab5c8;line-height:1.4;}
+    .stat-cv{display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border-radius:12px;background:rgba(125,211,252,0.08);border:1px solid rgba(125,211,252,0.22);color:#7dd3fc;font-size:13px;font-weight:500;text-decoration:none;transition:background 0.3s,border-color 0.3s;}
+    .stat-cv:hover{background:rgba(125,211,252,0.16);border-color:rgba(125,211,252,0.45);color:#e2e8f0;}
+    .stat-cv:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px;border-radius:12px;}
+    .stat-cv svg{width:14px;height:14px;flex-shrink:0;}
+
+    /* ── FEATURED CARD ── */
+    .skills-featured{background:linear-gradient(155deg,rgba(17,30,75,0.97) 0%,rgba(11,18,45,0.97) 100%);border:1px solid rgba(255,255,255,0.07);border-radius:24px;padding:48px 52px;margin-bottom:24px;display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:center;position:relative;overflow:hidden;opacity:0;animation:fadeUp 0.85s ease 0.1s forwards;transition:transform 0.38s ease,box-shadow 0.38s ease;}
+    .skills-featured:hover{transform:translateY(-5px);box-shadow:0 28px 64px rgba(0,0,0,0.4);}
+    .skills-featured::after{content:'';position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,0.06);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);pointer-events:none;}
+    .feat-orb{position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(125,211,252,0.07);pointer-events:none;}
+    .feat-orb::before{content:'';position:absolute;inset:32px;border-radius:50%;border:1px solid rgba(125,211,252,0.05);}
+    .feat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#7dd3fc;font-weight:500;margin-bottom:12px;}
+    .feat-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,3.5vw,40px);color:#f1f5f9;line-height:1.2;margin-bottom:16px;}
+    .feat-title em{color:#7dd3fc;font-style:italic;}
+    .feat-body{font-size:14.5px;color:#aabcce;line-height:1.8;margin-bottom:24px;}
+    .feat-tags{display:flex;flex-wrap:wrap;gap:7px;}
+    .feat-tag{padding:5px 13px;border-radius:50px;background:rgba(125,211,252,0.08);border:1px solid rgba(125,211,252,0.2);color:#7dd3fc;font-size:11px;font-weight:500;}
+    .feat-right{display:flex;flex-direction:column;gap:12px;}
+    .feat-stat{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:14px 18px;}
+    .feat-stat-label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9ab5c8;margin-bottom:5px;}
+    .feat-stat-val{font-size:14px;color:#e2e8f0;font-weight:500;line-height:1.4;}
+
+    /* ── GRID ── */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:24px;}
+    .skills-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:24px;}
+
+    /* ── BASE CARD ── */
+    .scard{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:22px;padding:32px 30px;position:relative;overflow:hidden;opacity:0;animation:fadeUp 0.85s ease forwards;transition:transform 0.35s ease,box-shadow 0.35s ease,border-color 0.35s;display:flex;flex-direction:column;gap:0;}
+    .scard:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.35);border-color:rgba(125,211,252,0.15);}
+    .scard::after{content:'';position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,0.12);box-shadow:inset 0 1px 0 rgba(255,255,255,0.16),inset 0 -1px 0 rgba(255,255,255,0.04);pointer-events:none;transition:border-color 0.3s;}
+    .scard:hover::after{border-color:rgba(125,211,252,0.2);}
+    .scard-bar{position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,#7dd3fc,transparent);border-radius:22px 0 0 22px;opacity:0;transition:opacity 0.3s;}
+    .scard:hover .scard-bar{opacity:1;}
+
+    /* delays */
+    .sd1{animation-delay:0.15s;} .sd2{animation-delay:0.22s;} .sd3{animation-delay:0.29s;}
+    .sd4{animation-delay:0.36s;} .sd5{animation-delay:0.43s;} .sd6{animation-delay:0.50s;}
+    .sd7{animation-delay:0.57s;} .sd8{animation-delay:0.64s;}
+
+    /* card header */
+    .scard-icon{width:44px;height:44px;border-radius:14px;background:rgba(125,211,252,0.07);border:1px solid rgba(125,211,252,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0;}
+    .scard-icon svg{width:20px;height:20px;}
+    .scard-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9ab5c8;font-weight:500;margin-bottom:8px;}
+    .scard-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(18px,2vw,22px);color:#f1f5f9;line-height:1.25;margin-bottom:12px;}
+    .scard-title em{color:#7dd3fc;font-style:italic;}
+    .scard-body{font-size:13.5px;color:#aabcce;line-height:1.75;margin-bottom:18px;flex:1;}
+    .scard-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+    .scard-chip{padding:4px 10px;border-radius:50px;background:rgba(125,211,252,0.06);border:1px solid rgba(125,211,252,0.15);color:#7dd3fc;font-size:10.5px;font-weight:500;}
+    .scard-proof{font-size:11.5px;color:#9ab5c8;padding-top:14px;border-top:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:8px;}
+    .proof-dot{width:5px;height:5px;border-radius:50%;background:#7dd3fc;flex-shrink:0;}
+
+    /* ── WIDE CARD (spans 2 cols) ── */
+    .scard-wide{grid-column:span 2;}
+    .scard-wide .scard-body{max-width:600px;}
+
+    /* ── TOOLS BAR ── */
+    .tools-section{opacity:0;animation:fadeUp 0.85s ease 0.7s forwards;}
+    .tools-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9ab5c8;font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:14px;}
+    .tools-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.05);}
+    .tools-grid{display:flex;flex-wrap:wrap;gap:10px;}
+    .tool-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);color:#cbd5e1;font-size:12px;transition:border-color 0.3s,background 0.3s;}
+    .tool-chip:hover{border-color:rgba(125,211,252,0.2);background:rgba(125,211,252,0.04);}
+    .tool-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+    .tool-blue{background:#7dd3fc;}
+    .tool-purple{background:#a78bfa;}
+    .tool-green{background:#34d399;}
+    .tool-orange{background:#fb923c;}
+
+    /* ── FOOTER ── */
+    .footer-skills{display:flex;justify-content:center;gap:40px;padding:55px 20px;margin-top:80px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(15,23,42,0.6);backdrop-filter:blur(6px);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}}
+
+    @media(max-width:960px){
+      .skills-grid{grid-template-columns:repeat(2,1fr);}
+      .scard-wide{grid-column:span 2;}
+      .skills-featured{grid-template-columns:1fr;gap:36px;}
+      .feat-right{flex-direction:row;flex-wrap:wrap;}
+      .feat-stat{flex:1;min-width:140px;}
+    }
+    @media(max-width:960px){
+      .skills-header{grid-template-columns:1fr;gap:40px;}
+      .stat-grid{grid-template-columns:repeat(4,1fr);}
+    }
+    @media(max-width:640px){
+      .skills-page{padding:120px 5% 80px;}
+      .skills-grid,.skills-grid-2{grid-template-columns:1fr;}
+      .scard-wide{grid-column:span 1;}
+      .skills-featured{padding:32px 28px;}
+      .footer-skills{flex-direction:column;gap:18px;align-items:center;}
+      .stat-grid{grid-template-columns:1fr 1fr;}
+    }
+
+    /* ── TOOLTIPS ── */
+    .tool-item{position:relative;display:inline-flex;}
+
+    .tool-chip-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 16px;border-radius:10px;
+      background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+      color:#cbd5e1;font-size:12px;font-family:'Sora',sans-serif;
+      cursor:pointer;transition:border-color 0.25s,background 0.25s;
+    }
+    .tool-chip-btn:hover,.tool-chip-btn:focus-visible{
+      border-color:rgba(125,211,252,0.28);background:rgba(125,211,252,0.06);color:#e2e8f0;
+    }
+    .tool-chip-btn:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px;border-radius:10px;}
+    .tool-chip-btn[aria-expanded="true"]{
+      border-color:rgba(125,211,252,0.45);background:rgba(125,211,252,0.1);color:#e2e8f0;
+    }
+
+    .tool-tooltip{
+      position:absolute;
+      bottom:calc(100% + 10px);
+      left:50%;transform:translateX(-50%) translateY(4px);
+      background:#0d1b35;
+      border:1px solid rgba(125,211,252,0.22);
+      border-radius:12px;padding:12px 16px;
+      font-size:12px;color:#aabcce;
+      max-width:260px;min-width:200px;width:max-content;
+      z-index:200;
+      opacity:0;pointer-events:none;
+      transition:opacity 0.2s ease,transform 0.2s ease;
+      text-align:left;line-height:1.65;
+      box-shadow:0 12px 40px rgba(0,0,0,0.5);
+    }
+    .tool-tooltip strong{
+      display:block;font-size:12.5px;color:#e2e8f0;
+      margin-bottom:5px;font-family:'Sora',sans-serif;font-weight:600;
+    }
+    /* flèche vers le bas */
+    .tool-tooltip::after{
+      content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+      border:7px solid transparent;border-top-color:#0d1b35;
+    }
+    .tool-tooltip::before{
+      content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+      border:8px solid transparent;border-top-color:rgba(125,211,252,0.22);margin-top:1px;
+    }
+
+    /* Affichage hover (tooltip hoverable = reste visible si on y va) */
+    .tool-item:hover .tool-tooltip{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+    /* Affichage focus clavier */
+    .tool-item.is-focused .tool-tooltip{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+    /* Affichage clic */
+    .tool-item.is-open .tool-tooltip{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+
+    /* Décalage chips en bord de grille pour éviter le débordement */
+    .tools-grid .tool-item:nth-child(5n+1) .tool-tooltip,
+    .tools-grid .tool-item:first-child .tool-tooltip{left:0;transform:translateY(0);}
+    .tools-grid .tool-item:nth-child(5n+1) .tool-tooltip::after,
+    .tools-grid .tool-item:first-child .tool-tooltip::after{left:20px;}
+    .tools-grid .tool-item:nth-child(5n+1) .tool-tooltip::before,
+    .tools-grid .tool-item:first-child .tool-tooltip::before{left:20px;}
+    .tool-item:hover.is-open,.tool-item.is-focused{z-index:201;}
+  </style>
+  <link rel="stylesheet" href="../../style/theme.css">
 </head>
+
 <body>
-    <header class="header">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid px-0"> 
-                <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="close-icon">&#10005;</span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
-                        <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
-                        <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
-                        <a href="../Experience/Experience.html" class="nav-link">EXPERIENCE</a>
-                        <a href="../Contact/Contact.html" class="nav-link">CONTACT</a> 
-                        <a href="../Compétences/Compétences.html" class="nav-link"> <strong><em> COMPÉTENCES </em> </strong> </a>
-                        <style>
-                            .navbar .navbar-nav a[href="../Compétences/Compétences.html"] {
-                                color: white !important;
-                                font-size: 16px !important;
-                                font-weight: 600 !important;
-                                text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.5) !important;
-                            }
-                        </style>
-                    </div>
-                </div>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <header class="header">
+    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="close-icon" aria-hidden="true">&#10005;</span>
+        </button>
+        <button class="theme-toggle" aria-label="Passer en mode clair" title="Changer de thème">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+            <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
+            <a href="../Experience/Experience.html" class="nav-link">EXPERIENCE</a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+            <a href="../Compétences/Compétences.html" class="nav-link" aria-current="page"><strong><em>COMPÉTENCES</em></strong></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="skills-page">
+    <div class="skills-inner">
+
+      <!-- ── HEADER ── -->
+      <header class="skills-header">
+        <div class="skills-header-left">
+          <p class="skills-eyebrow">Compétences</p>
+          <h1 class="skills-title">Ce que je sais<br><em>faire.</em></h1>
+          <p class="skills-sub">Une ingénieure cogniticienne à l'interface du facteur humain, des systèmes complexes et du numérique — des compétences construites pour concevoir des systèmes fiables, centrés sur l'humain.</p>
+        </div>
+        <div class="skills-header-right">
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">9<em>+</em></div>
+              <div class="stat-lbl">Langages &amp; frameworks</div>
             </div>
-        </nav>
-    </header>
+            <div class="stat-card">
+              <div class="stat-num">4</div>
+              <div class="stat-lbl">Langues parlées</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">80<em>+</em></div>
+              <div class="stat-lbl">Entreprises gérées (Forum Ingénib)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">3</div>
+              <div class="stat-lbl">Projets techniques complets</div>
+            </div>
+          </div>
+          <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="stat-cv">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <path d="M12 18v-6M9 15l3 3 3-3"/>
+            </svg>
+            Télécharger mon CV
+          </a>
+        </div>
+      </header>
 
+      <!-- ── OUTILS & TECHNOLOGIES ── -->
+      <section class="tools-section" aria-label="Outils et technologies">
+        <p class="tools-label">Langages &amp; frameworks <small style="font-size:10px;color:#9ab5c8;font-weight:400;letter-spacing:0;text-transform:none;margin-left:4px;">— survolez ou cliquez pour en savoir plus</small></p>
+        <div class="tools-grid" style="margin-bottom:14px;">
 
-    <footer class="footer-experience"> <!-- q) La page doit comporter une entête et un pied de page. -->
-        <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link"> <!-- m) La page contient un lien vers votre CV (pdf ou html), ouvrant dans une nouvelle fenêtre. -->
-            <span><em><strong>CV 
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="9.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000"  stroke="#000000" stroke-width="50px">
-                    <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
-                    <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
-                    </g>
-                </svg> 
-            </strong></em></span>
-        </a> 
-        <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link"> <!-- l) La page contient un lien vers un site externe. -->
-            <em><strong>LINKEDIN 
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="9.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000"  stroke="#000000" stroke-width="50px">
-                    <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
-                    <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
-                    </g>
-                </svg> 
-            </strong></em>
-        </a>
-    </footer>
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-python" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>Python</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-python"><strong>Python</strong>Langage polyvalent pour l'analyse de données, le traitement du signal et les systèmes embarqués. Cœur logiciel de Poul'Pong et des travaux d'analyse ENSC.</div>
+          </div>
 
-    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-csharp" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>C#</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-csharp"><strong>C#</strong>Langage orienté objet de Microsoft pour le développement logiciel temps réel. Utilisé dans Ombre Sensible pour le traitement du signal audio (filtres, presets acouphènes, hyperacousie).</div>
+          </div>
 
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-micropython" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>MicroPython</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-micropython"><strong>MicroPython</strong>Version allégée de Python tournant sur microcontrôleurs. Utilisé sur Raspberry Pi Pico W pour piloter capteurs, logique de jeu et communication WiFi dans Poul'Pong.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-js" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>JavaScript / React</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-js"><strong>JavaScript / React</strong>JavaScript pour l'interactivité web ; React pour les interfaces à composants réutilisables. Maîtrise du front-end moderne et des architectures SPA.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-php" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>PHP</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-php"><strong>PHP</strong>Langage de script côté serveur pour les applications web dynamiques. Gestion des formulaires, sessions et communication avec les bases de données SQL.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-sql" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>SQL / MCD / MLD</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-sql"><strong>SQL / MCD / MLD</strong>SQL pour interroger et manipuler des bases de données relationnelles. MCD (Modèle Conceptuel) et MLD (Modèle Logique) pour la modélisation avant implémentation.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-html" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>HTML5 / CSS3</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-html"><strong>HTML5 / CSS3</strong>Langages fondamentaux du web : structure sémantique et mise en forme avancée. Maîtrisés à niveau expert — ce portfolio WCAG AAA en est la démonstration directe.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-api" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>APIs REST</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-api"><strong>APIs REST</strong>Architecture pour l'échange de données entre services web via HTTP (GET, POST, PUT, DELETE). Standard des systèmes distribués et des applications modernes.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-bootstrap" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>Bootstrap</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-bootstrap"><strong>Bootstrap</strong>Framework CSS open-source facilitant la création d'interfaces responsives. Utilisé comme base de mise en page sur toutes les pages de ce portfolio.</div>
+          </div>
+
+        </div>
+
+        <p class="tools-label" style="margin-top:28px;">Logiciels &amp; outils</p>
+        <div class="tools-grid" style="margin-bottom:14px;">
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-matlab" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>MATLAB</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-matlab"><strong>MATLAB</strong>Environnement de calcul numérique très utilisé en ingénierie. Indispensable pour le traitement du signal, les simulations et l'analyse expérimentale — standard chez Airbus, Thales, Dassault.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-r" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>Logiciel R</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-r"><strong>Logiciel R</strong>Langage statistique de référence pour l'analyse de données expérimentales, les tests d'hypothèse, la modélisation et la visualisation scientifique.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-numpy" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>NumPy / Matplotlib</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-numpy"><strong>NumPy / Matplotlib</strong>Bibliothèques Python essentielles : NumPy pour le calcul matriciel haute performance, Matplotlib pour la visualisation de données, de signaux et de résultats expérimentaux.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-signal" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>Traitement du signal</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-signal"><strong>Traitement du signal</strong>Techniques d'analyse et de transformation de signaux temporels : filtrage, FFT, convolution, modélisation. Base technique d'Ombre Sensible (audio) et de Poul'Pong (biofeedback).</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-git" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>Git / GitHub / GitLab</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-git"><strong>Git / GitHub / GitLab</strong>Systèmes de contrôle de version : Git pour le suivi des modifications, GitHub pour les projets ouverts (ce portfolio), GitLab pour les dépôts privés ENSC.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-vscode" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>VS Code</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-vscode"><strong>VS Code</strong>Éditeur de code léger et extensible, compatible avec tous les langages du portfolio. Environnement de développement principal pour Python, C#, HTML/CSS et MicroPython.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-figma" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>Figma</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-figma"><strong>Figma</strong>Outil de design d'interface collaboratif. Utilisé pour le maquettage et le prototypage d'IHM avant développement — essentiel dans tout projet UX/UI.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-gsuite" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>G Suite</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-gsuite"><strong>G Suite</strong>Suite collaborative Google (Docs, Sheets, Slides, Drive). Utilisée pour la rédaction partagée, les présentations et la coordination d'équipe à distance.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-excel" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>MS Office / Excel avancé</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-excel"><strong>MS Office / Excel avancé</strong>Suite bureautique Microsoft. Excel maîtrisé à niveau avancé pour la comptabilité i2c : tableaux de suivi, budgets, états de rapprochement bancaire, déclarations TVA.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-latex" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>LaTeX</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-latex"><strong>LaTeX</strong>Système de composition typographique pour la rédaction scientifique et académique. Utilisé pour le mémoire sur les prothèses myoélectriques — standard dans l'ingénierie et la recherche.</div>
+          </div>
+
+        </div>
+
+        <p class="tools-label" style="margin-top:28px;">Méthodes &amp; fabrication</p>
+        <div class="tools-grid">
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-agile" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Kanban / Scrum / MASK</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-agile"><strong>Kanban / Scrum / MASK</strong>Méthodes agiles : Kanban (flux continu), Scrum (sprints itératifs), MASK (Méthode d'Audit des Systèmes de Connaissances) pour la capitalisation et le transfert de savoir.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-3d" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Impression 3D</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-3d"><strong>Impression 3D</strong>Fabrication additive par dépôt de matière pour le prototypage rapide. Utilisée pour les boîtiers et pièces mécaniques dans Poul'Pong et Ombre Sensible.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-laser" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Découpe laser</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-laser"><strong>Découpe laser</strong>Fabrication soustractive de précision sur matériaux plans (bois, acrylique). Utilisée pour les panneaux du boîtier de Poul'Pong — intégration entre conception 3D et fabrication.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-cao" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Conception 3D</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-cao"><strong>Conception 3D (CAO)</strong>Modélisation de pièces en 3D pour l'impression ou la simulation. Capacité à passer d'une idée à un fichier de fabrication — lien entre la conception et la réalisation physique.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-wcag" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>WCAG AAA</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-wcag"><strong>WCAG AAA</strong>Web Content Accessibility Guidelines niveau AAA — le standard d'accessibilité numérique le plus exigeant : contraste ≥ 7:1, navigation clavier complète, ARIA. Intégralement implémenté sur ce portfolio.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-nielsen" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Heuristiques Nielsen</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-nielsen"><strong>Heuristiques de Nielsen</strong>10 principes fondamentaux d'ergonomie des interfaces formulés par Jakob Nielsen. Outil structuré d'évaluation de l'utilisabilité et de détection des problèmes UX.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-amdec" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>AMDEC / HFMEA</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-amdec"><strong>AMDEC / HFMEA</strong>Analyse des Modes de Défaillance, Effets et Criticité. La HFMEA intègre les facteurs humains — outil de sécurité des systèmes critiques indispensable en nucléaire, aéro et défense.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-pico" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Raspberry Pi Pico W</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-pico"><strong>Raspberry Pi Pico W</strong>Microcontrôleur compact avec connectivité WiFi, programmé en MicroPython. Cœur de Poul'Pong : gère en temps réel les capteurs physiologiques, la logique du jeu et la communication réseau.</div>
+          </div>
+
+          <div class="tool-item">
+            <button class="tool-chip-btn" aria-describedby="tt-capteurs" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Capteurs physiologiques</button>
+            <div class="tool-tooltip" role="tooltip" id="tt-capteurs"><strong>Capteurs physiologiques</strong>Capteurs mesurant des signaux biologiques en temps réel (fréquence cardiaque, signal vocal). Utilisés pour créer des interfaces biofeedback dans Poul'Pong — l'humain comme contrôleur.</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── FEATURED : Ingénierie cognitive ── -->
+      <section aria-label="Compétence principale">
+        <div class="skills-featured">
+          <div class="feat-orb" aria-hidden="true"></div>
+          <div>
+            <p class="feat-label">Compétence cœur · ENSC Bordeaux INP</p>
+            <h2 class="feat-title">Ingénierie<br><em>cognitive</em></h2>
+            <p class="feat-body">Discipline à l'interface des sciences humaines, de l'ingénierie et du numérique, la cognitique s'applique partout où un système doit être conçu pour l'être humain. Analyser les capacités et les limites cognitives des opérateurs, intégrer le facteur humain dès la conception, réduire les risques d'erreurs dans les systèmes critiques — c'est mon domaine d'expertise fondamental, et ce que je peux apporter à TechnicAtome, Thales, Dassault, Airbus ou Stellantis.</p>
+            <div class="feat-tags">
+              <span class="feat-tag">Sciences cognitives</span>
+              <span class="feat-tag">Facteur humain</span>
+              <span class="feat-tag">Analyse de la tâche</span>
+              <span class="feat-tag">Systèmes sociotechniques</span>
+              <span class="feat-tag">Modélisation cognitive</span>
+              <span class="feat-tag">Charge mentale</span>
+            </div>
+          </div>
+          <div class="feat-right">
+            <div class="feat-stat">
+              <div class="feat-stat-label">Formation</div>
+              <div class="feat-stat-val">ENSC — Bordeaux INP<br>Diplôme d'ingénieur</div>
+            </div>
+            <div class="feat-stat">
+              <div class="feat-stat-label">Spécialité unique</div>
+              <div class="feat-stat-val">Seule école d'ingénieurs en cognitique en France</div>
+            </div>
+            <div class="feat-stat">
+              <div class="feat-stat-label">Secteurs cibles</div>
+              <div class="feat-stat-val">Défense · Aéronautique · Nucléaire · Automobile</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── GRILLE 3 cartes ── -->
+      <section aria-label="Compétences techniques et métier">
+        <div class="skills-grid">
+
+          <!-- Facteur humain & ergonomie -->
+          <div class="scard sd1">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </div>
+            <p class="scard-label">Métier</p>
+            <h2 class="scard-title">Facteur humain &amp;<br><em>ergonomie</em></h2>
+            <p class="scard-body">Analyse des besoins utilisateurs, identification des facteurs de risque cognitif, intégration du facteur humain dans la conception de systèmes industriels et critiques. Approche HF/E appliquée aux environnements complexes (salle de contrôle, poste de pilotage, véhicule).</p>
+            <div class="scard-chips">
+              <span class="scard-chip">Analyse de la tâche</span>
+              <span class="scard-chip">Charge mentale</span>
+              <span class="scard-chip">HFMEA</span>
+              <span class="scard-chip">Ergonomie cognitive</span>
+              <span class="scard-chip">Sécurité des systèmes</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>Mémoire sur les prothèses myoélectriques · Cours ENSC · Projet Ombre Sensible</p>
+          </div>
+
+          <!-- IHM & UX industriel -->
+          <div class="scard sd2">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <p class="scard-label">Conception</p>
+            <h2 class="scard-title">Interfaces<br><em>Homme-Machine</em></h2>
+            <p class="scard-body">Conception et évaluation d'interfaces pour des contextes industriels et embarqués. Prise en compte des contraintes cognitives de l'opérateur : lisibilité, gestion de l'attention, réduction des erreurs. Développement en C# d'un casque immersif simulant différents handicaps auditifs (surdité, acouphènes, hyperacousie) avec traitement du signal en temps réel. Maîtrise des normes d'accessibilité WCAG AAA.</p>
+            <div class="scard-chips">
+              <span class="scard-chip">UX / UI</span>
+              <span class="scard-chip">Prototypage</span>
+              <span class="scard-chip">Heuristiques de Nielsen</span>
+              <span class="scard-chip">WCAG AAA</span>
+              <span class="scard-chip">Tests utilisateurs</span>
+              <span class="scard-chip">Figma</span>
+              <span class="scard-chip">C# (traitement temps réel)</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>Ombre Sensible (casque immersif C#) · Portfolio WCAG AAA · Poul'Pong</p>
+          </div>
+
+          <!-- Programmation -->
+          <div class="scard sd3">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <p class="scard-label">Développement</p>
+            <h2 class="scard-title">Programmation<br><em>&amp; développement</em></h2>
+            <p class="scard-body">Large palette de langages selon les besoins : Python pour l'analyse et les systèmes embarqués, C# pour le développement logiciel temps réel (traitement du signal audio), JavaScript / React pour les interfaces web, PHP et SQL pour le back-end et les bases de données. Intégration d'APIs REST, modélisation MCD/MLD. Rigueur du code, lisibilité et documentation.</p>
+            <div class="scard-chips">
+              <span class="scard-chip">Python</span>
+              <span class="scard-chip">C#</span>
+              <span class="scard-chip">JavaScript / React</span>
+              <span class="scard-chip">PHP</span>
+              <span class="scard-chip">SQL / MCD</span>
+              <span class="scard-chip">APIs REST</span>
+              <span class="scard-chip">HTML / CSS</span>
+              <span class="scard-chip">MicroPython</span>
+              <span class="scard-chip">Git / GitLab</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>Ombre Sensible (C# temps réel) · Poul'Pong (MicroPython) · Portfolio (HTML/CSS/JS/Bootstrap)</p>
+          </div>
+
+        </div>
+
+        <!-- ── GRILLE 3 cartes (ligne 2) ── -->
+        <div class="skills-grid">
+
+          <!-- Systèmes embarqués -->
+          <div class="scard sd4">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+                <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+                <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+                <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+                <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+              </svg>
+            </div>
+            <p class="scard-label">Embarqué &amp; Fabrication</p>
+            <h2 class="scard-title">Systèmes embarqués<br><em>&amp; prototypage</em></h2>
+            <p class="scard-body">Mise en œuvre de microcontrôleurs et capteurs dans des systèmes interactifs temps réel. Intégration de capteurs physiologiques (rythme cardiaque, microphone) pour un contrôle biologique du jeu. Fabrication complète : impression 3D des éléments structurels, découpe laser du boîtier. Maîtrise de la chaîne complète de conception à l'objet physique.</p>
+            <div class="scard-chips">
+              <span class="scard-chip">Raspberry Pi Pico W</span>
+              <span class="scard-chip">Capteurs physiologiques</span>
+              <span class="scard-chip">Impression 3D</span>
+              <span class="scard-chip">Découpe laser</span>
+              <span class="scard-chip">Temps réel</span>
+              <span class="scard-chip">Conception 3D</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>Poul'Pong (arcade complète) · Ombre Sensible (casque 3D + électronique)</p>
+          </div>
+
+          <!-- IA & traitement de données -->
+          <div class="scard sd5">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+              </svg>
+            </div>
+            <p class="scard-label">Intelligence Artificielle</p>
+            <h2 class="scard-title">IA &amp; analyse<br><em>de données</em></h2>
+            <p class="scard-body">Application des méthodes d'intelligence artificielle à l'analyse de signaux physiologiques et comportementaux. Traitement du signal audio temps réel (acouphènes, hyperacousie). Analyse statistique avec R et MATLAB pour le traitement de données expérimentales. Initiation aux réseaux de neurones et à l'apprentissage automatique dans un contexte cognitif.</p>
+            <div class="scard-chips">
+              <span class="scard-chip">Traitement du signal</span>
+              <span class="scard-chip">MATLAB</span>
+              <span class="scard-chip">Logiciel R</span>
+              <span class="scard-chip">Machine Learning</span>
+              <span class="scard-chip">Python / NumPy</span>
+              <span class="scard-chip">Statistiques</span>
+              <span class="scard-chip">Acoustique</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>Ombre Sensible (signal audio C#) · Poul'Pong (capteurs) · cours ENSC (MATLAB, R)</p>
+          </div>
+
+          <!-- Recherche scientifique -->
+          <div class="scard sd6">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <p class="scard-label">Recherche</p>
+            <h2 class="scard-title">Rédaction<br><em>scientifique</em></h2>
+            <p class="scard-body">Conduite d'une démarche de recherche rigoureuse : revue de littérature, synthèse bibliographique, analyse critique et rédaction scientifique. Mémoire complet sur les prothèses de bras myoélectriques — innovations biomécaniques, enjeux neurobiologiques et impact utilisateur.</p>
+            <div class="scard-chips">
+              <span class="scard-chip">Revue de littérature</span>
+              <span class="scard-chip">Biomécanique</span>
+              <span class="scard-chip">Neurosciences</span>
+              <span class="scard-chip">Rédaction en FR/EN</span>
+              <span class="scard-chip">Présentation orale</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>Mémoire sur les prothèses myoélectriques · Publication interne ENSC</p>
+          </div>
+
+        </div>
+
+        <!-- ── GRILLE 2 grandes cartes ── -->
+        <div class="skills-grid-2">
+
+          <!-- Gestion de projet & management -->
+          <div class="scard sd7">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+              </svg>
+            </div>
+            <p class="scard-label">Management</p>
+            <h2 class="scard-title">Gestion de projet &amp;<br><em>leadership</em></h2>
+            <p class="scard-body">Pilotage de projets complexes à double enjeu institutionnel (Forum Ingénib ENSC × ENSEIRB, 80+ entreprises). Recrutement par entretiens, encadrement d'équipe, planification de rétro-planning, gestion budgétaire interécoles. Application des méthodes agiles (Kanban, Scrum, MASK) pour la coordination de projets techniques. Également comptable de la Junior-Entreprise i2c — cycle comptable complet, TVA, audit annuel.</p>
+            <div class="scard-chips">
+              <span class="scard-chip">Management d'équipe</span>
+              <span class="scard-chip">Kanban / Scrum / MASK</span>
+              <span class="scard-chip">Planification</span>
+              <span class="scard-chip">Budget</span>
+              <span class="scard-chip">Communication institutionnelle</span>
+              <span class="scard-chip">Comptabilité</span>
+              <span class="scard-chip">Négociation</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>VP Forum Ingénib 2026 · Comptable i2c Junior-Entreprise ENSC</p>
+          </div>
+
+          <!-- Communication & langues -->
+          <div class="scard sd8">
+            <div class="scard-bar" aria-hidden="true"></div>
+            <div class="scard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+              </svg>
+            </div>
+            <p class="scard-label">Communication</p>
+            <h2 class="scard-title">Langues &amp;<br><em>communication</em></h2>
+            <p class="scard-body">Communication orale et écrite en environnement professionnel et académique. Capacité à vulgariser des concepts techniques complexes auprès d'interlocuteurs non spécialistes. Maîtrise du français écrit à un niveau de rédaction professionnelle. Pratique de l'anglais technique (Cambridge B2). Japonais B1 autodidacte — capacité à apprendre en autonomie.</p>
+            <div class="scard-chips">
+              <span class="scard-chip">Français C2</span>
+              <span class="scard-chip">Anglais B2 — Cambridge</span>
+              <span class="scard-chip">Japonais B1</span>
+              <span class="scard-chip">Espagnol B1</span>
+              <span class="scard-chip">Prise de parole</span>
+              <span class="scard-chip">Vulgarisation</span>
+            </div>
+            <p class="scard-proof"><span class="proof-dot" aria-hidden="true"></span>Co-organisatrice d'un concours d'éloquence · Présentations académiques ENSC</p>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer-skills">
+    <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>CV <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px"><path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/><path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/></g></svg></strong></em>
+    </a>
+    <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>LINKEDIN <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px"><path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/><path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/></g></svg></strong></em>
+    </a>
+  </footer>
+
+  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      const btns = document.querySelectorAll('.tool-chip-btn');
+
+      function closeAll() {
+        btns.forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          b.closest('.tool-item').classList.remove('is-open');
+        });
+      }
+
+      btns.forEach(btn => {
+        const item = btn.closest('.tool-item');
+
+        /* Focus clavier → affiche le tooltip */
+        btn.addEventListener('focus', () => item.classList.add('is-focused'));
+        btn.addEventListener('blur',  () => item.classList.remove('is-focused'));
+
+        /* Clic → bascule ouvert/fermé */
+        btn.addEventListener('click', () => {
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          closeAll();
+          if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            item.classList.add('is-open');
+          }
+        });
+
+        /* Souris qui quitte → ferme même si ouvert par clic */
+        item.addEventListener('mouseleave', () => {
+          btn.setAttribute('aria-expanded', 'false');
+          item.classList.remove('is-open');
+        });
+      });
+
+      /* Échap → ferme tout (WCAG 1.4.13) */
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeAll();
+      });
+
+      /* Clic en dehors → ferme tout */
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.tool-item')) closeAll();
+      });
+    })();
+  </script>
+  <script src="../../style/theme.js"></script>
 </body>
 </html>

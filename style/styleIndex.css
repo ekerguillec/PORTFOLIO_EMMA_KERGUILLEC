@@ -4,6 +4,35 @@
   box-sizing: border-box;
 }
 
+/* ================= SKIP LINK ================= */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 8px;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: #7dd3fc;
+  color: #0b1220;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ================= FOCUS ================= */
+
+:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 body {
   font-family: 'Sora', sans-serif;
   height: 100vh;
@@ -50,9 +79,9 @@ body {
   z-index: 0;
 }
 
-/* ================= CIRCUIT SVG ================= */
+/* ================= CANVAS RÉSEAU NEURONAL ================= */
 
-.circuit-lines {
+#neural-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -268,20 +297,15 @@ body {
   object-position: center bottom;
 }
 
-/* ================= CIRCUIT DOTS ================= */
 
-.dot {
-  r: 3;
-  fill: rgba(125,211,252,0.9);
-  animation: blink 3s ease-in-out infinite;
-}
+/* ================= REDUCED MOTION ================= */
 
-.dot:nth-child(2) { animation-delay: 0.8s; }
-.dot:nth-child(3) { animation-delay: 1.6s; }
-
-@keyframes blink {
-  0%,100% { opacity: 0.6; r: 3; }
-  50%      { opacity: 1; r: 4; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ================= RESPONSIVE ================= */

@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique spécialisé en Cognitique.">
     <meta name="author" content="Emma Kerguillec">
@@ -9,18 +10,24 @@
     <link rel="stylesheet" href="../../style/styleExp.css">
     <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title> Expériences professionnelles - i2c </title> 
+    <title>Accueil — Emma Kerguillec</title>
+  <link rel="stylesheet" href="../../style/theme.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <header class="header">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid px-0"> 
-                <a class="navbar-brand" href="../Accueil/Accueil.html"><strong><em>Portfolio</em> </strong></a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="close-icon">&#10005;</span>
+        <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+            <div class="container-fluid px-0">
+                <a class="navbar-brand" href="../Accueil/Accueil.html" aria-current="page"><strong><em>Portfolio</em></strong></a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="close-icon" aria-hidden="true">&#10005;</span>
+                </button>
+                <button class="theme-toggle" aria-label="Passer en mode clair" title="Changer de thème">
+                  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
@@ -48,7 +55,7 @@
     <footer class="footer-experience"> <!-- q) La page doit comporter une entête et un pied de page. -->
         <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link"> <!-- m) La page contient un lien vers votre CV (pdf ou html), ouvrant dans une nouvelle fenêtre. -->
             <span><em><strong>CV 
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="9.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
                     <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000"  stroke="#000000" stroke-width="50px">
                     <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
                     <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
@@ -58,7 +65,7 @@
         </a> 
         <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link"> <!-- l) La page contient un lien vers un site externe. -->
             <em><strong>LINKEDIN 
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="9.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
                     <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000"  stroke="#000000" stroke-width="50px">
                     <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
                     <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
@@ -70,5 +77,6 @@
 
     <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 
+  <script src="../../style/theme.js"></script>
 </body>
 </html>

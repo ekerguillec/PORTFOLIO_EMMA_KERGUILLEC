@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique — Contact.">
     <meta name="author" content="Emma Kerguillec">
@@ -73,7 +74,7 @@
         .contact-header .sub {
             flex: 1;
             font-size: 15px;
-            color: #94a3b8;
+            color: #aabcce;
             line-height: 1.85;
             max-width: 380px;
             padding-bottom: 6px;
@@ -172,7 +173,7 @@
         .hero-desc {
             margin-top: 14px;
             font-size: 14px;
-            color: #94a3b8;
+            color: #aabcce;
             line-height: 1.72;
             max-width: 300px;
         }
@@ -270,7 +271,7 @@
             font-size: 11px;
             letter-spacing: 1.8px;
             text-transform: uppercase;
-            color: #475569;
+            color: #9ab5c8;
             font-weight: 500;
             margin-bottom: 6px;
         }
@@ -285,7 +286,7 @@
         .card-sub {
             margin-top: 8px;
             font-size: 12.5px;
-            color: #475569;
+            color: #9ab5c8;
             line-height: 1.6;
         }
 
@@ -363,27 +364,33 @@
             .footer-contact { flex-direction: column; gap: 18px; align-items: center; }
         }
     </style>
+  <link rel="stylesheet" href="../../style/theme.css">
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <!-- NAVBAR -->
     <header class="header">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
             <div class="container-fluid px-0">
                 <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="close-icon">&#10005;</span>
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="close-icon" aria-hidden="true">&#10005;</span>
+                </button>
+                <button class="theme-toggle" aria-label="Passer en mode clair" title="Changer de thème">
+                  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
                         <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
                         <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
                         <a href="../Experience/Experience.html" class="nav-link">EXPERIENCE</a>
-                        <a href="../Contact/Contact.html" class="nav-link"><strong><em>CONTACT</em></strong></a>
+                        <a href="../Contact/Contact.html" class="nav-link" aria-current="page"><strong><em>CONTACT</em></strong></a>
                         <style>
                             .navbar .navbar-nav a[href="../Contact/Contact.html"] {
                                 color: white !important; font-size: 16px !important;
@@ -399,7 +406,7 @@
     </header>
 
     <!-- MAIN -->
-    <main class="contact-page">
+    <main id="main-content" class="contact-page">
         <div class="contact-inner">
 
             <!-- Header -->
@@ -415,33 +422,33 @@
             <div class="bento">
 
                 <!-- HERO -->
-                <a href="mailto:ekerguillec@ensc.fr" class="bcard bcard-hero">
-                    <div class="hero-orb"></div>
+                <a id="contact-hero" href="#" class="bcard bcard-hero">
+                    <div class="hero-orb" aria-hidden="true"></div>
                     <div>
                         <span class="hero-eyebrow">Prendre contact</span>
                         <h2 class="hero-title">Une idée,<br>un projet,<br><em>une opportunité ?</em></h2>
                         <p class="hero-desc">N'hésitez pas à m'écrire. Je serai ravie de discuter de vos besoins et de voir comment je peux contribuer.</p>
                         <div class="hero-cta">
                             Envoyer un message
-                            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                 <path d="M2 12L12 2M12 2H5M12 2v7"/>
                             </svg>
                         </div>
                     </div>
                     <!-- Initiales déco -->
-                    <div style="font-family:'DM Serif Display',Georgia,serif; font-size:80px; color:rgba(125, 212, 252, 0.157); line-height:1; user-select:none; letter-spacing:-2px;">EK</div>
+                    <div style="font-family:'DM Serif Display',Georgia,serif; font-size:80px; color:rgba(125, 212, 252, 0.157); line-height:1; user-select:none; letter-spacing:-2px;" aria-hidden="true">EK</div>
                 </a>
 
                 <!-- LINKEDIN -->
-                <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="bcard bcard-linkedin">
-                    <div class="card-ext">
-                        <svg viewBox="0 0 11 11" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round">
+                <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="bcard bcard-linkedin" aria-label="Ouvrir mon profil LinkedIn (nouvelle fenêtre)">
+                    <div class="card-ext" aria-hidden="true">
+                        <svg viewBox="0 0 11 11" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false">
                             <path d="M1.5 9.5L9.5 1.5M9.5 1.5H4M9.5 1.5V7"/>
                         </svg>
                     </div>
                     <div>
-                        <div class="card-pill-icon">
-                            <svg viewBox="0 0 24 24" fill="#7dd3fc">
+                        <div class="card-pill-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="#7dd3fc" aria-hidden="true" focusable="false">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.024-3.037-1.849-3.037-1.851 0-2.135 1.445-2.135 2.939v5.667H9.356V9h3.414v1.561h.046c.476-.9 1.636-1.849 3.368-1.849 3.6 0 4.267 2.37 4.267 5.455v6.285zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </div>
@@ -456,15 +463,15 @@
                 </a>
 
                 <!-- CV -->
-                <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="bcard bcard-cv">
-                    <div class="card-ext">
-                        <svg viewBox="0 0 11 11" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round">
+                <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="bcard bcard-cv" aria-label="Télécharger mon CV au format PDF (nouvelle fenêtre)">
+                    <div class="card-ext" aria-hidden="true">
+                        <svg viewBox="0 0 11 11" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false">
                             <path d="M1.5 9.5L9.5 1.5M9.5 1.5H4M9.5 1.5V7"/>
                         </svg>
                     </div>
                     <div>
-                        <div class="card-pill-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <div class="card-pill-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
                                 <polyline points="14 2 14 8 20 8"/>
                                 <line x1="16" y1="13" x2="8" y2="13"/>
@@ -479,26 +486,26 @@
                 </a>
 
                 <!-- TÉLÉPHONE -->
-                <a href="tel:0649558221" class="bcard bcard-tel">
-                    <div class="card-pill-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <a id="contact-tel" href="#" class="bcard bcard-tel" aria-label="">
+                    <div class="card-pill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.0 2.14 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14v2.92z"/>
                         </svg>
                     </div>
                     <div class="card-label">Téléphone</div>
-                    <div class="card-val">06 49 55 82 21</div>
+                    <div class="card-val" id="contact-tel-display"></div>
                 </a>
 
                 <!-- EMAIL -->
-                <a href="mailto:ekerguillec@ensc.fr" class="bcard bcard-email">
-                    <div class="card-pill-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <a id="contact-email" href="#" class="bcard bcard-email" aria-label="">
+                    <div class="card-pill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
                         </svg>
                     </div>
                     <div class="card-label">Email</div>
-                    <div class="card-val" style="font-size:14px;">ekerguillec@ensc.fr</div>
+                    <div class="card-val" id="contact-email-display" style="font-size:14px;"></div>
                 </a>
 
             </div>
@@ -534,7 +541,7 @@
     <footer class="footer-contact">
         <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
             <em><strong>CV
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
                     <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
                         <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
                         <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
@@ -544,7 +551,7 @@
         </a>
         <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
             <em><strong>LINKEDIN
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
                     <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
                         <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
                         <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
@@ -555,6 +562,24 @@
     </footer>
 
     <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../style/theme.js"></script>
+    <script src="../../config/contact.js"></script>
+    <script>
+      (function () {
+        var c = window.CONTACT;
+        if (!c) return;
+        var hero = document.getElementById('contact-hero');
+        if (hero) hero.href = 'mailto:' + c.email;
+        var tel = document.getElementById('contact-tel');
+        if (tel) { tel.href = 'tel:' + c.phone; tel.setAttribute('aria-label', 'Appeler le ' + c.phoneDisplay); }
+        var telDisplay = document.getElementById('contact-tel-display');
+        if (telDisplay) telDisplay.textContent = c.phoneDisplay;
+        var email = document.getElementById('contact-email');
+        if (email) { email.href = 'mailto:' + c.email; email.setAttribute('aria-label', 'Envoyer un email à ' + c.email); }
+        var emailDisplay = document.getElementById('contact-email-display');
+        if (emailDisplay) emailDisplay.textContent = c.email;
+      })();
+    </script>
 </body>
 </html>
 

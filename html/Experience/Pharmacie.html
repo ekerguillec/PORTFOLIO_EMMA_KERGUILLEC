@@ -1,74 +1,201 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique spécialisé en Cognitique.">
-    <meta name="author" content="Emma Kerguillec">
-    <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../style/styleExp.css">
-    <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title> Expériences professionnelles - i2c </title> 
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stage en officine, Pharmacie Kerboriou — Emma Kerguillec">
+  <meta name="author" content="Emma Kerguillec">
+  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../style/styleExp.css">
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <title>Stage en officine — Emma Kerguillec</title>
+  <style>
+    .detail-page{position:relative;z-index:2;min-height:100vh;padding:140px 8% 100px;overflow:hidden;}
+    .detail-page::before{content:'';position:absolute;width:600px;height:600px;top:-80px;right:-150px;border-radius:50%;background:radial-gradient(circle,rgba(125,211,252,0.07) 0%,transparent 70%);pointer-events:none;z-index:0;}
+    .detail-inner{position:relative;z-index:1;max-width:1000px;margin:0 auto;}
+    .back-link{display:inline-flex;align-items:center;gap:8px;color:#9ab5c8;text-decoration:none;font-size:13px;letter-spacing:0.3px;margin-bottom:48px;transition:color 0.3s;opacity:0;animation:fadeUp 0.6s ease 0.05s forwards;min-height:44px;}
+    .back-link:hover{color:#7dd3fc;}
+    .back-link svg{width:14px;height:14px;transition:transform 0.3s;}
+    .back-link:hover svg{transform:translateX(-3px);}
+    .detail-hero{display:grid;grid-template-columns:1fr auto;align-items:flex-start;gap:60px;margin-bottom:72px;opacity:0;animation:fadeUp 0.85s ease 0.1s forwards;}
+    .detail-eyebrow{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#7dd3fc;font-weight:500;margin-bottom:16px;}
+    .detail-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#f1f5f9;line-height:1.15;margin-bottom:20px;}
+    .detail-title em{color:#7dd3fc;font-style:italic;}
+    .detail-subtitle{font-size:15px;color:#aabcce;line-height:1.8;max-width:560px;}
+    .meta-pills{display:flex;flex-direction:column;gap:10px;min-width:180px;}
+    .meta-pill{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:12px 16px;text-align:right;}
+    .meta-pill-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#9ab5c8;margin-bottom:4px;}
+    .meta-pill-value{font-size:13px;color:#cbd5e1;font-weight:500;}
+    .detail-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+    .detail-tag{display:inline-block;padding:5px 14px;border-radius:50px;background:rgba(125,211,252,0.07);border:1px solid rgba(125,211,252,0.18);color:#7dd3fc;font-size:11.5px;font-weight:500;letter-spacing:0.3px;}
+    .detail-divider{height:1px;background:rgba(255,255,255,0.06);margin:56px 0;opacity:0;animation:fadeUp 0.7s ease 0.3s forwards;}
+    .detail-section{margin-bottom:56px;opacity:0;animation:fadeUp 0.85s ease forwards;}
+    .detail-section:nth-child(1){animation-delay:0.2s;}
+    .detail-section:nth-child(2){animation-delay:0.3s;}
+    .detail-section:nth-child(3){animation-delay:0.4s;}
+    .detail-section:nth-child(4){animation-delay:0.5s;}
+    .section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9ab5c8;font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+    .section-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.05);}
+    .section-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;color:#f1f5f9;margin-bottom:14px;}
+    .section-title em{color:#7dd3fc;font-style:italic;}
+    .section-body{font-size:14.5px;color:#aabcce;line-height:1.8;}
+    .responsibilities-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:28px;}
+    .resp-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:24px 26px;transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s;position:relative;overflow:hidden;}
+    .resp-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,#7dd3fc,transparent);opacity:0;transition:opacity 0.3s;}
+    .resp-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3);border-color:rgba(125,211,252,0.15);}
+    .resp-card:hover::before{opacity:1;}
+    .resp-icon{width:40px;height:40px;border-radius:12px;background:rgba(125,211,252,0.07);border:1px solid rgba(125,211,252,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+    .resp-icon svg{width:18px;height:18px;}
+    .resp-title{font-size:14px;font-weight:600;color:#e2e8f0;margin-bottom:8px;}
+    .resp-desc{font-size:13px;color:#9ab5c8;line-height:1.65;}
+    .highlight-box{background:linear-gradient(135deg,rgba(37,99,235,0.08) 0%,rgba(125,211,252,0.05) 100%);border:1px solid rgba(125,211,252,0.15);border-radius:20px;padding:32px 36px;margin-top:28px;position:relative;overflow:hidden;}
+    .highlight-box::after{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(125,211,252,0.06) 0%,transparent 70%);pointer-events:none;}
+    .highlight-box p{font-size:14.5px;color:#aabcce;line-height:1.85;margin:0;}
+    .highlight-box p strong{color:#e2e8f0;font-weight:500;}
+    .cover-image{width:100%;height:260px;object-fit:cover;border-radius:20px;margin-top:28px;display:block;border:1px solid rgba(255,255,255,0.06);}
+    .footer-detail{display:flex;justify-content:center;gap:40px;padding:55px 20px;margin-top:80px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(15,23,42,0.6);backdrop-filter:blur(6px);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}}
+    @media(max-width:900px){.detail-hero{grid-template-columns:1fr;gap:32px;}.meta-pills{flex-direction:row;flex-wrap:wrap;}.meta-pill{text-align:left;}}
+    @media(max-width:560px){.detail-page{padding:120px 5% 80px;}.responsibilities-grid{grid-template-columns:1fr;}.footer-detail{flex-direction:column;gap:18px;align-items:center;}.highlight-box{padding:24px 22px;}}
+  </style>
+  <link rel="stylesheet" href="../../style/theme.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid px-0"> 
-                <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="close-icon">&#10005;</span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
-                        <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
-                        <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
-                        <a href="../Experience/Experience.html" class="nav-link"><strong> <em>EXPERIENCE </em> </strong></a>
-                        <a href="../Contact/Contact.html" class="nav-link">CONTACT</a> 
-                        <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
-                        <style>
-                            .navbar .navbar-nav a[href="../Experience/Experience.html"] {
-                                color: white !important;
-                                font-size: 16px !important;
-                                font-weight: 600 !important;
-                                text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.5) !important;
-                            }
-                        </style>
-                    </div>
-                </div>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="close-icon" aria-hidden="true">&#10005;</span>
+        </button>
+        <button class="theme-toggle" aria-label="Passer en mode clair" title="Changer de thème">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+            <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
+            <a href="../Experience/Experience.html" class="nav-link" aria-current="page"><strong><em>EXPERIENCE</em></strong></a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+            <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="detail-page">
+    <div class="detail-inner">
+
+      <a href="../Experience/Experience.html" class="back-link">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 7H2M2 7l5-5M2 7l5 5"/></svg>
+        Retour aux expériences
+      </a>
+
+      <div class="detail-hero">
+        <div>
+          <p class="detail-eyebrow">Stage · 1 semaine · Printemps 2022</p>
+          <h1 class="detail-title">Stage en officine<br><em>Pharmacie Kerboriou</em></h1>
+          <p class="detail-subtitle">Une semaine d'immersion complète dans une pharmacie de quartier : préparation des ordonnances, gestion des stocks, accueil des patients et découverte du rôle central du pharmacien dans le suivi thérapeutique.</p>
+          <div class="detail-tags">
+            <span class="detail-tag">#santé</span>
+            <span class="detail-tag">#préparation officinale</span>
+            <span class="detail-tag">#conseil patient</span>
+            <span class="detail-tag">#rigueur</span>
+            <span class="detail-tag">#confidentialité</span>
+          </div>
+        </div>
+        <div class="meta-pills">
+          <div class="meta-pill"><div class="meta-pill-label">Durée</div><div class="meta-pill-value">1 semaine</div></div>
+          <div class="meta-pill"><div class="meta-pill-label">Période</div><div class="meta-pill-value">Printemps 2022</div></div>
+          <div class="meta-pill"><div class="meta-pill-label">Structure</div><div class="meta-pill-value">Pharmacie Kerboriou</div></div>
+          <div class="meta-pill"><div class="meta-pill-label">Secteur</div><div class="meta-pill-value">Santé / Officine</div></div>
+        </div>
+      </div>
+
+      <div class="detail-divider"></div>
+      <div>
+
+        <div class="detail-section">
+          <p class="section-label">Contexte</p>
+          <h2 class="section-title">À l'interface du soin <em>et du conseil</em></h2>
+          <p class="section-body">La pharmacie d'officine est un lieu de première ligne dans le parcours de soin : elle accueille des patients de tous âges, avec des besoins et des états de santé très divers. Ce stage m'a permis de découvrir un environnement où la précision technique, l'écoute et la discrétion sont inséparables — trois dimensions directement en lien avec mon approche en cognitique.</p>
+          <div class="highlight-box">
+            <p>Observer le pharmacien en situation de conseil, c'est voir à l'œuvre une <strong>expertise qui articule savoirs techniques et compétences relationnelles</strong>. Cette expérience a renforcé ma conviction que <strong>la qualité d'un acte professionnel ne se mesure pas seulement à sa rigueur technique, mais aussi à la façon dont il est communiqué</strong> au patient.</p>
+          </div>
+          <img src="../../images/pharma.webp" alt="Intérieur d'une pharmacie avec des rayonnages de médicaments" class="cover-image">
+        </div>
+
+        <div class="detail-section">
+          <p class="section-label">Missions</p>
+          <h2 class="section-title">Préparation, stock, <em>conseil</em></h2>
+          <div class="responsibilities-grid">
+            <div class="resp-card">
+              <div class="resp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <p class="resp-title">Réception & rangement</p>
+              <p class="resp-desc">Déchargement des commandes de médicaments et produits parapharmacie, vérification des quantités, étiquetage et rangement méthodique dans les bacs et rayonnages.</p>
             </div>
-        </nav>
-    </header>
+            <div class="resp-card">
+              <div class="resp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+              <p class="resp-title">Préparation des ordonnances</p>
+              <p class="resp-desc">Préparation des boîtes correspondant aux prescriptions médicales sous la supervision de l'équipe officinale, en respectant l'exactitude des dosages et des conditionnements.</p>
+            </div>
+            <div class="resp-card">
+              <div class="resp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+              <p class="resp-title">Accueil & service patient</p>
+              <p class="resp-desc">Accueil des patients au comptoir, orientation vers les bons produits d'automédication, écoute active et transmission aux pharmaciens pour les demandes nécessitant un conseil expert.</p>
+            </div>
+            <div class="resp-card">
+              <div class="resp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+              <p class="resp-title">Gestion des stocks</p>
+              <p class="resp-desc">Suivi des niveaux de stock, signalement des produits à réapprovisionner, gestion des dates de péremption et mise en conformité des rayonnages.</p>
+            </div>
+            <div class="resp-card">
+              <div class="resp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <p class="resp-title">Secret professionnel</p>
+              <p class="resp-desc">Respect absolu de la confidentialité des données patients et des prescriptions médicales — une exigence éthique fondamentale dans tout environnement de santé.</p>
+            </div>
+            <div class="resp-card">
+              <div class="resp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+              <p class="resp-title">Observation du métier</p>
+              <p class="resp-desc">Observation du contrôle final des ordonnances, des conseils personnalisés délivrés par le pharmacien, du suivi des traitements et de la réglementation pharmaceutique en vigueur.</p>
+            </div>
+          </div>
+        </div>
 
-    <img src="../../images/con.jpeg" alt="Image de pages de journaux" class="news"/>
+        <div class="detail-section">
+          <p class="section-label">Ce que j'en retire</p>
+          <h2 class="section-title">Rigueur, écoute, <em>responsabilité</em></h2>
+          <p class="section-body">Ce stage m'a transmis une réalité concrète : dans les métiers de la santé, chaque détail compte. Une erreur de dosage, un mauvais rangement, une information incomplète — les conséquences peuvent être graves. Cette expérience a affiné mon sens du détail et renforcé ma rigueur dans tous les domaines où la précision est non négociable.</p>
+          <div class="highlight-box">
+            <p>J'ai découvert que le pharmacien n'est pas seulement un expert du médicament : c'est un <strong>interface entre le savoir médical et le patient profane</strong>. Savoir vulgariser, rassurer, expliquer sans condescendance — c'est exactement ce que j'applique dans mes projets en cognitique lorsque je travaille à <strong>rendre les systèmes techniques accessibles et compréhensibles</strong> pour tous les utilisateurs.</p>
+          </div>
+        </div>
 
-    <footer class="footer-experience"> <!-- q) La page doit comporter une entête et un pied de page. -->
-        <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link"> <!-- m) La page contient un lien vers votre CV (pdf ou html), ouvrant dans une nouvelle fenêtre. -->
-            <span><em><strong>CV 
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="9.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000"  stroke="#000000" stroke-width="50px">
-                    <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
-                    <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
-                    </g>
-                </svg> 
-            </strong></em></span>
-        </a> 
-        <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link"> <!-- l) La page contient un lien vers un site externe. -->
-            <em><strong>LINKEDIN 
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="9.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000"  stroke="#000000" stroke-width="50px">
-                    <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
-                    <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
-                    </g>
-                </svg> 
-            </strong></em>
-        </a>
-    </footer>
+      </div>
+    </div>
+  </main>
 
-    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-
+  <footer class="footer-detail">
+    <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>CV <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px"><path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/><path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/></g></svg></strong></em>
+    </a>
+    <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
+      <em><strong>LINKEDIN <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px"><path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/><path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/></g></svg></strong></em>
+    </a>
+  </footer>
+  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../style/theme.js"></script>
 </body>
 </html>

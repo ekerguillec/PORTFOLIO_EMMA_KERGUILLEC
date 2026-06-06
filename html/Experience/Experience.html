@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique spécialisé en Cognitique.">
     <meta name="author" content="Emma Kerguillec">
@@ -9,9 +10,88 @@
     <link rel="stylesheet" href="../../style/styleExp.css">
     <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title>Expériences professionnelles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <title>Expériences — Emma Kerguillec</title>
 
     <style>
+        /* ── HEADER 2 COLONNES ── */
+        .experience-home-header {
+            display: grid !important;
+            grid-template-columns: 1fr 280px;
+            gap: 56px;
+            align-items: center;
+        }
+        .exp-header-left {}
+        .exp-header-right {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .exp-stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .exp-stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 14px 16px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .exp-stat-card:hover {
+            border-color: rgba(125,211,252,0.22);
+            background: rgba(125,211,252,0.04);
+        }
+        .exp-stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #7dd3fc, transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .exp-stat-card:hover::before { opacity: 1; }
+        .exp-stat-num {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 32px;
+            color: #f1f5f9;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .exp-stat-num em { color: #7dd3fc; font-style: normal; }
+        .exp-stat-lbl {
+            font-size: 11px;
+            color: #9ab5c8;
+            line-height: 1.4;
+        }
+        .exp-highlight {
+            background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(125,211,252,0.05) 100%);
+            border: 1px solid rgba(125,211,252,0.15);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #aabcce;
+            line-height: 1.6;
+        }
+        .exp-highlight strong { color: #e2e8f0; font-weight: 600; }
+
+        @media (max-width: 900px) {
+            .experience-home-header {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+            .exp-stat-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .exp-stat-grid { grid-template-columns: 1fr 1fr; }
+        }
+
         /* ── BADGES DE COMPÉTENCES ── */
         .skill-badge {
             display: inline-block;
@@ -71,24 +151,30 @@
             margin-top: 14px;
         }
     </style>
+  <link rel="stylesheet" href="../../style/theme.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <header class="header">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
             <div class="container-fluid px-0">
                 <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="close-icon">&#10005;</span>
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                    <span class="close-icon" aria-hidden="true">&#10005;</span>
+                </button>
+                <button class="theme-toggle" aria-label="Passer en mode clair" title="Changer de thème">
+                  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
                         <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
                         <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
-                        <a href="../Experience/Experience.html" class="nav-link"><strong><em>EXPERIENCE</em></strong></a>
+                        <a href="../Experience/Experience.html" class="nav-link" aria-current="page"><strong><em>EXPERIENCE</em></strong></a>
                         <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
                         <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
                         <style>
@@ -105,14 +191,37 @@
         </nav>
     </header>
 
+    <main id="main-content">
     <section class="experience-home">
         <div class="experience-grid">
 
             <div class="experience-home-header">
-                <span class="about-badge">Expériences professionnelles</span>
-                <div class="h1f">
-                    Des expériences qui ont façonné mon parcours, développé mes compétences et renforcé mon goût pour les projets concrets et l'engagement.
+
+                <!-- GAUCHE : titre -->
+                <div class="exp-header-left">
+                    <span class="about-badge">Expériences professionnelles</span>
+                    <div class="h1f">
+                        Des expériences qui ont façonné mon parcours, développé mes compétences et renforcé mon goût pour les projets concrets et l'engagement.
+                    </div>
                 </div>
+
+                <!-- DROITE : stats -->
+                <div class="exp-header-right">
+                    <div class="exp-stat-grid">
+                        <div class="exp-stat-card">
+                            <div class="exp-stat-num">3</div>
+                            <div class="exp-stat-lbl">Mandats associatifs en simultané</div>
+                        </div>
+                        <div class="exp-stat-card">
+                            <div class="exp-stat-num">8</div>
+                            <div class="exp-stat-lbl">Expériences au total</div>
+                        </div>
+                    </div>
+                    <div class="exp-highlight">
+                        <strong>Ingénib, i2c, BDE</strong> — trois engagements associatifs menés simultanément, et un emploi de nuit en imprimerie industrielle en parallèle de la formation d'ingénieur.
+                    </div>
+                </div>
+
             </div>
 
             <!-- INGÉNIB -->
@@ -235,11 +344,12 @@
 
         </div>
     </section>
+    </main>
 
     <footer class="footer-experience">
         <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
             <span><em><strong>CV
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
                     <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
                         <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
                         <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
@@ -249,7 +359,7 @@
         </a>
         <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
             <em><strong>LINKEDIN
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
                     <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
                         <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
                         <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
@@ -260,6 +370,7 @@
     </footer>
 
     <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../style/theme.js"></script>
 </body>
 </html>
 

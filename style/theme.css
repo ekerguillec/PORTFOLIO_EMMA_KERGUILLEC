@@ -1,0 +1,375 @@
+/* ============================================================
+   THEME TOGGLE — bouton lune / soleil
+   ============================================================ */
+
+.theme-toggle {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 9px;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #cbd5f5;
+  flex-shrink: 0;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+  /* Alignement Bootstrap navbar */
+  align-self: center;
+  margin-left: 12px;
+}
+
+.theme-toggle:hover {
+  background: rgba(125,211,252,0.1);
+  border-color: rgba(125,211,252,0.35);
+  color: #7dd3fc;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 3px;
+  border-radius: 9px;
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* Sur index.html (pas de navbar Bootstrap) → bouton fixe */
+.theme-toggle-fixed {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 9999;
+  background: rgba(15,23,42,0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ============================================================
+   MODE CLAIR — html.light-mode
+   ============================================================ */
+
+/* ── Fond & texte de base ── */
+html.light-mode body {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+html.light-mode body::before { opacity: 0 !important; }
+
+/* ── Navbar ── */
+html.light-mode .navbar {
+  background: rgba(255,255,255,0.92) !important;
+  border-bottom-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+}
+html.light-mode .navbar-brand { color: #0f172a !important; }
+html.light-mode .navbar-brand:hover { color: #2563eb !important; }
+html.light-mode .nav-link { color: #334155 !important; }
+html.light-mode .nav-link:hover { color: #2563eb !important; }
+html.light-mode .navbar-toggler-icon { background-color: #334155 !important; }
+
+html.light-mode .theme-toggle {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.1);
+  color: #334155;
+}
+html.light-mode .theme-toggle:hover {
+  background: rgba(37,99,235,0.08);
+  border-color: rgba(37,99,235,0.3);
+  color: #2563eb;
+}
+html.light-mode .theme-toggle:focus-visible { outline-color: #2563eb; }
+
+/* ── Footer ── */
+html.light-mode .footer-experience,
+html.light-mode .footer-detail,
+html.light-mode .footer-about,
+html.light-mode .footer-skills,
+html.light-mode .footer-contact,
+html.light-mode .footer-projects {
+  background: rgba(241,245,249,0.95) !important;
+  border-top-color: rgba(0,0,0,0.08) !important;
+  backdrop-filter: none !important;
+}
+html.light-mode .social-link { color: #334155 !important; }
+html.light-mode .social-link:hover { color: #2563eb !important; }
+
+/* ── Badges & accents ── */
+html.light-mode .about-badge {
+  background: rgba(37,99,235,0.08) !important;
+  border-color: rgba(37,99,235,0.2) !important;
+  color: #2563eb !important;
+}
+html.light-mode .detail-eyebrow,
+html.light-mode .feat-label,
+html.light-mode .card-eyebrow,
+html.light-mode .section-label,
+html.light-mode .scard-label,
+html.light-mode .skills-eyebrow,
+html.light-mode .project-eyebrow,
+html.light-mode .timeline-period { color: #2563eb !important; }
+
+/* ── Textes principaux ── */
+html.light-mode .h1f,
+html.light-mode .detail-title,
+html.light-mode .feat-title,
+html.light-mode .section-title,
+html.light-mode .scard-title,
+html.light-mode .skills-title,
+html.light-mode .card-title,
+html.light-mode .card-h,
+html.light-mode .resp-title,
+html.light-mode .project-title,
+html.light-mode .about-title,
+html.light-mode .contact-header h1,
+html.light-mode .projects-header h1,
+html.light-mode .hero-title { color: #0f172a !important; }
+
+html.light-mode em,
+html.light-mode .detail-title em,
+html.light-mode .feat-title em,
+html.light-mode .section-title em,
+html.light-mode .scard-title em,
+html.light-mode .skills-title em,
+html.light-mode .card-h em,
+html.light-mode .about-title em,
+html.light-mode .hero-title em { color: #2563eb !important; }
+
+html.light-mode .detail-subtitle,
+html.light-mode .section-body,
+html.light-mode .scard-body,
+html.light-mode .feat-body,
+html.light-mode .skills-sub,
+html.light-mode .hero-desc,
+html.light-mode .about-lead,
+html.light-mode .highlight-box p,
+html.light-mode .card-desc,
+html.light-mode .card-sub,
+html.light-mode .resp-desc,
+html.light-mode .project-desc,
+html.light-mode .sport-body,
+html.light-mode .timeline-text { color: #475569 !important; }
+
+html.light-mode .highlight-box p strong,
+html.light-mode .section-body strong { color: #0f172a !important; }
+
+html.light-mode .scard-proof,
+html.light-mode .back-link,
+html.light-mode .card-tech,
+html.light-mode .project-tech,
+html.light-mode .acad-detail,
+html.light-mode .sport-bullet,
+html.light-mode .crea-bullet,
+html.light-mode .eng-item,
+html.light-mode .eng-caption,
+html.light-mode .lang-label,
+html.light-mode .meta-pill-label,
+html.light-mode .feat-stat-label,
+html.light-mode .exp-stat-lbl,
+html.light-mode .stat-lbl,
+html.light-mode .card-label { color: #64748b !important; }
+
+html.light-mode .back-link:hover { color: #2563eb !important; }
+
+/* ── Cartes (dark → white) ── */
+html.light-mode .scard,
+html.light-mode .acard,
+html.light-mode .resp-card,
+html.light-mode .highlight-box,
+html.light-mode .bcard,
+html.light-mode .project-card,
+html.light-mode .project-featured,
+html.light-mode .skills-featured,
+html.light-mode .mission-row,
+html.light-mode .timeline-item,
+html.light-mode .lang-row {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .scard:hover,
+html.light-mode .acard:hover,
+html.light-mode .resp-card:hover,
+html.light-mode .bcard:hover,
+html.light-mode .project-card:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1) !important;
+}
+html.light-mode .scard-bar { background: linear-gradient(180deg, #2563eb, transparent) !important; }
+html.light-mode .resp-card::before { background: linear-gradient(180deg, #2563eb, transparent) !important; }
+
+html.light-mode .scard::after,
+html.light-mode .acard::after { border-color: rgba(0,0,0,0.06) !important; box-shadow: inset 0 1px 0 rgba(0,0,0,0.04) !important; }
+
+html.light-mode .meta-pill,
+html.light-mode .feat-stat,
+html.light-mode .stat-card,
+html.light-mode .exp-stat-card {
+  background: #f8fafc !important;
+  border-color: rgba(0,0,0,0.07) !important;
+}
+html.light-mode .feat-stat-val,
+html.light-mode .meta-pill-value,
+html.light-mode .card-val,
+html.light-mode .stat-num,
+html.light-mode .exp-stat-num,
+html.light-mode .lang-name,
+html.light-mode .acad-name,
+html.light-mode .acad-period,
+html.light-mode .resp-title,
+html.light-mode .mission-title { color: #0f172a !important; }
+
+html.light-mode .mission-desc { color: #475569 !important; }
+html.light-mode .mission-abbr {
+  background: rgba(37,99,235,0.08) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+  color: #2563eb !important;
+}
+html.light-mode .mission-row:hover {
+  background: rgba(37,99,235,0.03) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+}
+
+/* ── Chips & tags ── */
+html.light-mode .scard-chip,
+html.light-mode .detail-tag,
+html.light-mode .project-tag,
+html.light-mode .feat-tag,
+html.light-mode .sport-chip,
+html.light-mode .about-tag,
+html.light-mode .li-badge,
+html.light-mode .hero-cta {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.18) !important;
+  color: #2563eb !important;
+}
+html.light-mode .crea-chip,
+html.light-mode .pole-chip,
+html.light-mode .service-chip {
+  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  color: #334155 !important;
+}
+html.light-mode .pole-dot,
+html.light-mode .service-dot,
+html.light-mode .bullet-dot,
+html.light-mode .proof-dot,
+html.light-mode .timeline-dot-inner { background: #2563eb !important; }
+html.light-mode .timeline-dot-inner { border-color: #ffffff !important; box-shadow: 0 0 0 3px rgba(37,99,235,0.15) !important; }
+html.light-mode .acad-dot { background: #2563eb !important; border-color: #f8fafc !important; }
+html.light-mode .acad-line { background: rgba(37,99,235,0.2) !important; }
+
+/* ── Séparateurs & dividers ── */
+html.light-mode .detail-divider,
+html.light-mode .card-sep,
+html.light-mode .section-label::after { background: rgba(0,0,0,0.07) !important; }
+html.light-mode .timeline::before { background: linear-gradient(180deg, rgba(37,99,235,0.15), rgba(37,99,235,0.35) 50%, rgba(37,99,235,0.05)) !important; }
+
+/* ── Icônes SVG des resp-cards ── */
+html.light-mode .resp-icon,
+html.light-mode .scard-icon,
+html.light-mode .card-icon,
+html.light-mode .card-pill-icon {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.12) !important;
+}
+
+/* ── Highlight box ── */
+html.light-mode .highlight-box {
+  background: linear-gradient(135deg, rgba(37,99,235,0.05) 0%, rgba(147,197,253,0.05) 100%) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+}
+html.light-mode .highlight-box::after { background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%) !important; }
+html.light-mode .exp-highlight {
+  background: rgba(37,99,235,0.04) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+  color: #475569 !important;
+}
+html.light-mode .exp-highlight strong { color: #0f172a !important; }
+
+/* ── About page ── */
+html.light-mode .about-photo-ring img { border-color: rgba(37,99,235,0.2) !important; box-shadow: 0 0 60px rgba(37,99,235,0.12) !important; }
+html.light-mode .about-photo-ring::before { border-color: rgba(37,99,235,0.18) !important; }
+html.light-mode .about-photo-ring::after { border-color: rgba(37,99,235,0.08) !important; }
+html.light-mode .about-quote {
+  background: rgba(37,99,235,0.04) !important;
+  border-left-color: #2563eb !important;
+  border-color: rgba(37,99,235,0.12) !important;
+}
+html.light-mode .about-quote p { color: #0f172a !important; }
+html.light-mode .about-quote span { color: #64748b !important; }
+html.light-mode .about-divider { background: rgba(0,0,0,0.07) !important; }
+html.light-mode .lang-row:hover { border-color: rgba(37,99,235,0.2) !important; }
+html.light-mode .lang-badge { background: rgba(37,99,235,0.08) !important; border-color: rgba(37,99,235,0.18) !important; color: #2563eb !important; }
+html.light-mode .eng-num { color: #2563eb !important; }
+
+/* ── Skills page ── */
+html.light-mode .tools-label { color: #64748b !important; }
+html.light-mode .tools-label::after { background: rgba(0,0,0,0.07) !important; }
+html.light-mode .tool-chip-btn {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  color: #334155 !important;
+}
+html.light-mode .tool-chip-btn:hover,
+html.light-mode .tool-chip-btn:focus-visible {
+  background: rgba(37,99,235,0.06) !important;
+  border-color: rgba(37,99,235,0.3) !important;
+  color: #0f172a !important;
+}
+html.light-mode .tool-chip-btn:focus-visible { outline-color: #2563eb !important; }
+html.light-mode .tool-chip-btn[aria-expanded="true"] {
+  background: rgba(37,99,235,0.1) !important;
+  border-color: rgba(37,99,235,0.45) !important;
+  color: #0f172a !important;
+}
+
+/* ── Contact page ── */
+html.light-mode .bcard-hero { background: linear-gradient(155deg, rgba(241,245,249,0.98) 0%, rgba(248,250,252,0.98) 100%) !important; }
+html.light-mode .bcard-linkedin,
+html.light-mode .bcard-cv,
+html.light-mode .bcard-tel,
+html.light-mode .bcard-email { background: rgba(255,255,255,0.9) !important; backdrop-filter: none !important; }
+html.light-mode .card-ext { background: rgba(0,0,0,0.03) !important; border-color: rgba(0,0,0,0.07) !important; }
+html.light-mode .bcard:hover .card-ext { background: rgba(37,99,235,0.08) !important; border-color: rgba(37,99,235,0.25) !important; }
+html.light-mode .card-val { color: #0f172a !important; }
+
+/* ── Experience home header ── */
+html.light-mode .experience-home-header { background: rgba(255,255,255,0.5) !important; border-color: rgba(0,0,0,0.06) !important; }
+html.light-mode .experience-card { background: #ffffff !important; border-color: rgba(0,0,0,0.07) !important; box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important; }
+html.light-mode .experience-card:hover { border-left-color: #2563eb !important; box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important; }
+html.light-mode .experience-title { color: #0f172a !important; }
+html.light-mode .experience-details { color: #475569 !important; }
+html.light-mode .skill-badge { background: #eff6ff !important; color: #1e40af !important; }
+
+/* ── Projects image stack ── */
+html.light-mode .project-visuals { background: rgba(0,0,0,0.04) !important; }
+
+/* ── Index hero ── */
+html.light-mode .hero {
+  background:
+    radial-gradient(ellipse at 72% 50%, rgba(59,130,246,0.12) 0%, rgba(147,197,253,0.08) 35%, transparent 65%),
+    radial-gradient(ellipse at 75% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 30%, transparent 60%),
+    linear-gradient(135deg, #f1f5f9 0%, #e0f2fe 50%, #f8fafc 100%) !important;
+}
+html.light-mode .hero-left h1 { color: #0f172a !important; }
+html.light-mode .hero-left h2 { color: #2563eb !important; }
+html.light-mode .hero-left p  { color: #475569 !important; }
+html.light-mode .btn-secondary {
+  background: rgba(0,0,0,0.07) !important;
+  border-color: rgba(37,99,235,0.25) !important;
+  color: #0f172a !important;
+}
+html.light-mode .btn-secondary:hover {
+  background: rgba(0,0,0,0.1) !important;
+  color: #0f172a !important;
+}
+html.light-mode .halo { box-shadow: 0 0 80px rgba(37,99,235,0.2) !important; }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle { transition: none !important; }
+}

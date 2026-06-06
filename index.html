@@ -2,49 +2,20 @@
 <html lang="fr">
     <head>
     <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Emma Kerguillec — Ingénieure Cogniticienne</title>
     <link rel="stylesheet" href="./style/styleIndex.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
-    </head>
+      <link rel="stylesheet" href="./style/theme.css">
+</head>
     <body>
+        <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+        <main id="main-content">
         <section class="hero">
 
-        <!-- CIRCUIT LINES SVG — référence image 2 (coins + lignes PCB) -->
-        <svg class="circuit-lines" viewBox="0 0 1440 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="rgba(125,211,252,0.28)" stroke-width="1" fill="none">
-
-            <!-- TOP RIGHT cluster -->
-            <path d="M1100 0 L1100 40 L1180 40 L1180 0"/>
-            <path d="M1220 0 L1220 60 L1300 60 L1300 20 L1380 20 L1380 0"/>
-            <path d="M1300 60 L1350 60 L1350 90 L1440 90"/>
-            <path d="M1150 40 L1150 80 L1250 80 L1250 55"/>
-            <path d="M1380 20 L1440 20"/>
-            <path d="M1180 40 L1200 40 L1200 0"/>
-
-            <!-- BOTTOM LEFT cluster -->
-            <path d="M0 620 L80 620 L80 680 L160 680 L160 800"/>
-            <path d="M0 700 L60 700 L60 740 L140 740 L140 800"/>
-            <path d="M80 620 L80 580 L170 580 L170 640 L260 640 L260 800"/>
-            <path d="M140 740 L200 740 L200 800"/>
-            <path d="M170 580 L230 580 L230 560 L0 560"/>
-            <path d="M60 700 L50 700 L50 760 L0 760"/>
-            <path d="M260 640 L300 640 L300 680 L380 680"/>
-
-            <!-- extra horizontal runs bottom-left -->
-            <path d="M0 640 L45 640"/>
-            <path d="M0 680 L30 680"/>
-            </g>
-
-            <!-- glowing dots at intersections -->
-            <circle class="dot" cx="1180" cy="40"  r="3"/>
-            <circle class="dot" cx="1300" cy="60"  r="3"/>
-            <circle class="dot" cx="80"   cy="620" r="3"/>
-            <circle class="dot" cx="160"  cy="680" r="3"/>
-            <circle class="dot" cx="170"  cy="580" r="3"/>
-            <circle class="dot" cx="260"  cy="640" r="3"/>
-            <circle class="dot" cx="140"  cy="740" r="3"/>
-        </svg>
+        <!-- RÉSEAU NEURONAL ANIMÉ -->
+        <canvas id="neural-canvas" aria-hidden="true"></canvas>
 
         <!-- CONTENU GAUCHE -->
         <div class="hero-left">
@@ -64,11 +35,202 @@
         <div class="hero-right">
             <div class="halo-wrapper">
             <div class="halo">
-                <img src="images/MaPhotoCorrigee.png" alt="Portrait">
+                <img src="images/MaPhotoCorrigee.png" alt="Emma Kerguillec, Ingénieure Cogniticienne">
             </div>
             </div>
         </div>
 
         </section>
-    </body>
+        </main>
+    <button class="theme-toggle theme-toggle-fixed" aria-label="Passer en mode clair" title="Changer de thème">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+    <script src="./style/theme.js"></script>
+  <script>
+  /* ── Réseau neuronal interactif ── */
+  (function () {
+    var canvas = document.getElementById('neural-canvas');
+    var ctx    = canvas.getContext('2d');
+
+    var NODE_COUNT    = 80;
+    var CONNECT_DIST  = 150;
+    var MOUSE_RADIUS  = 160;
+    var BASE_SPEED    = 0.45;
+    var nodes = [];
+    var mouse = { x: -9999, y: -9999 };
+    var w = 0, h = 0;
+    var raf;
+
+    /* ── Couleurs selon le thème ── */
+    function colors() {
+      var light = document.documentElement.classList.contains('light-mode');
+      return {
+        node : light ? 'rgba(37,99,235,'  : 'rgba(125,211,252,',
+        line : light ? 'rgba(37,99,235,'  : 'rgba(125,211,252,'
+      };
+    }
+
+    /* ── Redimensionnement ── */
+    function resize() {
+      w = canvas.width  = canvas.offsetWidth;
+      h = canvas.height = canvas.offsetHeight;
+    }
+
+    /* ── Création des nœuds ── */
+    function initNodes() {
+      nodes = [];
+      for (var i = 0; i < NODE_COUNT; i++) {
+        var angle = Math.random() * Math.PI * 2;
+        var speed = BASE_SPEED * (0.5 + Math.random());
+        nodes.push({
+          x  : Math.random() * w,
+          y  : Math.random() * h,
+          vx : Math.cos(angle) * speed,
+          vy : Math.sin(angle) * speed,
+          r  : Math.random() * 1.6 + 1.2
+        });
+      }
+    }
+
+    /* ── Mise à jour physique ── */
+    function update() {
+      nodes.forEach(function (n) {
+        /* Répulsion : les nœuds fuient la souris */
+        var dx   = mouse.x - n.x;
+        var dy   = mouse.y - n.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < MOUSE_RADIUS && dist > 1) {
+          /* Force inversement proportionnelle à la distance */
+          var force = ((MOUSE_RADIUS - dist) / MOUSE_RADIUS) * 0.09;
+          n.vx -= (dx / dist) * force;
+          n.vy -= (dy / dist) * force;
+        }
+
+        /* Friction légère */
+        n.vx *= 0.98;
+        n.vy *= 0.98;
+
+        /* Vitesse plafonnée */
+        var spd = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
+        if (spd > BASE_SPEED * 5) {
+          n.vx = (n.vx / spd) * BASE_SPEED * 5;
+          n.vy = (n.vy / spd) * BASE_SPEED * 5;
+        }
+        /* Vitesse minimale */
+        if (spd < BASE_SPEED * 0.3) {
+          n.vx = (n.vx / Math.max(spd, 0.001)) * BASE_SPEED * 0.3;
+          n.vy = (n.vy / Math.max(spd, 0.001)) * BASE_SPEED * 0.3;
+        }
+
+        n.x += n.vx;
+        n.y += n.vy;
+
+        /* Rebond sur les bords */
+        if (n.x < n.r)     { n.x = n.r;     n.vx = Math.abs(n.vx); }
+        if (n.x > w - n.r) { n.x = w - n.r; n.vx = -Math.abs(n.vx); }
+        if (n.y < n.r)     { n.y = n.r;     n.vy = Math.abs(n.vy); }
+        if (n.y > h - n.r) { n.y = h - n.r; n.vy = -Math.abs(n.vy); }
+      });
+    }
+
+    /* ── Rendu ── */
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      var c = colors();
+
+      /* Connexions */
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx   = nodes[i].x - nodes[j].x;
+          var dy   = nodes[i].y - nodes[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < CONNECT_DIST) {
+            var alpha = (1 - dist / CONNECT_DIST) * 0.22;
+            ctx.beginPath();
+            ctx.strokeStyle = c.line + alpha + ')';
+            ctx.lineWidth = 0.9;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      /* Nœuds */
+      nodes.forEach(function (n) {
+        var dx    = mouse.x - n.x;
+        var dy    = mouse.y - n.y;
+        var dist  = Math.sqrt(dx * dx + dy * dy);
+        var alpha = dist < MOUSE_RADIUS ? 0.95 : 0.6;
+
+        ctx.beginPath();
+        ctx.fillStyle = c.node + alpha + ')';
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    /* ── Boucle principale ── */
+    function loop() {
+      update();
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+
+    /* ── Initialisation ── */
+    function init() {
+      resize();
+      initNodes();
+
+      /* prefers-reduced-motion → image fixe */
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        draw();
+        return;
+      }
+      cancelAnimationFrame(raf);
+      loop();
+    }
+
+    /* ── Événements souris (sur toute la section hero) ── */
+    var hero = canvas.closest('.hero') || canvas.parentElement;
+
+    hero.addEventListener('mousemove', function (e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse.x  = e.clientX - rect.left;
+      mouse.y  = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', function () {
+      mouse.x = -9999; mouse.y = -9999;
+    });
+
+    /* ── Touch ── */
+    hero.addEventListener('touchmove', function (e) {
+      var rect  = canvas.getBoundingClientRect();
+      var touch = e.touches[0];
+      mouse.x   = touch.clientX - rect.left;
+      mouse.y   = touch.clientY - rect.top;
+      e.preventDefault();
+    }, { passive: false });
+    hero.addEventListener('touchend', function () {
+      mouse.x = -9999; mouse.y = -9999;
+    });
+
+    /* ── Resize ── */
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(init, 150);
+    });
+
+    /* ── Relancer quand le thème change ── */
+    var observer = new MutationObserver(function () { draw(); });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    init();
+  })();
+  </script>
+</body>
 </html>

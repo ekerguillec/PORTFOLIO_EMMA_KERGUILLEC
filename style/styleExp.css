@@ -6,6 +6,35 @@ padding:0;
 box-sizing:border-box;
 }
 
+/* ================= SKIP LINK ================= */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 8px;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: #7dd3fc;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ================= FOCUS ================= */
+
+:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 body{
 
 font-family:'Sora',sans-serif;
@@ -117,6 +146,12 @@ font-size:14px;
 letter-spacing:0.4px;
 
 transition:color 0.3s;
+
+min-height:44px;
+
+display:inline-flex;
+
+align-items:center;
 
 }
 
@@ -305,7 +340,7 @@ color:#0f172a;
 
 font-size:14px;
 
-color:#475569;
+color:#374151;
 
 line-height:1.6;
 
@@ -366,6 +401,16 @@ fill:#93c5fd;
     padding: 4px 12px;
     font-size: 11.5px;
     font-weight: 500;
+}
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ================= ANIMATIONS ================= */

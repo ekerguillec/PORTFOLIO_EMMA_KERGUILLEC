@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Comptable i2c Junior-Entreprise — Emma Kerguillec">
   <meta name="author" content="Emma Kerguillec">
@@ -374,6 +375,7 @@
       .mission-abbr { font-size: 10px; padding: 3px 8px; }
     }
   </style>
+  <link rel="stylesheet" href="../../style/theme.css">
 </head>
 
 <body>
@@ -388,10 +390,14 @@
           <span class="navbar-toggler-icon"></span>
           <span class="close-icon">&#10005;</span>
         </button>
+        <button class="theme-toggle" aria-label="Passer en mode clair" title="Changer de thème">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
             <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
-            <a href="../Projets/Projets.html" class="nav-link">PROJETS</a>
+            <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
             <a href="../Experience/Experience.html" class="nav-link"><strong><em>EXPERIENCE</em></strong></a>
             <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
             <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
@@ -652,5 +658,6 @@
   </footer>
 
   <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../style/theme.js"></script>
 </body>
 </html>

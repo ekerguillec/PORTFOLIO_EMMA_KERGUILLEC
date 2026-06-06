@@ -1,0 +1,11 @@
+# Fichiers générés
+graphify-out/
+
+# Coordonnées personnelles
+documents/CV.pdf
+documents/Rapport technique.pdf
+config/contact.js
+
+# Fichiers système macOS
+.DS_Store
+**/.DS_Store
