@@ -84,22 +84,37 @@ html.light-mode .theme-toggle:hover {
 }
 html.light-mode .theme-toggle:focus-visible { outline-color: #2563eb; }
 
-/* ── Footer ── */
-html.light-mode .footer-experience,
-html.light-mode .footer-detail,
-html.light-mode .footer-about,
-html.light-mode .footer-skills,
-html.light-mode .footer-contact,
-html.light-mode .footer-projects,
-html.light-mode .footer-project {
+/* ── Dropdowns navbar ── */
+html.light-mode .navbar .dropdown-menu {
   background: #ffffff !important;
-  border-top: 1px solid rgba(0,0,0,0.08) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
   backdrop-filter: none !important;
+}
+html.light-mode .nav-caret       { color: #64748b !important; }
+html.light-mode .nav-caret:hover { color: #1e40af !important; }
+html.light-mode .navbar .dropdown-item       { color: #334155 !important; }
+html.light-mode .navbar .dropdown-item:hover,
+html.light-mode .navbar .dropdown-item:focus { background: rgba(37,99,235,0.06) !important; color: #0f172a !important; }
+html.light-mode .navbar .dropdown-divider    { border-color: rgba(0,0,0,0.07) !important; }
+
+/* ── Footer (nouveau site-footer) ── */
+html.light-mode .site-footer {
+  background: #ffffff !important;
+  border-top-color: rgba(0,0,0,0.08) !important;
   box-shadow: 0 -1px 0 rgba(0,0,0,0.04), 0 -8px 32px rgba(0,0,0,0.04) !important;
 }
-html.light-mode .social-link       { color: #334155 !important; font-weight: 500 !important; }
-html.light-mode .social-link:hover { color: #1e40af !important; }
-html.light-mode .social-link svg   { fill: #1e40af !important; }
+html.light-mode .footer-inner       { border-bottom-color: rgba(0,0,0,0.07) !important; }
+html.light-mode .footer-name        { color: #0f172a !important; }
+html.light-mode .footer-role        { color: #1e40af !important; }
+html.light-mode .footer-school      { color: #64748b !important; }
+html.light-mode .footer-tagline     { color: #475569 !important; }
+html.light-mode .footer-nav-label   { color: #94a3b8 !important; }
+html.light-mode .footer-nav-list a  { color: #334155 !important; }
+html.light-mode .footer-nav-list a:hover { color: #0f172a !important; }
+html.light-mode .footer-copyright   { color: #64748b !important; }
+html.light-mode .footer-social-link { color: #334155 !important; font-weight: 500 !important; }
+html.light-mode .footer-social-link:hover { color: #1e40af !important; }
 
 /* ── Badges & accents ── */
 html.light-mode .about-badge {
@@ -788,6 +803,30 @@ html.light-mode .acc-btn-secondary:hover {
   background: rgba(0,0,0,0.1) !important;
   color: #0f172a !important;
 }
+html.light-mode .acc-content {
+  background: #f1f5f9 !important;
+}
+html.light-mode .acc-content::before { display: none !important; }
+html.light-mode .acc-hcard {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06) !important;
+  backdrop-filter: none !important;
+}
+html.light-mode .acc-fc-label     { color: #1e40af !important; }
+html.light-mode .acc-fc-title     { color: #0f172a !important; }
+html.light-mode .acc-fc-sub       { color: #334155 !important; }
+html.light-mode .acc-fc-chip {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+  color: #1e40af !important;
+}
+html.light-mode .acc-fc-num       { color: #0f172a !important; }
+html.light-mode .acc-fc-num em    { color: #1e40af !important; }
+html.light-mode .acc-fc-num-label { color: #475569 !important; }
+html.light-mode .scroll-arrow       { color: #334155 !important; }
+html.light-mode .scroll-arrow:hover { color: #1e40af !important; }
+
 html.light-mode .acc-float-card {
   background: #ffffff !important;
   border-color: rgba(0,0,0,0.08) !important;

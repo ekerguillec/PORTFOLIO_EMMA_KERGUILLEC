@@ -339,7 +339,7 @@
   <header class="header">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid px-0">
-        <a class="navbar-brand" href="../Accueil/Accueil.html">Portfolio</a>
+        <a class="navbar-brand" href="../../index.html">Portfolio</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -354,17 +354,34 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
             <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
-            <a href="../Projets/Main.html" class="nav-link">PROJETS</a>
-            <a href="../Experience/Experience.html" class="nav-link"><strong><em>EXPERIENCE</em></strong></a>
-            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+            <div class="nav-item dropdown">
+              <a class="nav-link" href="../Projets/Main.html">PROJETS</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Projets"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../Projets/Main.html">Tous les projets</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../Projets/Poulpong.html">Poul'Pong</a></li>
+                <li><a class="dropdown-item" href="../Projets/Audiosensible.html">Ombre Sensible</a></li>
+                <li><a class="dropdown-item" href="../Projets/Prothese.html">Prothèses Myoélectriques</a></li>
+              </ul>
+            </div>
+            <div class="nav-item dropdown">
+              <a class="nav-link" href="../Experience/Experience.html">EXPERIENCE</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Expérience"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../Experience/Experience.html">Toutes les expériences</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../Experience/BDE.html">BDE ENSC</a></li>
+                <li><a class="dropdown-item" href="../Experience/ingénib.html">Forum Ingénib</a></li>
+                <li><a class="dropdown-item" href="../Experience/Le Télégramme.html">Le Télégramme</a></li>
+                <li><a class="dropdown-item" href="../Experience/E.Leclerc.html">E.Leclerc</a></li>
+                <li><a class="dropdown-item" href="../Experience/Mam.html">MAM</a></li>
+                <li><a class="dropdown-item" href="../Experience/Pharmacie.html">Pharmacie</a></li>
+                <li><a class="dropdown-item" href="../Experience/SNU.html">SNU</a></li>
+                <li><a class="dropdown-item" href="../Experience/i2c.html">i2c Junior-Entreprise</a></li>
+              </ul>
+            </div>
             <a href="../Compétences/Compétences.html" class="nav-link">COMPÉTENCES</a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
             <style>
-              .navbar .navbar-nav a[href="../Experience/Experience.html"] {
-                color: white !important;
-                font-size: 16px !important;
-                font-weight: 600 !important;
-                text-shadow: 0 0 8px rgba(255,255,255,.9), 0 0 20px rgba(255,255,255,.5) !important;
-              }
             </style>
           </div>
         </div>
@@ -561,27 +578,40 @@
     </div>
   </main>
 
-  <footer class="footer-detail">
-    <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="social-link">
-      <em><strong>CV
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
-          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
-            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
-            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
-          </g>
-        </svg>
-      </strong></em>
-    </a>
-    <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="social-link">
-      <em><strong>LINKEDIN
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27pt" height="9pt" viewBox="0 0 1280 1113" preserveAspectRatio="xMidYMid meet">
-          <g transform="translate(0,1113) scale(0.1,-0.1)" fill="#000000" stroke="#000000" stroke-width="50px">
-            <path d="M12570 11085 c-283 -72 -519 -104 -765 -106 -197 -1 -251 -17 -188 -56 18 -12 27 -25 25 -36 -3 -13 46 -69 155 -180 169 -173 237 -264 343 -457 35 -63 73 -128 85 -145 12 -16 25 -47 28 -69 14 -86 34 -57 107 152 102 295 175 453 322 700 78 132 122 225 110 236 -11 11 -49 4 -222 -39z m-12 -177 c-126 -149 -237 -376 -280 -573 l-11 -49 -28 86 c-15 47 -41 112 -57 145 -58 114 -168 239 -264 300 l-44 28 145 1 c92 0 180 7 236 18 98 18 259 67 315 95 19 9 37 16 38 15 2 -1 -20 -31 -50 -66z"/>
-            <path d="M11895 10391 c-272 -129 -1313 -1013 -5965 -5060 -3874 -3371 -4945 -4324 -5611 -4990 -280 -281 -351 -359 -300 -332 85 46 623 500 1901 1605 4574 3955 8983 7809 9830 8592 251 232 256 238 145 185z"/>
-          </g>
-        </svg>
-      </strong></em>
-    </a>
+    <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-name">Emma Kerguillec</p>
+        <p class="footer-role">Ingénieure Cogniticienne</p>
+        <p class="footer-school">ENSC · Bordeaux INP · 2024–2026</p>
+        <p class="footer-tagline">Des systèmes pensés pour l'Homme.</p>
+      </div>
+      <nav class="footer-nav-col" aria-label="Navigation principale">
+        <p class="footer-nav-label">Portfolio</p>
+        <ul class="footer-nav-list">
+          <li><a href="../A propos/A propos.html">À propos</a></li>
+          <li><a href="../Projets/Main.html">Projets</a></li>
+          <li><a href="../Experience/Experience.html">Expérience</a></li>
+          <li><a href="../Compétences/Compétences.html">Compétences</a></li>
+          <li><a href="../Contact/Contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-nav-col" aria-label="Projets">
+        <p class="footer-nav-label">Projets</p>
+        <ul class="footer-nav-list">
+          <li><a href="../Projets/Poulpong.html">Poul'Pong</a></li>
+          <li><a href="../Projets/Audiosensible.html">Ombre Sensible</a></li>
+          <li><a href="../Projets/Prothese.html">Prothèses Myoélectriques</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Emma Kerguillec · ENSC Bordeaux INP</p>
+      <div class="footer-socials">
+        <a href="../../documents/CV.pdf" target="_blank" rel="noopener noreferrer" class="footer-social-link">CV ↗</a>
+        <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn ↗</a>
+      </div>
+    </div>
   </footer>
 
   <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
