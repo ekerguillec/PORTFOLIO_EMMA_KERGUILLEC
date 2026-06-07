@@ -420,8 +420,44 @@ html.light-mode .btn-primary {                                  /* blanc sur #25
 html.light-mode .btn-primary:hover {
   box-shadow: 0 14px 32px rgba(30,58,138,0.5), inset 0 1px 0 rgba(255,255,255,0.25) !important;
 }
-html.light-mode .halo { box-shadow: 0 0 80px rgba(37,99,235,0.2) !important; }
 
+html.light-mode .halo {
+  background: radial-gradient(circle,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,0.92) 30%,
+    rgba(255,255,255,0.55) 60%,
+    rgba(255,255,255,0.2) 80%,
+    transparent 100%) !important;
+  box-shadow:
+    0 0 50px rgba(15,23,42,0.08),
+    0 0 120px rgba(15,23,42,0.05),
+    inset 0 0 50px rgba(255,255,255,0.7) !important;
+}
+
+html.light-mode .halo img {
+  -webkit-mask-image: radial-gradient(circle, black 58%, transparent 88%);
+  mask-image: radial-gradient(circle, black 58%, transparent 88%);
+}
+html.light-mode .halo-wrapper::before { border-color: rgba(2, 48, 198, 0.12) !important; }
+html.light-mode .halo-wrapper::after  { border-color: rgba(0, 48, 207, 0.1) !important; }
+
+html.light-mode .halo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 45%, rgba(255,255,255,0.9) 100%);
+  pointer-events: none;
+}
+/* 
+html.light-mode .halo { 
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0.45) 60%, rgba(255,255,255,0.15) 80%, transparent 100%) !important;
+  box-shadow: 0 0 80px rgba(255,255,255,0.35), 0 0 160px rgba(255,255,255,0.15) !important;
+ }
+
+ html.light-mode .halo-wrapper::before { border-color: #d7dde7 !important; }
+ html.light-mode .halo-wrapper::after  { border-color: #e0e4ea !important; }
+ */
 /* ── Pages projet (Prothese, Audiosensible, Poulpong…) ── */
 html.light-mode .breadcrumb-nav a       { color: #334155 !important; }
 html.light-mode .breadcrumb-nav span    { color: #475569 !important; }
@@ -487,6 +523,20 @@ html.light-mode .btn-primary-action {
 html.light-mode .btn-primary-action:hover {
   box-shadow: 0 12px 32px rgba(30,58,138,0.42) !important;
 }
+
+html.light-mode .btn-secondary {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(37,99,235,0.35) !important;
+  color: #1e40af !important;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.06) !important;
+}
+html.light-mode .btn-secondary:hover {
+  background: rgba(37,99,235,0.06) !important;
+  border-color: rgba(37,99,235,0.55) !important;
+  color: #1e3a8a !important;
+  box-shadow: 0 6px 16px rgba(37,99,235,0.12) !important;
+}
+
 html.light-mode .btn-secondary-action {
   background: rgba(0,0,0,0.06) !important;
   border-color: rgba(37,99,235,0.25) !important;
