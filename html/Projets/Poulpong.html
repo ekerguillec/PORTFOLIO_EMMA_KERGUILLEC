@@ -128,21 +128,17 @@
     .meta-item { font-size: 15px; color: #64748b; line-height: 1.5; }
     .meta-item strong { color: #94a3b8; font-weight: 500; }
 
-    /* Équipe scrollable */
+    /* Équipe — grille 2×4 */
     .team-list {
-      display: flex; flex-direction: column; gap: 6px;
-      max-height: 160px; overflow-y: auto;
-      padding-right: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 20px;
     }
-    .team-list::-webkit-scrollbar { width: 3px; }
-    .team-list::-webkit-scrollbar-track { background: transparent; }
-    .team-list::-webkit-scrollbar-thumb { background: rgba(125,211,252,0.25); border-radius: 2px; }
     .team-member {
       font-size: 13px; color: #64748b;
       padding: 5px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-    .team-member:last-child { border-bottom: none; }
 
     .concept-box {
       border-left: 3px solid #7dd3fc; background: rgba(125,211,252,0.06);
@@ -386,7 +382,7 @@
     <div class="project-inner">
 
       <nav class="breadcrumb-nav" aria-label="fil d'Ariane">
-        <a href="../Projets/Projets.html">Projets</a>
+        <a href="../Projets/Main.html">Projets</a>
         <span>›</span>
         <span class="current">Poul'Pong</span>
       </nav>
@@ -429,13 +425,13 @@
               <p class="info-section-title">Équipe (8 personnes)</p>
               <div class="team-list">
                 <div class="team-member">GÉRARD Paul</div>
-                <div class="team-member">HOUSSEMAINE Pascal</div>
-                <div class="team-member">MARCHAIS Matthieu</div>
-                <div class="team-member">TIEU Mattéo</div>
                 <div class="team-member">GUIDETTI Camille</div>
+                <div class="team-member">HOUSSEMAINE Pascal</div>
                 <div class="team-member">KERGUILLEC Emma</div>
                 <div class="team-member">MACEDO Vincent</div>
+                <div class="team-member">MARCHAIS Matthieu</div>
                 <div class="team-member">MAURICE Hugo</div>
+                <div class="team-member">TIEU Mattéo</div>
               </div>
             </div>
             <div>

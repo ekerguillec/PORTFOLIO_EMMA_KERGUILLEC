@@ -90,13 +90,16 @@ html.light-mode .footer-detail,
 html.light-mode .footer-about,
 html.light-mode .footer-skills,
 html.light-mode .footer-contact,
-html.light-mode .footer-projects {
-  background: rgba(241,245,249,0.95) !important;
-  border-top-color: rgba(0,0,0,0.08) !important;
+html.light-mode .footer-projects,
+html.light-mode .footer-project {
+  background: #ffffff !important;
+  border-top: 1px solid rgba(0,0,0,0.08) !important;
   backdrop-filter: none !important;
+  box-shadow: 0 -1px 0 rgba(0,0,0,0.04), 0 -8px 32px rgba(0,0,0,0.04) !important;
 }
-html.light-mode .social-link { color: #334155 !important; }
-html.light-mode .social-link:hover { color: #2563eb !important; }
+html.light-mode .social-link       { color: #334155 !important; font-weight: 500 !important; }
+html.light-mode .social-link:hover { color: #1e40af !important; }
+html.light-mode .social-link svg   { fill: #1e40af !important; }
 
 /* ── Badges & accents ── */
 html.light-mode .about-badge {
@@ -175,7 +178,7 @@ html.light-mode .card-label { color: #64748b !important; }
 
 html.light-mode .back-link:hover { color: #2563eb !important; }
 
-/* ── Cartes (dark → white) ── */
+/* ── Cartes (dark → white + ombre pour définir les bords et arrondis) ── */
 html.light-mode .scard,
 html.light-mode .acard,
 html.light-mode .resp-card,
@@ -183,23 +186,43 @@ html.light-mode .highlight-box,
 html.light-mode .bcard,
 html.light-mode .project-card,
 html.light-mode .project-featured,
-html.light-mode .skills-featured,
 html.light-mode .mission-row,
-html.light-mode .timeline-item,
-html.light-mode .lang-row {
+html.light-mode .lang-row,
+html.light-mode .event-card,
+html.light-mode .phase-card,
+html.light-mode .value-card,
+html.light-mode .skill-row,
+html.light-mode .rapport-card,
+html.light-mode .info-card,
+html.light-mode .step-card,
+html.light-mode .skill-card,
+html.light-mode .bilan-card,
+html.light-mode .stat-card,
+html.light-mode .exp-stat-card {
   background: #ffffff !important;
-  border-color: rgba(0,0,0,0.08) !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06) !important;
+}
+html.light-mode .skills-featured {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06) !important;
+  margin-top: 40px !important;
 }
 html.light-mode .scard:hover,
 html.light-mode .acard:hover,
 html.light-mode .resp-card:hover,
 html.light-mode .bcard:hover,
-html.light-mode .project-card:hover {
+html.light-mode .project-card:hover,
+html.light-mode .event-card:hover,
+html.light-mode .phase-card:hover,
+html.light-mode .value-card:hover {
   border-color: rgba(37,99,235,0.2) !important;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.09) !important;
 }
-html.light-mode .scard-bar { background: linear-gradient(180deg, #2563eb, transparent) !important; }
-html.light-mode .resp-card::before { background: linear-gradient(180deg, #2563eb, transparent) !important; }
+html.light-mode .resp-card { padding: 32px 36px !important; }
+html.light-mode .scard-bar { background: linear-gradient(180deg, #1e40af, transparent) !important; }
+html.light-mode .resp-card::before { background: linear-gradient(180deg, #1e40af, transparent) !important; }
 
 html.light-mode .scard::after,
 html.light-mode .acard::after { border-color: rgba(0,0,0,0.06) !important; box-shadow: inset 0 1px 0 rgba(0,0,0,0.04) !important; }
@@ -284,9 +307,11 @@ html.light-mode .highlight-box {
 }
 html.light-mode .highlight-box::after { background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%) !important; }
 html.light-mode .exp-highlight {
-  background: rgba(37,99,235,0.04) !important;
-  border-color: rgba(37,99,235,0.15) !important;
-  color: #475569 !important;
+  background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(125,211,252,0.05) 100%) !important;
+  border-color: rgba(37,99,235,0.18) !important;
+  color: #334155 !important;
+  padding: 24px 28px !important;
+  border-radius: 16px !important;
 }
 html.light-mode .exp-highlight strong { color: #0f172a !important; }
 
@@ -338,7 +363,13 @@ html.light-mode .bcard:hover .card-ext { background: rgba(37,99,235,0.08) !impor
 html.light-mode .card-val { color: #0f172a !important; }
 
 /* ── Experience home header ── */
-html.light-mode .experience-home-header { background: rgba(255,255,255,0.5) !important; border-color: rgba(0,0,0,0.06) !important; }
+html.light-mode .experience-home-header {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06) !important;
+  padding: 40px 44px !important;
+  border-radius: 20px !important;
+}
 html.light-mode .experience-card { background: #ffffff !important; border-color: rgba(0,0,0,0.07) !important; box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important; }
 html.light-mode .experience-card:hover { border-left-color: #2563eb !important; box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important; }
 html.light-mode .experience-title { color: #0f172a !important; }
@@ -356,8 +387,8 @@ html.light-mode .hero {
     linear-gradient(135deg, #f1f5f9 0%, #e0f2fe 50%, #f8fafc 100%) !important;
 }
 html.light-mode .hero-left h1 { color: #0f172a !important; }
-html.light-mode .hero-left h2 { color: #2563eb !important; }
-html.light-mode .hero-left p  { color: #475569 !important; }
+html.light-mode .hero-left h2 { color: #1e40af !important; } /* #2563eb = 4.3:1 → #1e40af = 8.2:1 ✓ AAA */
+html.light-mode .hero-left p  { color: #1e293b !important; } /* #475569 = 6.3:1 → #1e293b = 12.6:1 ✓ AAA */
 html.light-mode .btn-secondary {
   background: rgba(0,0,0,0.07) !important;
   border-color: rgba(37,99,235,0.25) !important;
@@ -367,7 +398,421 @@ html.light-mode .btn-secondary:hover {
   background: rgba(0,0,0,0.1) !important;
   color: #0f172a !important;
 }
+html.light-mode .btn-primary {                                  /* blanc sur #2563eb = 4.7:1 → ✗ AAA */
+  background: linear-gradient(135deg, #1e3a8a, #1e40af) !important;
+  box-shadow: 0 8px 24px rgba(30,58,138,0.35), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+}                                                               /* blanc sur #1e3a8a = 10.1:1 ✓ AAA */
+html.light-mode .btn-primary:hover {
+  box-shadow: 0 14px 32px rgba(30,58,138,0.5), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+}
 html.light-mode .halo { box-shadow: 0 0 80px rgba(37,99,235,0.2) !important; }
+
+/* ── Pages projet (Prothese, Audiosensible, Poulpong…) ── */
+html.light-mode .breadcrumb-nav a       { color: #334155 !important; }
+html.light-mode .breadcrumb-nav span    { color: #475569 !important; }
+html.light-mode .breadcrumb-nav .current { color: #1e40af !important; }
+
+html.light-mode .info-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .concept-box {
+  background: rgba(37,99,235,0.05) !important;
+  border-left-color: #1e40af !important;
+}
+html.light-mode .concept-box p     { color: #0f172a !important; }  /* était #e2e8f0 → invisible */
+html.light-mode .concept-box p em  { color: #1e40af !important; }  /* était #7dd3fc → invisible */
+html.light-mode .team-member {
+  color: #1e293b !important;                                        /* était #64748b → 4.3:1, fail AA */
+  border-bottom-color: rgba(0,0,0,0.06) !important;
+}
+html.light-mode .info-section-title { color: #334155 !important; }  /* était #475569 → 6.3:1, fail AAA */
+html.light-mode .meta-item          { color: #1e293b !important; }  /* était #64748b → 4.3:1, fail AA  */
+html.light-mode .meta-item strong   { color: #0f172a !important; }  /* était #94a3b8 → ~1.5:1, invisible */
+
+html.light-mode .question-box {
+  background: rgba(37,99,235,0.05) !important;
+  border-left-color: #1e40af !important;
+}
+html.light-mode .question-box p     { color: #0f172a !important; }  /* était #e2e8f0 → ~1.1:1, invisible */
+html.light-mode .question-box p em  { color: #1e40af !important; }  /* était #7dd3fc → ~2:1,   invisible */
+
+html.light-mode .step-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .step-card:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  background: rgba(37,99,235,0.02) !important;
+}
+html.light-mode .step-meta  { color: #334155 !important; }
+html.light-mode .step-title { color: #0f172a !important; }
+html.light-mode .step-desc  { color: #1e293b !important; }  /* était #64748b → fail AA */
+html.light-mode .step-link  { color: #1e40af !important; }
+html.light-mode .step-link:hover { color: #1e3a8a !important; }
+
+html.light-mode .skill-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .skill-name { color: #1e293b !important; }  /* était #94a3b8 → invisible */
+
+html.light-mode .bilan-card {
+  background: #ffffff !important;
+  border-color: rgba(37,99,235,0.12) !important;
+}
+html.light-mode .bilan-card p      { color: #1e293b !important; }  /* était #94a3b8 → invisible */
+html.light-mode .bilan-card strong { color: #0f172a !important; }
+html.light-mode .bilan-card em     { color: #1e40af !important; }
+
+html.light-mode .btn-primary-action {
+  background: linear-gradient(135deg, #1e3a8a, #1e40af) !important;
+  box-shadow: 0 8px 24px rgba(30,58,138,0.28) !important;
+}
+html.light-mode .btn-primary-action:hover {
+  box-shadow: 0 12px 32px rgba(30,58,138,0.42) !important;
+}
+html.light-mode .btn-secondary-action {
+  background: rgba(0,0,0,0.06) !important;
+  border-color: rgba(37,99,235,0.25) !important;
+  color: #0f172a !important;          /* était #e2eeff → invisible sur fond blanc */
+}
+html.light-mode .btn-secondary-action:hover {
+  background: rgba(0,0,0,0.1) !important;
+  color: #0f172a !important;
+}
+
+/* ── Vidéo (Poulpong) ── */
+html.light-mode .video-wrapper {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .video-caption {
+  color: #1e293b !important;
+  border-top-color: rgba(0,0,0,0.07) !important;
+}
+
+/* ── Step lists & KPI ── */
+html.light-mode .step-list li   { color: #1e293b !important; }  /* était #64748b → fail AA */
+html.light-mode .step-list li b { color: #0f172a !important; }  /* était #94a3b8 → invisible */
+html.light-mode .kpi-item {
+  background: rgba(37,99,235,0.05) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+}
+html.light-mode .kpi-value { color: #1e40af !important; }  /* était #7dd3fc → invisible */
+html.light-mode .kpi-label { color: #1e293b !important; }  /* était #64748b → fail AA */
+
+/* ── Rapport card ── */
+html.light-mode .rapport-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .rapport-title     { color: #0f172a !important; }  /* était #f1f5f9 → invisible */
+html.light-mode .rapport-title em  { color: #1e40af !important; }  /* était #7dd3fc */
+html.light-mode .rapport-desc      { color: #1e293b !important; }
+html.light-mode .rapport-icon {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+}
+html.light-mode .rapport-icon svg  { color: #1e40af !important; }
+
+/* ── Site card (Audiosensible) ── */
+html.light-mode .site-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .site-card-header {
+  background: rgba(0,0,0,0.03) !important;
+  border-bottom-color: rgba(0,0,0,0.07) !important;
+}
+html.light-mode .site-desc-title     { color: #0f172a !important; }
+html.light-mode .site-desc-title em  { color: #1e40af !important; }
+html.light-mode .site-desc-text      { color: #1e293b !important; }
+html.light-mode .site-feature        { color: #1e293b !important; }  /* était #94a3b8 → invisible */
+html.light-mode .browser-url {
+  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  color: #334155 !important;
+}
+html.light-mode .browser-url svg     { color: #475569 !important; }
+html.light-mode .browser-open-btn {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.2) !important;
+  color: #1e40af !important;
+}
+
+/* ── QR card ── */
+html.light-mode .qr-card {
+  background: rgba(0,0,0,0.02) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .qr-label-top { color: #334155 !important; }
+html.light-mode .qr-url       { color: #1e40af !important; }
+html.light-mode .qr-hint      { color: #334155 !important; }
+html.light-mode .qr-cta       { color: #1e293b !important; }
+html.light-mode .qr-cta a     { color: #1e40af !important; }
+
+/* ── Step numbers & icônes ── */
+html.light-mode .step-number {
+  background: rgba(37,99,235,0.08) !important;
+  border-color: rgba(37,99,235,0.2) !important;
+  color: #1e40af !important;
+}
+html.light-mode .skill-icon-wrap {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+}
+html.light-mode .skill-icon-wrap svg { color: #1e40af !important; }
+
+/* ── Inline styles dans info-card (Audiosensible) ── */
+html.light-mode .info-card div[style] { color: #1e293b !important; }
+html.light-mode .info-card strong[style] { color: #0f172a !important; }
+
+/* ════════════════════════════════════════════════════════════════
+   ENCADRÉS MANQUANTS — cartes/conteneurs sans override light-mode
+   ════════════════════════════════════════════════════════════════ */
+
+/* Cartes BDE */
+html.light-mode .event-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05) !important;
+}
+html.light-mode .event-card:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  background: rgba(37,99,235,0.02) !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08) !important;
+}
+
+/* Cartes SNU — phases */
+html.light-mode .phase-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05) !important;
+}
+html.light-mode .phase-card:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08) !important;
+}
+html.light-mode .phase-card::before { background: linear-gradient(180deg, #1e40af, transparent) !important; }
+
+/* Cartes SNU — valeurs */
+html.light-mode .value-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+html.light-mode .value-card:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  background: rgba(37,99,235,0.02) !important;
+}
+
+/* Skill rows SNU */
+html.light-mode .skill-row {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+}
+html.light-mode .skill-row:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  background: rgba(37,99,235,0.02) !important;
+}
+
+/* Timeline (Le Télégramme et autres) */
+html.light-mode .timeline::before {
+  background: linear-gradient(180deg,
+    rgba(30,64,175,0.15),
+    rgba(30,64,175,0.35) 50%,
+    rgba(30,64,175,0.08)) !important;
+}
+html.light-mode .timeline-dot-inner {
+  background: #1e40af !important;
+  border-color: #f1f5f9 !important;
+  box-shadow: 0 0 0 3px rgba(30,64,175,0.15) !important;
+}
+html.light-mode .timeline-text { color: #1e293b !important; }
+
+/* Boutons secondaires project */
+html.light-mode .btn-project-secondary {
+  background: rgba(0,0,0,0.05) !important;
+  border-color: rgba(37,99,235,0.2) !important;
+  color: #1e293b !important;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   CORRECTIFS GLOBAUX — toutes les classes dark-mode non couvertes
+   ════════════════════════════════════════════════════════════════ */
+
+/* Textes quasi-blancs (#f1f5f9, #e2e8f0, #cbd5e1, #aabcce) → noirs */
+html.light-mode .stat-num,
+html.light-mode .phase-title,
+html.light-mode .event-name,
+html.light-mode .value-name,
+html.light-mode .skill-text strong,
+html.light-mode .feat-stat-val,
+html.light-mode .projects-header h1 { color: #0f172a !important; }
+
+/* Textes gris très clairs (#94a3b8, #9ab5c8, #aabcce) → lisibles */
+html.light-mode .stat-lbl,
+html.light-mode .skill-text,
+html.light-mode .phase-desc,
+html.light-mode .event-desc,
+html.light-mode .value-desc,
+html.light-mode .tool-tooltip,
+html.light-mode .feat-stat-label { color: #334155 !important; }
+
+/* Accents #7dd3fc invisibles sur blanc → #1e40af (8.2:1 ✓ AAA) */
+html.light-mode .stat-num em,
+html.light-mode .phase-number,
+html.light-mode .hero-eyebrow,
+html.light-mode .about-eyebrow,
+html.light-mode .stat-cv,
+html.light-mode .back-link:hover { color: #1e40af !important; }
+
+html.light-mode .stat-cv {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.2) !important;
+}
+html.light-mode .stat-cv:hover {
+  background: rgba(37,99,235,0.12) !important;
+  border-color: rgba(37,99,235,0.35) !important;
+  color: #1e3a8a !important;
+}
+
+/* Tool chips */
+html.light-mode .tool-chip {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  color: #1e293b !important;
+}
+html.light-mode .tool-tooltip {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  color: #1e293b !important;
+}
+html.light-mode .tool-tooltip strong { color: #0f172a !important; }
+
+/* Stat & feat cards */
+html.light-mode .stat-card,
+html.light-mode .exp-stat-card,
+html.light-mode .feat-stat {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+/* ── Accents #2563eb → #1e40af partout (4.3:1 → 8.2:1, ✓ AAA) ── */
+html.light-mode .detail-eyebrow,
+html.light-mode .feat-label,
+html.light-mode .card-eyebrow,
+html.light-mode .section-label,
+html.light-mode .scard-label,
+html.light-mode .skills-eyebrow,
+html.light-mode .project-eyebrow,
+html.light-mode .timeline-period { color: #1e40af !important; }
+
+html.light-mode .about-badge,
+html.light-mode .scard-chip,
+html.light-mode .detail-tag,
+html.light-mode .project-tag,
+html.light-mode .feat-tag,
+html.light-mode .sport-chip,
+html.light-mode .about-tag,
+html.light-mode .li-badge,
+html.light-mode .hero-cta { color: #1e40af !important; }
+
+/* ── Page Accueil (Accueil.html) ── */
+html.light-mode .acc-stat {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06) !important;
+}
+html.light-mode .acc-stat-num      { color: #0f172a !important; }
+html.light-mode .acc-stat-num em   { color: #1e40af !important; }
+html.light-mode .acc-stat-label    { color: #475569 !important; }
+
+html.light-mode .acc-section-num   { color: #64748b !important; }
+html.light-mode .acc-section-line  { background: rgba(0,0,0,0.08) !important; }
+html.light-mode .acc-section-title { color: #0f172a !important; }
+html.light-mode .acc-section-title em { color: #1e40af !important; }
+html.light-mode .acc-section-sub   { color: #334155 !important; }
+
+html.light-mode .acc-project-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06) !important;
+}
+html.light-mode .acc-project-card:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.09) !important;
+}
+html.light-mode .acc-project-tag   { color: #1e40af !important; }
+html.light-mode .acc-project-title { color: #0f172a !important; }
+html.light-mode .acc-project-title em { color: #1e40af !important; }
+html.light-mode .acc-project-desc  { color: #334155 !important; }
+html.light-mode .acc-chip {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+  color: #1e40af !important;
+}
+html.light-mode .acc-project-arrow { color: #64748b !important; }
+html.light-mode .acc-project-card:hover .acc-project-arrow { color: #1e40af !important; }
+
+html.light-mode .acc-exp-item {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+}
+html.light-mode .acc-exp-item:hover {
+  border-color: rgba(37,99,235,0.2) !important;
+  background: rgba(37,99,235,0.02) !important;
+}
+html.light-mode .acc-exp-period    { color: #64748b !important; }
+html.light-mode .acc-exp-name      { color: #0f172a !important; }
+html.light-mode .acc-exp-role      { color: #64748b !important; }
+html.light-mode .acc-exp-chevron   { color: #94a3b8 !important; }
+
+html.light-mode .acc-contact-inner {
+  background: linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(37,99,235,0.02) 100%) !important;
+  border-color: rgba(37,99,235,0.12) !important;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.06), 0 8px 32px rgba(37,99,235,0.06) !important;
+}
+html.light-mode .acc-contact-eyebrow { color: #1e40af !important; }
+html.light-mode .acc-contact-title   { color: #0f172a !important; }
+html.light-mode .acc-contact-title em { color: #1e40af !important; }
+html.light-mode .acc-contact-sub     { color: #334155 !important; }
+
+html.light-mode .acc-btn-secondary {
+  background: rgba(0,0,0,0.06) !important;
+  border-color: rgba(37,99,235,0.22) !important;
+  color: #0f172a !important;
+}
+html.light-mode .acc-btn-secondary:hover {
+  background: rgba(0,0,0,0.1) !important;
+  color: #0f172a !important;
+}
+html.light-mode .acc-float-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 28px rgba(0,0,0,0.07) !important;
+  backdrop-filter: none !important;
+}
+html.light-mode .acc-fc-label  { color: #1e40af !important; }
+html.light-mode .acc-fc-title  { color: #0f172a !important; }
+html.light-mode .acc-fc-sub    { color: #334155 !important; }
+html.light-mode .acc-fc-chip {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.15) !important;
+  color: #1e40af !important;
+}
+html.light-mode .acc-fc-num       { color: #0f172a !important; }
+html.light-mode .acc-fc-num em    { color: #1e40af !important; }
+html.light-mode .acc-fc-num-label { color: #475569 !important; }
+
+html.light-mode .acc-eyebrow { color: #1e40af !important; }
+html.light-mode .acc-title   { color: #0f172a !important; }
+html.light-mode .acc-title em { color: #1e40af !important; }
+html.light-mode .acc-subtitle { color: #334155 !important; }
+html.light-mode .acc-divider {
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent) !important;
+}
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
