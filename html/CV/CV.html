@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Emma Kerguillec</title>
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --text: #1f1f1f;
+      --muted: #5e5e5e;
+      --line: #e2e2e2;
+      --accent: #1f1f1f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: #f4f4f4;
+    }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #666;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    .back-link:hover { color: #1f1f1f; }
+    .print-btn {
+      padding: 7px 16px;
+      background: #1f1f1f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .print-btn:hover { background: #333; }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto 30px;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      box-shadow: 0 0 30px rgba(0,0,0,0.05);
+    }
+    /* Sidebar */
+    .sidebar {
+      background: #fff;
+      padding: 40px 30px;
+      border-right: 1px solid var(--line);
+    }
+    .portfolio-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .portfolio-label {
+      writing-mode: vertical-rl;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+    .qr {
+      display: grid;
+      grid-template-columns: repeat(15, 1fr);
+      grid-template-rows: repeat(15, 1fr);
+      width: 110px;
+      height: 110px;
+      flex-shrink: 0;
+    }
+    .qr span { background: transparent; }
+    .qr span.on { background: var(--text); }
+    .sidebar h2 {
+      font-size: 12.5px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 32px 0 14px;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .sidebar h2:first-of-type { margin-top: 0; }
+    .sidebar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 2.1;
+    }
+    .sidebar ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .bullet {
+      color: var(--muted);
+      flex-shrink: 0;
+      line-height: 2.1;
+      font-size: 10px;
+    }
+    .contact-list li { gap: 12px; }
+    .icon {
+      display: inline-flex;
+      width: 16px;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Outils — noms épurés en grille */
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .tools-list li {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 400;
+      color: var(--muted);
+      padding: 3px 10px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      letter-spacing: 0.2px;
+      line-height: 1.6;
+    }
+    .tools-list li::before { content: none; }
+
+    .langues p {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      margin: 8px 0;
+    }
+    .langues strong { color: var(--text); }
+
+    /* Main content */
+    .main { padding: 40px 45px; }
+    .main h1 {
+      font-size: 28px;
+      font-weight: 500;
+      margin: 0 0 6px;
+      letter-spacing: 0.3px;
+    }
+    .subtitle {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+    .stage {
+      font-style: italic;
+      font-weight: 400;
+      font-size: 14px;
+      margin: 0 0 4px;
+    }
+    .availability {
+      font-style: italic;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+    .tagline {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 38px;
+    }
+    .main h2 {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 38px 0 20px;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .main h2:first-of-type { margin-top: 0; }
+    .entry {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .entry-bullet {
+      color: var(--muted);
+      flex-shrink: 0;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+    .entry-body { flex: 1; min-width: 0; }
+    .entry-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .entry-meta {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .entry p {
+      margin: 5px 0 0;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+    .entry .detail {
+      font-style: italic;
+      color: var(--muted);
+    }
+    .entry .detail strong, .entry p strong {
+      font-weight: 500;
+      color: var(--text);
+      font-style: normal;
+    }
+    hr.sep {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 30px 0;
+    }
+
+    @media (max-width: 760px) {
+      .toolbar { padding: 14px 16px; }
+      .page { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none !important; }
+      .page { box-shadow: none; margin: 0; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <a href="../../index.html" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7H2M7 2l-5 5 5 5"/></svg>
+      Retour au portfolio
+    </a>
+    <button class="print-btn" onclick="window.print()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Sauvegarder en PDF
+    </button>
+  </div>
+
+  <div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="portfolio-badge">
+        <span class="portfolio-label">PORTFOLIO</span>
+        <div class="qr" id="qr"></div>
+      </div>
+
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><span class="icon"><i class="fa-solid fa-phone"></i></span> +33 6 49 55 82 21</li>
+        <li><span class="icon"><i class="fa-solid fa-envelope"></i></span> ekerguillec@ensc.fr</li>
+        <li><span class="icon"><i class="fa-brands fa-linkedin"></i></span> Emma KERGUILLEC</li>
+        <li><span class="icon"><i class="fa-brands fa-github"></i></span> ekerguillec</li>
+        <li><span class="icon"><i class="fa-solid fa-location-dot"></i></span> Talence (33)</li>
+        <li><span class="icon"><i class="fa-solid fa-car"></i></span> Permis B + véhicule personnel</li>
+      </ul>
+
+      <h2>Savoir-faire</h2>
+      <ul>
+        <li><span class="bullet">•</span> Prototypage 3D et découpe laser</li>
+        <li><span class="bullet">•</span> Python, C#, HTML5/CSS3, JavaScript</li>
+        <li><span class="bullet">•</span> React, PHP, SQL, MCD/MLD, APIs REST</li>
+        <li><span class="bullet">•</span> Analyse de données &amp; statistiques</li>
+        <li><span class="bullet">•</span> Gestion de projet</li>
+        <li><span class="bullet">•</span> Méthodes agiles (Kanban, Scrum, MASK...)</li>
+        <li><span class="bullet">•</span> UX UI Design</li>
+      </ul>
+
+      <h2>Savoir-être</h2>
+      <ul>
+        <li><span class="bullet">•</span> Esprit d'analyse et de synthèse</li>
+        <li><span class="bullet">•</span> Communication claire</li>
+        <li><span class="bullet">•</span> Proactivité / Prise d'initiative</li>
+        <li><span class="bullet">•</span> Travail en équipe pluridisciplinaire</li>
+        <li><span class="bullet">•</span> Gestion efficace du temps et des priorités</li>
+      </ul>
+
+      <h2>Outils</h2>
+      <ul class="tools-list">
+        <li>Logiciel R</li>
+        <li>MATLAB</li>
+        <li>Git</li>
+        <li>GitLab</li>
+        <li>GitHub</li>
+        <li>VS Code</li>
+        <li>Figma</li>
+        <li>G Suite</li>
+        <li>MS Office</li>
+        <li>LaTeX</li>
+      </ul>
+
+      <h2>Langues</h2>
+      <div class="langues">
+        <p><strong>Français</strong> – C2 (langue maternelle)</p>
+        <p><strong>Anglais</strong> – B2 (Certificat Cambridge)</p>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <h1>Emma KERGUILLEC</h1>
+      <p class="subtitle">Élève-ingénieur à l'ENSC</p>
+      <p class="stage">Stage d'application</p>
+      <p class="availability">12 à 16 semaines, disponible du 1 mai au 31 août 2027</p>
+      <p class="tagline">Passionnée par l'humain et la technologie, pour des outils performants et intuitifs.</p>
+
+      <h2>Éducation</h2>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Ecole nationale supérieure de Cognitique <span class="entry-meta">| 2025 - 2028</span></div>
+          <p class="detail">Sciences cognitives, informatique &amp; UX</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Cycle préparatoire de Bordeaux <span class="entry-meta">| 2023 - 2025</span></div>
+          <p class="detail">Classe préparatoire intégrée, déléguée</p>
+        </div>
+      </div>
+
+      <h2>Projets</h2>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Ombre Sensible <span class="entry-meta">| 2025-2026</span></div>
+          <p>Conception d'un casque immersif simulant différents handicaps auditifs (surdité, acouphènes, hyperacousie).</p>
+          <p class="detail">Captation et <strong>traitement du signal</strong> sonore en temps réel, modélisation des presets, <strong>développement logiciel</strong> en C#, conception 3D</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Poul'Pong <span class="entry-meta">| 2025</span></div>
+          <p>Développement d'un Pong interactif contrôlé par voix et rythme cardiaque (Raspberry Pi Pico + capteurs).</p>
+          <p class="detail">Programmation en Python, <strong>systèmes embarqués</strong>, traitement du signal, impression 3D et découpe laser</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Les prothèses de bras myoélectriques <span class="entry-meta">| 2024-2025</span></div>
+          <p>Mémoire de fin d'étude sur la technologie et l'ingénierie des prothèses de bras myoélectriques.</p>
+          <p class="detail"><strong>Veille et analyse</strong> scientifique, vulgarisation</p>
+        </div>
+      </div>
+
+      <hr class="sep">
+
+      <h2>Expérience</h2>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Vice-Présidente <span class="entry-meta">| 4 mois | 2026</span></div>
+          <p class="detail" style="font-style:normal;font-weight:600;color:var(--text);margin-bottom:0;">Forum Ingénib</p>
+          <p class="detail">Organisation d'un forum entreprises-étudiants : <strong>gestion et coordination</strong> du forum, <strong>ressources humaines</strong> et relations avec les 80 entreprises partenaires.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Comptable <span class="entry-meta">| 6 mois | 2026</span></div>
+          <p class="detail" style="font-style:normal;font-weight:600;color:var(--text);margin-bottom:0;">i2c – Junior-Entreprise de l'ENSC</p>
+          <p class="detail">Suivi comptable et financier d'une Junior-Entreprise : <strong>écritures comptables</strong>, rapprochements bancaires, contrôle de la TVA, <strong>facturation électronique</strong>...</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Presse écrite – Impression/Expédition <span class="entry-meta">| 7 mois | 2025-2026</span></div>
+          <p class="detail" style="font-style:normal;font-weight:600;color:var(--text);margin-bottom:0;">Le Télégramme</p>
+          <p class="detail">Compréhension d'une <strong>chaîne de production</strong> complexe en milieu industriel</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="entry-bullet">•</span>
+        <div class="entry-body">
+          <div class="entry-title">Service National Universel <span class="entry-meta">| 2 semaines | 2022</span></div>
+          <p class="detail">Engagement civique, esprit d'équipe, cohésion, sens du service</p>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    (function () {
+      var size = 15;
+      var seed = 7;
+      function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+      var grid = [];
+      for (var r = 0; r < size; r++) {
+        grid[r] = [];
+        for (var c = 0; c < size; c++) grid[r][c] = rand() < 0.42;
+      }
+      function finder(r0, c0) {
+        for (var r = 0; r < 7; r++) {
+          for (var c = 0; c < 7; c++) {
+            var border = r === 0 || r === 6 || c === 0 || c === 6;
+            var inner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
+            grid[r0 + r][c0 + c] = border || inner;
+          }
+        }
+      }
+      finder(0, 0);
+      finder(0, size - 7);
+      finder(size - 7, 0);
+      var qr = document.getElementById('qr');
+      var html = '';
+      for (var r = 0; r < size; r++) {
+        for (var c = 0; c < size; c++) {
+          html += '<span class="' + (grid[r][c] ? 'on' : '') + '"></span>';
+        }
+      }
+      qr.innerHTML = html;
+    })();
+  </script>
+
+</body>
+</html>
