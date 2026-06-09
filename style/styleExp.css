@@ -195,8 +195,9 @@ color:#93c5fd;
   .navbar .nav-item.dropdown:hover > .dropdown-menu { display: block; }
 }
 
-/* ── Sous-menu Ingénierie cognitive ── */
-.navbar .dropdown-submenu { position: relative; }
+.navbar .nav-item.dropdown.is-hovered > .dropdown-menu { display: block; }
+
+/* ── Sous-menu Ingénierie cognitive (expand en place) ── */
 .navbar .dropdown-submenu .has-submenu {
   display: flex;
   align-items: center;
@@ -206,20 +207,46 @@ color:#93c5fd;
 .navbar .dropdown-submenu .has-submenu svg {
   opacity: 0.5;
   flex-shrink: 0;
-  transition: opacity 0.18s;
+  transition: transform 0.2s ease, opacity 0.18s;
 }
 .navbar .dropdown-submenu:hover .has-submenu svg,
-.navbar .dropdown-submenu:focus-within .has-submenu svg { opacity: 1; }
-.navbar .dropdown-submenu-menu {
-  top: -8px !important;
-  left: calc(100% + 4px) !important;
-  right: auto !important;
-  bottom: auto !important;
-  display: none;
-  min-width: 240px;
+.navbar .dropdown-submenu:focus-within .has-submenu svg {
+  opacity: 1;
+  transform: rotate(90deg);
 }
-@media (hover: hover) and (pointer: fine) {
-  .navbar .dropdown-submenu:hover > .dropdown-submenu-menu { display: block; }
+
+/* Le sous-menu s'ouvre dans le même panneau : pas de panel latéral, pas de gap à traverser */
+.navbar .dropdown-submenu-menu {
+  position: static !important;
+  display: block !important;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.22s ease;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  inset: unset !important;
+  top: unset !important;
+  left: unset !important;
+}
+.navbar .dropdown-submenu-menu .dropdown-item {
+  padding-left: 26px !important;
+  color: #7ca8c0 !important;
+}
+.navbar .dropdown-submenu-menu .dropdown-item:hover,
+.navbar .dropdown-submenu-menu .dropdown-item:focus {
+  color: #f1f5f9 !important;
+}
+
+/* APRÈS */
+.navbar .dropdown-submenu.is-open > .dropdown-submenu-menu,
+.navbar .dropdown-submenu:focus-within > .dropdown-submenu-menu {
+  max-height: 400px;
 }
 
 /* Positionnement CSS direct (sans Popper.js) */

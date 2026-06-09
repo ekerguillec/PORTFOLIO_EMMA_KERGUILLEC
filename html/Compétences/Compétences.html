@@ -106,7 +106,7 @@
     .tool-green{background:#34d399;}
     .tool-orange{background:#fb923c;}
 
-    [id^="sec-"]{scroll-margin-top:90px;}
+    [id^="sec-"]{scroll-margin-top:130px;}
 
     /* ── SKILLS TABLE LAYOUT ── */
     .skills-table{display:flex;flex-direction:column;margin-bottom:14px;}
@@ -748,6 +748,23 @@
       });
     })();
   </script>
+  <script>
+(function () {
+  // Délai de fermeture sur les dropdowns principaux
+  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(item => {
+    let t;
+    item.addEventListener('mouseenter', () => { clearTimeout(t); item.classList.add('is-hovered'); });
+    item.addEventListener('mouseleave', () => { t = setTimeout(() => item.classList.remove('is-hovered'), 200); });
+  });
+
+  // Délai de fermeture sur le sous-menu Ingénierie cognitive
+  document.querySelectorAll('.navbar .dropdown-submenu').forEach(li => {
+    let t;
+    li.addEventListener('mouseenter', () => { clearTimeout(t); li.classList.add('is-open'); });
+    li.addEventListener('mouseleave', () => { t = setTimeout(() => li.classList.remove('is-open'), 200); });
+  });
+})();
+</script>
   <script src="../../style/theme.js"></script>
 </body>
 </html>
