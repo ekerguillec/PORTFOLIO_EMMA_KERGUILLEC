@@ -1,499 +1,651 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script>!function(){var t=localStorage.getItem('portfolio-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.classList.add('light-mode')}();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV - Emma Kerguillec</title>
+  <meta name="description" content="CV d'Emma Kerguillec, élève-ingénieure à l'ENSC Bordeaux INP.">
+  <meta name="author" content="Emma Kerguillec">
+  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../style/styleExp.css">
+  <link rel="stylesheet" href="../../style/theme.css">
   <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>CV — Emma Kerguillec</title>
   <style>
-    :root {
-      --text: #1f1f1f;
-      --muted: #5e5e5e;
-      --line: #e2e2e2;
-      --accent: #1f1f1f;
+    /* ── Wrapper page ── */
+    .cv-page-wrapper {
+      padding: 32px 0 60px;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-      font-weight: 400;
-      color: var(--text);
-      background: #f4f4f4;
+
+    :root {
+      --cv-text:        #1a1a1a;
+      --cv-muted:       #636363;
+      --cv-line:        #e0e0e0;
+      --cv-sidebar-bg:  #f6f6f6;
     }
 
     /* ── Toolbar ── */
-    .toolbar {
-      max-width: 1000px;
+    .cv-toolbar {
+      width: 794px;
+      max-width: 100%;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
-      padding: 14px 0;
+      padding: 0 0 12px;
     }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: #666;
-      text-decoration: none;
-      font-family: 'Poppins', sans-serif;
-    }
-    .back-link:hover { color: #1f1f1f; }
-    .print-btn {
-      padding: 7px 16px;
-      background: #1f1f1f;
+    .cv-print-btn {
+      padding: 6px 14px;
+      background: #1a1a1a;
       color: #fff;
       border: none;
       border-radius: 5px;
       font-family: 'Poppins', sans-serif;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 500;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
-    .print-btn:hover { background: #333; }
+    .cv-print-btn:hover { background: #333; }
 
-    /* ── Page grid ── */
-    .page {
-      max-width: 1000px;
-      margin: 0 auto 30px;
+    /* ── CV card ── */
+    .cv-card {
+      width: 794px;
+      max-width: 100%;
+      margin: 0 auto;
       background: #fff;
       display: grid;
-      grid-template-columns: 290px 1fr;
-      box-shadow: 0 0 30px rgba(0,0,0,0.05);
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: auto 1px 1fr;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.09);
+      font-family: 'Poppins', sans-serif;
+      color: var(--cv-text);
     }
 
-    /* Top zone : QR côté gauche, nom/infos côté droit */
-    .top-left {
-      padding: 40px 30px 30px;
-    }
-    .top-right {
-      padding: 40px 45px 30px;
-    }
-
-    /* Séparateur pleine largeur */
-    .full-sep {
-      grid-column: 1 / -1;
-      border: none;
-      border-top: 1px solid var(--line);
-      margin: 0;
-    }
-
-    /* Sidebar (sections sous le séparateur) */
-    .sidebar {
-      padding: 28px 30px 40px;
-    }
-    .portfolio-badge {
+    /* ── Top zone ── */
+    .cv-top-left {
+      padding: 26px 22px 20px;
       display: flex;
       align-items: center;
-      gap: 14px;
-    }
-    .portfolio-label {
-      writing-mode: vertical-rl;
-      font-size: 13px;
-      letter-spacing: 3px;
-      color: var(--text);
-    }
-    .qr {
-      display: grid;
-      grid-template-columns: repeat(15, 1fr);
-      grid-template-rows: repeat(15, 1fr);
-      width: 110px;
-      height: 110px;
-      flex-shrink: 0;
-    }
-    .qr span { background: transparent; }
-    .qr span.on { background: var(--text); }
-
-    .sidebar h2 {
-      font-size: 12.5px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin: 0 0 14px;
-    }
-    .sidebar ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 2.1;
-    }
-    .sidebar ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .bullet {
-      color: var(--muted);
-      flex-shrink: 0;
-      line-height: 2.1;
-      font-size: 10px;
-    }
-    .contact-list li { gap: 12px; }
-    .icon {
-      display: inline-flex;
-      width: 16px;
-      flex-shrink: 0;
       justify-content: center;
-      align-items: center;
-      color: var(--muted);
-      font-size: 13px;
+      background: var(--cv-sidebar-bg);
+    }
+    .cv-top-right { padding: 26px 30px 20px; }
+
+    .cv-full-sep {
+      grid-column: 1 / -1;
+      height: 1px;
+      background: var(--cv-line);
     }
 
-    /* Outils */
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    .tools-list li {
-      display: inline-block;
-      font-size: 11.5px;
-      font-weight: 400;
-      color: var(--muted);
-      padding: 3px 10px;
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      letter-spacing: 0.2px;
-      line-height: 1.6;
-    }
-    .tools-list li::before { content: none; }
-
-    .langues p {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--muted);
-      margin: 8px 0;
-    }
-    .langues strong { color: var(--text); }
-
-    /* Séparateur entre sections */
-    hr.sep {
-      border: none;
-      border-top: 1px solid var(--line);
-      margin: 26px 0;
-    }
-
-    /* Main content */
-    .main { padding: 28px 45px 40px; }
-
-    .main h1 {
-      font-size: 28px;
-      font-weight: 500;
-      margin: 0 0 6px;
-      letter-spacing: 0.3px;
-    }
-    .subtitle {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--muted);
-      margin: 0 0 16px;
-    }
-    .stage {
-      font-style: italic;
-      font-weight: 400;
-      font-size: 14px;
-      margin: 0 0 4px;
-    }
-    .availability {
-      font-style: italic;
-      font-weight: 400;
-      font-size: 13px;
-      color: var(--muted);
-      margin: 0 0 16px;
-    }
-    .tagline {
-      font-style: italic;
-      font-weight: 400;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0;
-    }
-    .main h2 {
-      font-size: 13px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin: 0 0 20px;
-    }
-    .entry {
-      margin-bottom: 20px;
-      display: flex;
-      gap: 10px;
-    }
-    .entry-bullet {
-      color: var(--muted);
+    /* Photo */
+    .cv-photo-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
       flex-shrink: 0;
-      font-size: 10px;
+      border: 2px solid #ddd;
+    }
+    .cv-photo-wrap img {
+      width: 100%;
+      height: 115%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Nom & infos */
+    .cv-name {
+      font-size: 23px;
+      font-weight: 600;
+      color: var(--cv-text);
+      letter-spacing: 0.2px;
+      margin: 0 0 3px;
+    }
+    .cv-title {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--cv-muted);
+      margin: 0 0 12px;
+    }
+    .cv-stage {
+      font-size: 12px;
+      font-style: italic;
+      margin: 0 0 2px;
+      color: var(--cv-text);
+    }
+    .cv-dispo {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--cv-muted);
+      margin: 0 0 10px;
+    }
+    .cv-tagline {
+      font-size: 11.5px;
+      font-style: italic;
+      color: var(--cv-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── Sidebar ── */
+    .cv-sidebar {
+      padding: 20px 22px 24px;
+      background: var(--cv-sidebar-bg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Séparateur visuel entre sections sur écran */
+    .cv-sidebar .cv-section + .cv-section {
+      border-top: 1px solid var(--cv-line);
+      padding-top: 13px;
+      margin-top: 13px;
+    }
+
+    .cv-sb-h {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--cv-text);
+      margin: 0 0 9px;
+      padding-bottom: 5px;
+      border-bottom: 1.5px solid var(--cv-text);
+    }
+
+    .cv-contact-list {
+      list-style: none;
+      margin: 0; padding: 0;
+      font-size: 11px;
+      color: var(--cv-muted);
       line-height: 1.7;
     }
-    .entry-body { flex: 1; min-width: 0; }
-    .entry-title {
-      font-size: 14px;
-      font-weight: 500;
+    .cv-contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 4px;
     }
-    .entry-meta {
-      font-size: 12.5px;
-      color: var(--muted);
-      font-weight: 400;
-    }
-    .entry p {
-      margin: 5px 0 0;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.65;
-    }
-    .entry .detail {
-      font-style: italic;
-      color: var(--muted);
-    }
-    .entry .detail strong, .entry p strong {
-      font-weight: 500;
-      color: var(--text);
-      font-style: normal;
+    .cv-ico {
+      width: 13px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--cv-muted);
+      flex-shrink: 0;
     }
 
-    @media (max-width: 760px) {
-      .toolbar { padding: 14px 16px; }
-      .page { grid-template-columns: 1fr; }
-      .full-sep { grid-column: 1; }
-      .top-left { padding-bottom: 20px; }
+    .cv-skill-list {
+      list-style: none;
+      margin: 0; padding: 0;
+      font-size: 11px;
+      color: var(--cv-muted);
+      line-height: 1.75;
     }
+    .cv-skill-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+    .cv-bullet {
+      flex-shrink: 0;
+      font-size: 8px;
+      line-height: 1.75;
+      color: var(--cv-muted);
+    }
+
+    .cv-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .cv-tool {
+      font-size: 10px;
+      color: var(--cv-muted);
+      padding: 2px 8px;
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    .cv-lang { font-size: 11px; color: var(--cv-muted); margin: 5px 0; }
+    .cv-lang strong { color: var(--cv-text); font-weight: 500; }
+
+    /* ── Main ── */
+    .cv-main {
+      padding: 20px 30px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Séparateur visuel entre sections sur écran */
+    .cv-main .cv-section + .cv-section {
+      border-top: 1px solid var(--cv-line);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+
+    .cv-main-h {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--cv-text);
+      margin: 0 0 11px;
+      padding-bottom: 5px;
+      border-bottom: 1.5px solid var(--cv-text);
+    }
+
+    .cv-entry { margin-bottom: 12px; display: flex; gap: 8px; }
+    .cv-entry:last-child { margin-bottom: 0; }
+    .cv-entry-bullet {
+      font-size: 8px;
+      color: var(--cv-muted);
+      flex-shrink: 0;
+      line-height: 1.8;
+    }
+    .cv-entry-body { flex: 1; min-width: 0; }
+    .cv-entry-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cv-text);
+      line-height: 1.4;
+    }
+    .cv-entry-meta {
+      font-size: 11px;
+      color: var(--cv-muted);
+      font-weight: 400;
+    }
+    .cv-entry-body p {
+      margin: 3px 0 0;
+      font-size: 11px;
+      color: var(--cv-muted);
+      line-height: 1.55;
+    }
+    .cv-entry-body .cv-detail { font-style: italic; }
+    .cv-entry-body .cv-org { font-style: normal; font-weight: 600; color: var(--cv-text); }
+    .cv-entry-body p strong { font-weight: 500; color: var(--cv-text); font-style: normal; }
+
+    /* ── Responsive (AVANT print) ── */
+    @media only screen and (max-width: 820px) {
+      .cv-card { grid-template-columns: 1fr; }
+      .cv-full-sep { grid-column: 1; }
+      .cv-top-left { justify-content: flex-start; }
+    }
+
+    /* ── Print ── */
     @media print {
-      body { background: #fff; }
-      .toolbar { display: none !important; }
-      .page { box-shadow: none; margin: 0; max-width: 100%; }
+      @page { size: A4 portrait; margin: 0; }
+      html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
+      header, .site-footer, .cv-toolbar, .cv-print-btn { display: none !important; }
+      .cv-page-wrapper { padding: 0 !important; margin: 0 !important; }
+
+      .cv-card {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: none !important;
+        grid-template-columns: 240px 1fr !important;
+        grid-template-rows: auto 1px 1fr !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+      }
+      .cv-full-sep { grid-column: 1 / -1 !important; }
+
+      /* Préserver les couleurs de fond */
+      .cv-top-left,
+      .cv-sidebar {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: var(--cv-sidebar-bg) !important;
+      }
+      .cv-tool {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #fff !important;
+      }
+
+      .cv-top-left  { padding: 20px 22px 16px !important; }
+      .cv-top-right { padding: 20px 28px 16px !important; }
+      .cv-photo-wrap { width: 82px !important; height: 82px !important; }
+
+      /* Les deux colonnes distribuent l'espace entre sections */
+      .cv-sidebar {
+        padding: 18px 22px 22px !important;
+        justify-content: space-between !important;
+      }
+      .cv-main {
+        padding: 18px 28px 22px !important;
+        justify-content: space-between !important;
+      }
+
+      /* Supprimer les séparateurs visuels (remplacés par l'espacement flex) */
+      .cv-sidebar .cv-section + .cv-section,
+      .cv-main .cv-section + .cv-section {
+        border-top: none !important;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+
+      /* Les en-têtes de section gardent leur soulignement comme repère visuel */
+      .cv-sb-h, .cv-main-h {
+        margin-bottom: 7px !important;
+      }
+      .cv-entry { margin-bottom: 10px !important; }
+      .cv-entry:last-child { margin-bottom: 0 !important; }
     }
   </style>
 </head>
 <body>
 
-  <div class="toolbar">
-    <a href="../../index.html" class="back-link">
-      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7H2M7 2l-5 5 5 5"/></svg>
-      Retour au portfolio
-    </a>
-    <button class="print-btn" onclick="window.print()">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Sauvegarder en PDF
-    </button>
-  </div>
-
-  <div class="page">
-
-    <!-- ZONE HAUTE : QR | Nom + infos -->
-    <div class="top-left">
-      <div class="portfolio-badge">
-        <span class="portfolio-label">PORTFOLIO</span>
-        <div class="qr" id="qr"></div>
+  <!-- ══ HEADER SITE ══ -->
+  <header>
+    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="../../index.html">Portfolio</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarCV" aria-controls="navbarCV" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+          <span class="close-icon" aria-hidden="true">&#10005;</span>
+        </button>
+        <button class="theme-toggle" aria-label="Passer en mode clair" title="Changer de thème">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCV">
+          <div class="navbar-nav ms-auto">
+            <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
+            <div class="nav-item dropdown">
+              <a class="nav-link" href="../Projets/Main.html">PROJETS</a>
+              <button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Projets">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../Projets/Main.html">Tous les projets</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../Projets/Poulpong.html">Poul'Pong</a></li>
+                <li><a class="dropdown-item" href="../Projets/Audiosensible.html">Ombre Sensible</a></li>
+                <li><a class="dropdown-item" href="../Projets/Prothese.html">Prothèses Myoélectriques</a></li>
+              </ul>
+            </div>
+            <div class="nav-item dropdown">
+              <a class="nav-link" href="../Experience/Experience.html">EXPERIENCE</a>
+              <button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Expérience">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../Experience/Experience.html">Toutes les expériences</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../Experience/BDE.html">BDE ENSC</a></li>
+                <li><a class="dropdown-item" href="../Experience/ingénib.html">Forum Ingénib</a></li>
+                <li><a class="dropdown-item" href="../Experience/Le Télégramme.html">Le Télégramme</a></li>
+                <li><a class="dropdown-item" href="../Experience/E.Leclerc.html">E.Leclerc</a></li>
+                <li><a class="dropdown-item" href="../Experience/Mam.html">MAM</a></li>
+                <li><a class="dropdown-item" href="../Experience/Pharmacie.html">Pharmacie</a></li>
+                <li><a class="dropdown-item" href="../Experience/SNU.html">SNU</a></li>
+                <li><a class="dropdown-item" href="../Experience/i2c.html">i2c Junior-Entreprise</a></li>
+              </ul>
+            </div>
+            <div class="nav-item dropdown">
+              <a class="nav-link" href="../Compétences/Compétences.html">COMPÉTENCES</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../Compétences/Compétences.html">Toutes les compétences</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-langages">Langages &amp; frameworks</a></li>
+                <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-logiciels">Logiciels &amp; outils</a></li>
+                <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-methodes">Méthodes &amp; fabrication</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item has-submenu" href="../Compétences/Compétences.html#sec-cognitique">Ingénierie cognitive <svg width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2l4 4-4 4"/></svg></a>
+                  <ul class="dropdown-menu dropdown-submenu-menu">
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-facteur-humain">Facteur humain &amp; ergonomie</a></li>
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-ihm">Interfaces Homme-Machine</a></li>
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-programmation">Programmation &amp; développement</a></li>
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-embarque">Systèmes embarqués &amp; prototypage</a></li>
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-ia">IA &amp; analyse de données</a></li>
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-recherche">Rédaction scientifique</a></li>
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-management">Gestion de projet &amp; leadership</a></li>
+                    <li><a class="dropdown-item" href="../Compétences/Compétences.html#sec-langues">Langues &amp; communication</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <a href="../CV/CV.html" class="nav-link" aria-current="page"><strong><em>CV</em></strong></a>
+            <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
+          </div>
+        </div>
       </div>
+    </nav>
+  </header>
+
+  <!-- ══ CV ══ -->
+  <main class="cv-page-wrapper">
+
+    <div class="cv-toolbar">
+      <button class="cv-print-btn" onclick="window.print()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Sauvegarder en PDF
+      </button>
     </div>
 
-    <div class="top-right">
-      <h1>Emma KERGUILLEC</h1>
-      <p class="subtitle">Élève-ingénieur à l'ENSC</p>
-      <p class="stage">Stage d'application</p>
-      <p class="availability">12 à 16 semaines, disponible du 1 mai au 31 août 2027</p>
-      <p class="tagline">Passionnée par l'humain et la technologie, pour des outils performants et intuitifs.</p>
+    <div class="cv-card">
+
+      <!-- ZONE HAUTE -->
+      <div class="cv-top-left">
+        <div class="cv-photo-wrap">
+          <img src="../../images/MaPhotoCorrigee.png" alt="Emma Kerguillec">
+        </div>
+      </div>
+
+      <div class="cv-top-right">
+        <h1 class="cv-name">Emma KERGUILLEC</h1>
+        <p class="cv-title">Élève-ingénieure à l'ENSC — Bordeaux INP</p>
+        <p class="cv-stage">Stage d'application</p>
+        <p class="cv-dispo">12 à 16 semaines · disponible du 1 mai au 31 août 2027</p>
+        <p class="cv-tagline">Passionnée par l'humain et la technologie, pour des outils performants et intuitifs.</p>
+      </div>
+
+      <div class="cv-full-sep"></div>
+
+      <!-- SIDEBAR -->
+      <aside class="cv-sidebar">
+
+        <div class="cv-section">
+          <p class="cv-sb-h">Contact</p>
+          <ul class="cv-contact-list">
+            <li><span class="cv-ico"><i class="fa-solid fa-phone"></i></span>+33 6 49 55 82 21</li>
+            <li><span class="cv-ico"><i class="fa-solid fa-envelope"></i></span>ekerguillec@ensc.fr</li>
+            <li><span class="cv-ico"><i class="fa-brands fa-linkedin"></i></span>Emma KERGUILLEC</li>
+            <li><span class="cv-ico"><i class="fa-brands fa-github"></i></span>ekerguillec</li>
+            <li><span class="cv-ico"><i class="fa-solid fa-location-dot"></i></span>Talence (33)</li>
+            <li><span class="cv-ico"><i class="fa-solid fa-car"></i></span>Permis B + véhicule personnel</li>
+          </ul>
+        </div>
+
+        <div class="cv-section">
+          <p class="cv-sb-h">Savoir-faire</p>
+          <ul class="cv-skill-list">
+            <li><span class="cv-bullet">•</span>Prototypage 3D et découpe laser</li>
+            <li><span class="cv-bullet">•</span>Python, C#, HTML5/CSS3, JavaScript</li>
+            <li><span class="cv-bullet">•</span>React, PHP, SQL, MCD/MLD, APIs REST</li>
+            <li><span class="cv-bullet">•</span>Analyse de données &amp; statistiques</li>
+            <li><span class="cv-bullet">•</span>Gestion de projet</li>
+            <li><span class="cv-bullet">•</span>Méthodes agiles (Kanban, Scrum, MASK...)</li>
+            <li><span class="cv-bullet">•</span>UX UI Design</li>
+          </ul>
+        </div>
+
+        <div class="cv-section">
+          <p class="cv-sb-h">Savoir-être</p>
+          <ul class="cv-skill-list">
+            <li><span class="cv-bullet">•</span>Esprit d'analyse et de synthèse</li>
+            <li><span class="cv-bullet">•</span>Communication claire</li>
+            <li><span class="cv-bullet">•</span>Proactivité / Prise d'initiative</li>
+            <li><span class="cv-bullet">•</span>Travail en équipe pluridisciplinaire</li>
+            <li><span class="cv-bullet">•</span>Gestion efficace du temps et des priorités</li>
+          </ul>
+        </div>
+
+        <div class="cv-section">
+          <p class="cv-sb-h">Outils</p>
+          <div class="cv-tools">
+            <span class="cv-tool">Logiciel R</span>
+            <span class="cv-tool">MATLAB</span>
+            <span class="cv-tool">Git</span>
+            <span class="cv-tool">GitLab</span>
+            <span class="cv-tool">GitHub</span>
+            <span class="cv-tool">VS Code</span>
+            <span class="cv-tool">Figma</span>
+            <span class="cv-tool">G Suite</span>
+            <span class="cv-tool">MS Office</span>
+            <span class="cv-tool">LaTeX</span>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <p class="cv-sb-h">Langues</p>
+          <p class="cv-lang"><strong>Français</strong> – C2 (langue maternelle)</p>
+          <p class="cv-lang"><strong>Anglais</strong> – B2 (Certificat Cambridge)</p>
+        </div>
+
+      </aside>
+
+      <!-- MAIN -->
+      <main class="cv-main">
+
+        <div class="cv-section">
+          <p class="cv-main-h">Éducation</p>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">École nationale supérieure de Cognitique <span class="cv-entry-meta">| 2025 – 2028</span></div>
+              <p class="cv-detail">Sciences cognitives, informatique &amp; UX</p>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Cycle préparatoire de Bordeaux <span class="cv-entry-meta">| 2023 – 2025</span></div>
+              <p class="cv-detail">Classe préparatoire intégrée, déléguée</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <p class="cv-main-h">Projets</p>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Ombre Sensible <span class="cv-entry-meta">| 2025–2026</span></div>
+              <p>Conception d'un casque immersif simulant différents handicaps auditifs (surdité, acouphènes, hyperacousie).</p>
+              <p class="cv-detail">Captation et <strong>traitement du signal</strong> sonore en temps réel, modélisation des presets, <strong>développement logiciel</strong> en C#, conception 3D</p>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Poul'Pong <span class="cv-entry-meta">| 2025</span></div>
+              <p>Développement d'un Pong interactif contrôlé par voix et rythme cardiaque (Raspberry Pi Pico + capteurs).</p>
+              <p class="cv-detail">Programmation en Python, <strong>systèmes embarqués</strong>, traitement du signal, impression 3D et découpe laser</p>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Les prothèses de bras myoélectriques <span class="cv-entry-meta">| 2024–2025</span></div>
+              <p>Mémoire de fin d'étude sur la technologie et l'ingénierie des prothèses de bras myoélectriques.</p>
+              <p class="cv-detail"><strong>Veille et analyse</strong> scientifique, vulgarisation</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <p class="cv-main-h">Expérience</p>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Vice-Présidente <span class="cv-entry-meta">| 4 mois | 2026</span></div>
+              <p class="cv-org">Forum Ingénib</p>
+              <p class="cv-detail">Organisation d'un forum entreprises-étudiants : <strong>gestion et coordination</strong> du forum, <strong>ressources humaines</strong> et relations avec les 80 entreprises partenaires.</p>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Comptable <span class="cv-entry-meta">| 6 mois | 2026</span></div>
+              <p class="cv-org">i2c – Junior-Entreprise de l'ENSC</p>
+              <p class="cv-detail">Suivi comptable et financier d'une Junior-Entreprise : <strong>écritures comptables</strong>, rapprochements bancaires, contrôle de la TVA, <strong>facturation électronique</strong>...</p>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Presse écrite – Impression/Expédition <span class="cv-entry-meta">| 7 mois | 2025–2026</span></div>
+              <p class="cv-org">Le Télégramme</p>
+              <p class="cv-detail">Compréhension d'une <strong>chaîne de production</strong> complexe en milieu industriel</p>
+            </div>
+          </div>
+          <div class="cv-entry">
+            <span class="cv-entry-bullet">•</span>
+            <div class="cv-entry-body">
+              <div class="cv-entry-title">Service National Universel <span class="cv-entry-meta">| 2 semaines | 2022</span></div>
+              <p class="cv-detail">Engagement civique, esprit d'équipe, cohésion, sens du service</p>
+            </div>
+          </div>
+        </div>
+
+      </main>
     </div>
+  </main>
 
-    <!-- SÉPARATEUR PLEINE LARGEUR -->
-    <hr class="full-sep">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-      <h2>Contact</h2>
-      <ul class="contact-list">
-        <li><span class="icon"><i class="fa-solid fa-phone"></i></span> +33 6 49 55 82 21</li>
-        <li><span class="icon"><i class="fa-solid fa-envelope"></i></span> ekerguillec@ensc.fr</li>
-        <li><span class="icon"><i class="fa-brands fa-linkedin"></i></span> Emma KERGUILLEC</li>
-        <li><span class="icon"><i class="fa-brands fa-github"></i></span> ekerguillec</li>
-        <li><span class="icon"><i class="fa-solid fa-location-dot"></i></span> Talence (33)</li>
-        <li><span class="icon"><i class="fa-solid fa-car"></i></span> Permis B + véhicule personnel</li>
-      </ul>
-
-      <hr class="sep">
-
-      <h2>Savoir-faire</h2>
-      <ul>
-        <li><span class="bullet">•</span> Prototypage 3D et découpe laser</li>
-        <li><span class="bullet">•</span> Python, C#, HTML5/CSS3, JavaScript</li>
-        <li><span class="bullet">•</span> React, PHP, SQL, MCD/MLD, APIs REST</li>
-        <li><span class="bullet">•</span> Analyse de données &amp; statistiques</li>
-        <li><span class="bullet">•</span> Gestion de projet</li>
-        <li><span class="bullet">•</span> Méthodes agiles (Kanban, Scrum, MASK...)</li>
-        <li><span class="bullet">•</span> UX UI Design</li>
-      </ul>
-
-      <hr class="sep">
-
-      <h2>Savoir-être</h2>
-      <ul>
-        <li><span class="bullet">•</span> Esprit d'analyse et de synthèse</li>
-        <li><span class="bullet">•</span> Communication claire</li>
-        <li><span class="bullet">•</span> Proactivité / Prise d'initiative</li>
-        <li><span class="bullet">•</span> Travail en équipe pluridisciplinaire</li>
-        <li><span class="bullet">•</span> Gestion efficace du temps et des priorités</li>
-      </ul>
-
-      <hr class="sep">
-
-      <h2>Outils</h2>
-      <ul class="tools-list">
-        <li>Logiciel R</li>
-        <li>MATLAB</li>
-        <li>Git</li>
-        <li>GitLab</li>
-        <li>GitHub</li>
-        <li>VS Code</li>
-        <li>Figma</li>
-        <li>G Suite</li>
-        <li>MS Office</li>
-        <li>LaTeX</li>
-      </ul>
-
-      <hr class="sep">
-
-      <h2>Langues</h2>
-      <div class="langues">
-        <p><strong>Français</strong> – C2 (langue maternelle)</p>
-        <p><strong>Anglais</strong> – B2 (Certificat Cambridge)</p>
+  <!-- ══ FOOTER SITE ══ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-name">Emma Kerguillec</p>
+        <p class="footer-role">Ingénieure Cogniticienne</p>
+        <p class="footer-school">ENSC · Bordeaux INP · 2024–2026</p>
+        <p class="footer-tagline">Des systèmes pensés pour l'Homme.</p>
       </div>
-    </aside>
+      <nav class="footer-nav-col" aria-label="Navigation principale">
+        <p class="footer-nav-label">Portfolio</p>
+        <ul class="footer-nav-list">
+          <li><a href="../A propos/A propos.html">À propos</a></li>
+          <li><a href="../Projets/Main.html">Projets</a></li>
+          <li><a href="../Experience/Experience.html">Expérience</a></li>
+          <li><a href="../Compétences/Compétences.html">Compétences</a></li>
+          <li><a href="../Contact/Contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-nav-col" aria-label="Projets">
+        <p class="footer-nav-label">Projets</p>
+        <ul class="footer-nav-list">
+          <li><a href="../Projets/Poulpong.html">Poul'Pong</a></li>
+          <li><a href="../Projets/Audiosensible.html">Ombre Sensible</a></li>
+          <li><a href="../Projets/Prothese.html">Prothèses Myoélectriques</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Emma Kerguillec · ENSC Bordeaux INP</p>
+      <div class="footer-socials">
+        <a href="../CV/CV.html" class="footer-social-link" aria-current="page">CV</a>
+        <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn ↗</a>
+      </div>
+    </div>
+  </footer>
 
-    <!-- MAIN -->
-    <main class="main">
-
-      <h2>Éducation</h2>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Ecole nationale supérieure de Cognitique <span class="entry-meta">| 2025 - 2028</span></div>
-          <p class="detail">Sciences cognitives, informatique &amp; UX</p>
-        </div>
-      </div>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Cycle préparatoire de Bordeaux <span class="entry-meta">| 2023 - 2025</span></div>
-          <p class="detail">Classe préparatoire intégrée, déléguée</p>
-        </div>
-      </div>
-
-      <hr class="sep">
-
-      <h2>Projets</h2>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Ombre Sensible <span class="entry-meta">| 2025-2026</span></div>
-          <p>Conception d'un casque immersif simulant différents handicaps auditifs (surdité, acouphènes, hyperacousie).</p>
-          <p class="detail">Captation et <strong>traitement du signal</strong> sonore en temps réel, modélisation des presets, <strong>développement logiciel</strong> en C#, conception 3D</p>
-        </div>
-      </div>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Poul'Pong <span class="entry-meta">| 2025</span></div>
-          <p>Développement d'un Pong interactif contrôlé par voix et rythme cardiaque (Raspberry Pi Pico + capteurs).</p>
-          <p class="detail">Programmation en Python, <strong>systèmes embarqués</strong>, traitement du signal, impression 3D et découpe laser</p>
-        </div>
-      </div>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Les prothèses de bras myoélectriques <span class="entry-meta">| 2024-2025</span></div>
-          <p>Mémoire de fin d'étude sur la technologie et l'ingénierie des prothèses de bras myoélectriques.</p>
-          <p class="detail"><strong>Veille et analyse</strong> scientifique, vulgarisation</p>
-        </div>
-      </div>
-
-      <hr class="sep">
-
-      <h2>Expérience</h2>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Vice-Présidente <span class="entry-meta">| 4 mois | 2026</span></div>
-          <p class="detail" style="font-style:normal;font-weight:600;color:var(--text);margin-bottom:0;">Forum Ingénib</p>
-          <p class="detail">Organisation d'un forum entreprises-étudiants : <strong>gestion et coordination</strong> du forum, <strong>ressources humaines</strong> et relations avec les 80 entreprises partenaires.</p>
-        </div>
-      </div>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Comptable <span class="entry-meta">| 6 mois | 2026</span></div>
-          <p class="detail" style="font-style:normal;font-weight:600;color:var(--text);margin-bottom:0;">i2c – Junior-Entreprise de l'ENSC</p>
-          <p class="detail">Suivi comptable et financier d'une Junior-Entreprise : <strong>écritures comptables</strong>, rapprochements bancaires, contrôle de la TVA, <strong>facturation électronique</strong>...</p>
-        </div>
-      </div>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Presse écrite – Impression/Expédition <span class="entry-meta">| 7 mois | 2025-2026</span></div>
-          <p class="detail" style="font-style:normal;font-weight:600;color:var(--text);margin-bottom:0;">Le Télégramme</p>
-          <p class="detail">Compréhension d'une <strong>chaîne de production</strong> complexe en milieu industriel</p>
-        </div>
-      </div>
-      <div class="entry">
-        <span class="entry-bullet">•</span>
-        <div class="entry-body">
-          <div class="entry-title">Service National Universel <span class="entry-meta">| 2 semaines | 2022</span></div>
-          <p class="detail">Engagement civique, esprit d'équipe, cohésion, sens du service</p>
-        </div>
-      </div>
-    </main>
-
-  </div>
-
-  <script>
-    (function () {
-      var size = 15;
-      var seed = 7;
-      function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-      var grid = [];
-      for (var r = 0; r < size; r++) {
-        grid[r] = [];
-        for (var c = 0; c < size; c++) grid[r][c] = rand() < 0.42;
-      }
-      function finder(r0, c0) {
-        for (var r = 0; r < 7; r++) {
-          for (var c = 0; c < 7; c++) {
-            var border = r === 0 || r === 6 || c === 0 || c === 6;
-            var inner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
-            grid[r0 + r][c0 + c] = border || inner;
-          }
-        }
-      }
-      finder(0, 0);
-      finder(0, size - 7);
-      finder(size - 7, 0);
-      var qr = document.getElementById('qr');
-      var html = '';
-      for (var r = 0; r < size; r++) {
-        for (var c = 0; c < size; c++) {
-          html += '<span class="' + (grid[r][c] ? 'on' : '') + '"></span>';
-        }
-      }
-      qr.innerHTML = html;
-    })();
-  </script>
+  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../style/theme.js"></script>
 
 </body>
 </html>

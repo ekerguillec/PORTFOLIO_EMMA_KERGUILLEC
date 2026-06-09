@@ -195,6 +195,33 @@ color:#93c5fd;
   .navbar .nav-item.dropdown:hover > .dropdown-menu { display: block; }
 }
 
+/* ── Sous-menu Ingénierie cognitive ── */
+.navbar .dropdown-submenu { position: relative; }
+.navbar .dropdown-submenu .has-submenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.navbar .dropdown-submenu .has-submenu svg {
+  opacity: 0.5;
+  flex-shrink: 0;
+  transition: opacity 0.18s;
+}
+.navbar .dropdown-submenu:hover .has-submenu svg,
+.navbar .dropdown-submenu:focus-within .has-submenu svg { opacity: 1; }
+.navbar .dropdown-submenu-menu {
+  top: -8px !important;
+  left: calc(100% + 4px) !important;
+  right: auto !important;
+  bottom: auto !important;
+  display: none;
+  min-width: 240px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .navbar .dropdown-submenu:hover > .dropdown-submenu-menu { display: block; }
+}
+
 /* Positionnement CSS direct (sans Popper.js) */
 .navbar .nav-item.dropdown { position: relative !important; }
 .navbar .dropdown-menu {

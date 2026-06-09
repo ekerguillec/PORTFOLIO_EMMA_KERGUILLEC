@@ -106,6 +106,20 @@
     .tool-green{background:#34d399;}
     .tool-orange{background:#fb923c;}
 
+    [id^="sec-"]{scroll-margin-top:90px;}
+
+    /* ── SKILLS TABLE LAYOUT ── */
+    .skills-table{display:flex;flex-direction:column;margin-bottom:14px;}
+    .skills-row{display:grid;grid-template-columns:148px 1fr;gap:0 20px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:start;}
+    .skills-row:first-child{border-top:1px solid rgba(255,255,255,0.04);}
+    .skills-row-cat{font-size:9.5px;letter-spacing:1.3px;text-transform:uppercase;color:#9ab5c8;font-weight:500;padding-top:7px;line-height:1.4;}
+    .skills-row-items{display:flex;flex-wrap:wrap;gap:2px;}
+    /* Chips sans bordure en mode table */
+    .skills-table .tool-item{display:inline-flex;}
+    .skills-table .tool-chip-btn{background:transparent!important;border-color:transparent!important;padding:5px 10px 5px 4px;font-size:12.5px;color:#b8cfe0;}
+    .skills-table .tool-chip-btn:hover,.skills-table .tool-chip-btn:focus-visible{background:rgba(125,211,252,0.06)!important;border-color:rgba(125,211,252,0.18)!important;color:#e2e8f0;border-radius:8px;}
+    .skills-table .tool-chip-btn[aria-expanded="true"]{background:rgba(125,211,252,0.1)!important;border-color:rgba(125,211,252,0.32)!important;color:#e2e8f0;}
+
     /* ── FOOTER ── */
     .footer-skills{display:flex;justify-content:center;gap:40px;padding:55px 20px;margin-top:80px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(15,23,42,0.6);backdrop-filter:blur(6px);}
 
@@ -130,6 +144,7 @@
       .skills-featured{padding:32px 28px;}
       .footer-skills{flex-direction:column;gap:18px;align-items:center;}
       .stat-grid{grid-template-columns:1fr 1fr;}
+      .tools-cols-2,.tools-cols-3{grid-template-columns:1fr;}
     }
 
     /* ── TOOLTIPS ── */
@@ -244,7 +259,30 @@
                 <li><a class="dropdown-item" href="../Experience/i2c.html">i2c Junior-Entreprise</a></li>
               </ul>
             </div>
-            <a href="../Compétences/Compétences.html" class="nav-link" aria-current="page"><strong><em>COMPÉTENCES</em></strong></a>
+            <div class="nav-item dropdown">
+              <a class="nav-link" href="../Compétences/Compétences.html" aria-current="page">COMPÉTENCES</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../Compétences/Compétences.html">Toutes les compétences</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#sec-langages">Langages &amp; frameworks</a></li>
+                <li><a class="dropdown-item" href="#sec-logiciels">Logiciels &amp; outils</a></li>
+                <li><a class="dropdown-item" href="#sec-methodes">Méthodes &amp; fabrication</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item has-submenu" href="#sec-cognitique">Ingénierie cognitive <svg width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2l4 4-4 4"/></svg></a>
+                  <ul class="dropdown-menu dropdown-submenu-menu">
+                    <li><a class="dropdown-item" href="#sec-facteur-humain">Facteur humain &amp; ergonomie</a></li>
+                    <li><a class="dropdown-item" href="#sec-ihm">Interfaces Homme-Machine</a></li>
+                    <li><a class="dropdown-item" href="#sec-programmation">Programmation &amp; développement</a></li>
+                    <li><a class="dropdown-item" href="#sec-embarque">Systèmes embarqués &amp; prototypage</a></li>
+                    <li><a class="dropdown-item" href="#sec-ia">IA &amp; analyse de données</a></li>
+                    <li><a class="dropdown-item" href="#sec-recherche">Rédaction scientifique</a></li>
+                    <li><a class="dropdown-item" href="#sec-management">Gestion de projet &amp; leadership</a></li>
+                    <li><a class="dropdown-item" href="#sec-langues">Langues &amp; communication</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
             <a href="../CV/CV.html" class="nav-link">CV</a>
             <a href="../Contact/Contact.html" class="nav-link">CONTACT</a>
           </div>
@@ -295,164 +333,95 @@
 
       <!-- ── OUTILS & TECHNOLOGIES ── -->
       <section class="tools-section" aria-label="Outils et technologies">
-        <p class="tools-label">Langages &amp; frameworks <small style="font-size:10px;color:#9ab5c8;font-weight:400;letter-spacing:0;text-transform:none;margin-left:4px;">— survolez ou cliquez pour en savoir plus</small></p>
-        <div class="tools-grid" style="margin-bottom:14px;">
 
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-python" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>Python</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-python"><strong>Python</strong>Langage polyvalent pour l'analyse de données, le traitement du signal et les systèmes embarqués. Cœur logiciel de Poul'Pong et des travaux d'analyse ENSC.</div>
+        <p class="tools-label" id="sec-langages">Langages &amp; frameworks <small style="font-size:10px;color:#9ab5c8;font-weight:400;letter-spacing:0;text-transform:none;margin-left:4px;">— survolez ou cliquez pour en savoir plus</small></p>
+        <div class="skills-table" style="margin-bottom:14px;">
+
+          <div class="skills-row">
+            <span class="skills-row-cat">Systèmes &amp;<br>embarqué</span>
+            <div class="skills-row-items">
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-python" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>Python</button><div class="tool-tooltip" role="tooltip" id="tt-python"><strong>Python</strong>Langage polyvalent pour l'analyse de données, le traitement du signal et les systèmes embarqués. Cœur logiciel de Poul'Pong et des travaux d'analyse ENSC.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-csharp" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>C#</button><div class="tool-tooltip" role="tooltip" id="tt-csharp"><strong>C#</strong>Langage orienté objet de Microsoft pour le développement logiciel temps réel. Utilisé dans Ombre Sensible pour le traitement du signal audio (filtres, presets acouphènes, hyperacousie).</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-micropython" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>MicroPython</button><div class="tool-tooltip" role="tooltip" id="tt-micropython"><strong>MicroPython</strong>Version allégée de Python tournant sur microcontrôleurs. Utilisé sur Raspberry Pi Pico W pour piloter capteurs, logique de jeu et communication WiFi dans Poul'Pong.</div></div>
+            </div>
           </div>
 
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-csharp" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>C#</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-csharp"><strong>C#</strong>Langage orienté objet de Microsoft pour le développement logiciel temps réel. Utilisé dans Ombre Sensible pour le traitement du signal audio (filtres, presets acouphènes, hyperacousie).</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-micropython" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>MicroPython</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-micropython"><strong>MicroPython</strong>Version allégée de Python tournant sur microcontrôleurs. Utilisé sur Raspberry Pi Pico W pour piloter capteurs, logique de jeu et communication WiFi dans Poul'Pong.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-js" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>JavaScript / React</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-js"><strong>JavaScript / React</strong>JavaScript pour l'interactivité web ; React pour les interfaces à composants réutilisables. Maîtrise du front-end moderne et des architectures SPA.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-php" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>PHP</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-php"><strong>PHP</strong>Langage de script côté serveur pour les applications web dynamiques. Gestion des formulaires, sessions et communication avec les bases de données SQL.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-sql" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>SQL / MCD / MLD</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-sql"><strong>SQL / MCD / MLD</strong>SQL pour interroger et manipuler des bases de données relationnelles. MCD (Modèle Conceptuel) et MLD (Modèle Logique) pour la modélisation avant implémentation.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-html" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>HTML5 / CSS3</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-html"><strong>HTML5 / CSS3</strong>Langages fondamentaux du web : structure sémantique et mise en forme avancée. Maîtrisés à niveau expert — ce portfolio WCAG AAA en est la démonstration directe.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-api" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>APIs REST</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-api"><strong>APIs REST</strong>Architecture pour l'échange de données entre services web via HTTP (GET, POST, PUT, DELETE). Standard des systèmes distribués et des applications modernes.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-bootstrap" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>Bootstrap</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-bootstrap"><strong>Bootstrap</strong>Framework CSS open-source facilitant la création d'interfaces responsives. Utilisé comme base de mise en page sur toutes les pages de ce portfolio.</div>
+          <div class="skills-row">
+            <span class="skills-row-cat">Web &amp;<br>données</span>
+            <div class="skills-row-items">
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-js" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>JavaScript / React</button><div class="tool-tooltip" role="tooltip" id="tt-js"><strong>JavaScript / React</strong>JavaScript pour l'interactivité web ; React pour les interfaces à composants réutilisables. Maîtrise du front-end moderne et des architectures SPA.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-html" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>HTML5 / CSS3</button><div class="tool-tooltip" role="tooltip" id="tt-html"><strong>HTML5 / CSS3</strong>Langages fondamentaux du web : structure sémantique et mise en forme avancée. Maîtrisés à niveau expert — ce portfolio WCAG AAA en est la démonstration directe.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-php" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>PHP</button><div class="tool-tooltip" role="tooltip" id="tt-php"><strong>PHP</strong>Langage de script côté serveur pour les applications web dynamiques. Gestion des formulaires, sessions et communication avec les bases de données SQL.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-sql" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>SQL / MCD / MLD</button><div class="tool-tooltip" role="tooltip" id="tt-sql"><strong>SQL / MCD / MLD</strong>SQL pour interroger et manipuler des bases de données relationnelles. MCD (Modèle Conceptuel) et MLD (Modèle Logique) pour la modélisation avant implémentation.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-api" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>APIs REST</button><div class="tool-tooltip" role="tooltip" id="tt-api"><strong>APIs REST</strong>Architecture pour l'échange de données entre services web via HTTP (GET, POST, PUT, DELETE). Standard des systèmes distribués et des applications modernes.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-bootstrap" aria-expanded="false"><span class="tool-dot tool-blue" aria-hidden="true"></span>Bootstrap</button><div class="tool-tooltip" role="tooltip" id="tt-bootstrap"><strong>Bootstrap</strong>Framework CSS open-source facilitant la création d'interfaces responsives. Utilisé comme base de mise en page sur toutes les pages de ce portfolio.</div></div>
+            </div>
           </div>
 
         </div>
 
-        <p class="tools-label" style="margin-top:28px;">Logiciels &amp; outils</p>
-        <div class="tools-grid" style="margin-bottom:14px;">
+        <p class="tools-label" id="sec-logiciels" style="margin-top:28px;">Logiciels &amp; outils</p>
+        <div class="skills-table" style="margin-bottom:14px;">
 
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-matlab" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>MATLAB</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-matlab"><strong>MATLAB</strong>Environnement de calcul numérique très utilisé en ingénierie. Indispensable pour le traitement du signal, les simulations et l'analyse expérimentale — standard chez Airbus, Thales, Dassault.</div>
+          <div class="skills-row">
+            <span class="skills-row-cat">Calcul &amp;<br>analyse</span>
+            <div class="skills-row-items">
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-matlab" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>MATLAB</button><div class="tool-tooltip" role="tooltip" id="tt-matlab"><strong>MATLAB</strong>Environnement de calcul numérique très utilisé en ingénierie. Indispensable pour le traitement du signal, les simulations et l'analyse expérimentale — standard chez Airbus, Thales, Dassault.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-r" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>Logiciel R</button><div class="tool-tooltip" role="tooltip" id="tt-r"><strong>Logiciel R</strong>Langage statistique de référence pour l'analyse de données expérimentales, les tests d'hypothèse, la modélisation et la visualisation scientifique.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-numpy" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>NumPy / Matplotlib</button><div class="tool-tooltip" role="tooltip" id="tt-numpy"><strong>NumPy / Matplotlib</strong>Bibliothèques Python essentielles : NumPy pour le calcul matriciel haute performance, Matplotlib pour la visualisation de données, de signaux et de résultats expérimentaux.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-signal" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>Traitement du signal</button><div class="tool-tooltip" role="tooltip" id="tt-signal"><strong>Traitement du signal</strong>Techniques d'analyse et de transformation de signaux temporels : filtrage, FFT, convolution, modélisation. Base technique d'Ombre Sensible (audio) et de Poul'Pong (biofeedback).</div></div>
+            </div>
           </div>
 
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-r" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>Logiciel R</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-r"><strong>Logiciel R</strong>Langage statistique de référence pour l'analyse de données expérimentales, les tests d'hypothèse, la modélisation et la visualisation scientifique.</div>
+          <div class="skills-row">
+            <span class="skills-row-cat">Développement</span>
+            <div class="skills-row-items">
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-git" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>Git / GitHub / GitLab</button><div class="tool-tooltip" role="tooltip" id="tt-git"><strong>Git / GitHub / GitLab</strong>Systèmes de contrôle de version : Git pour le suivi des modifications, GitHub pour les projets ouverts (ce portfolio), GitLab pour les dépôts privés ENSC.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-vscode" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>VS Code</button><div class="tool-tooltip" role="tooltip" id="tt-vscode"><strong>VS Code</strong>Éditeur de code léger et extensible, compatible avec tous les langages du portfolio. Environnement de développement principal pour Python, C#, HTML/CSS et MicroPython.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-latex" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>LaTeX</button><div class="tool-tooltip" role="tooltip" id="tt-latex"><strong>LaTeX</strong>Système de composition typographique pour la rédaction scientifique et académique. Utilisé pour le mémoire sur les prothèses myoélectriques — standard dans l'ingénierie et la recherche.</div></div>
+            </div>
           </div>
 
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-numpy" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>NumPy / Matplotlib</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-numpy"><strong>NumPy / Matplotlib</strong>Bibliothèques Python essentielles : NumPy pour le calcul matriciel haute performance, Matplotlib pour la visualisation de données, de signaux et de résultats expérimentaux.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-signal" aria-expanded="false"><span class="tool-dot tool-orange" aria-hidden="true"></span>Traitement du signal</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-signal"><strong>Traitement du signal</strong>Techniques d'analyse et de transformation de signaux temporels : filtrage, FFT, convolution, modélisation. Base technique d'Ombre Sensible (audio) et de Poul'Pong (biofeedback).</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-git" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>Git / GitHub / GitLab</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-git"><strong>Git / GitHub / GitLab</strong>Systèmes de contrôle de version : Git pour le suivi des modifications, GitHub pour les projets ouverts (ce portfolio), GitLab pour les dépôts privés ENSC.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-vscode" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>VS Code</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-vscode"><strong>VS Code</strong>Éditeur de code léger et extensible, compatible avec tous les langages du portfolio. Environnement de développement principal pour Python, C#, HTML/CSS et MicroPython.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-figma" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>Figma</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-figma"><strong>Figma</strong>Outil de design d'interface collaboratif. Utilisé pour le maquettage et le prototypage d'IHM avant développement — essentiel dans tout projet UX/UI.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-gsuite" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>G Suite</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-gsuite"><strong>G Suite</strong>Suite collaborative Google (Docs, Sheets, Slides, Drive). Utilisée pour la rédaction partagée, les présentations et la coordination d'équipe à distance.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-excel" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>MS Office / Excel avancé</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-excel"><strong>MS Office / Excel avancé</strong>Suite bureautique Microsoft. Excel maîtrisé à niveau avancé pour la comptabilité i2c : tableaux de suivi, budgets, états de rapprochement bancaire, déclarations TVA.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-latex" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>LaTeX</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-latex"><strong>LaTeX</strong>Système de composition typographique pour la rédaction scientifique et académique. Utilisé pour le mémoire sur les prothèses myoélectriques — standard dans l'ingénierie et la recherche.</div>
+          <div class="skills-row">
+            <span class="skills-row-cat">Design &amp;<br>collaboration</span>
+            <div class="skills-row-items">
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-figma" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>Figma</button><div class="tool-tooltip" role="tooltip" id="tt-figma"><strong>Figma</strong>Outil de design d'interface collaboratif. Utilisé pour le maquettage et le prototypage d'IHM avant développement — essentiel dans tout projet UX/UI.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-gsuite" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>G Suite</button><div class="tool-tooltip" role="tooltip" id="tt-gsuite"><strong>G Suite</strong>Suite collaborative Google (Docs, Sheets, Slides, Drive). Utilisée pour la rédaction partagée, les présentations et la coordination d'équipe à distance.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-excel" aria-expanded="false"><span class="tool-dot tool-green" aria-hidden="true"></span>MS Office / Excel avancé</button><div class="tool-tooltip" role="tooltip" id="tt-excel"><strong>MS Office / Excel avancé</strong>Suite bureautique Microsoft. Excel maîtrisé à niveau avancé pour la comptabilité i2c : tableaux de suivi, budgets, états de rapprochement bancaire, déclarations TVA.</div></div>
+            </div>
           </div>
 
         </div>
 
-        <p class="tools-label" style="margin-top:28px;">Méthodes &amp; fabrication</p>
-        <div class="tools-grid">
+        <p class="tools-label" id="sec-methodes" style="margin-top:28px;">Méthodes &amp; fabrication</p>
+        <div class="skills-table">
 
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-agile" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Kanban / Scrum / MASK</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-agile"><strong>Kanban / Scrum / MASK</strong>Méthodes agiles : Kanban (flux continu), Scrum (sprints itératifs), MASK (Méthode d'Audit des Systèmes de Connaissances) pour la capitalisation et le transfert de savoir.</div>
+          <div class="skills-row">
+            <span class="skills-row-cat">Méthodes &amp;<br>UX</span>
+            <div class="skills-row-items">
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-agile" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Kanban / Scrum / MASK</button><div class="tool-tooltip" role="tooltip" id="tt-agile"><strong>Kanban / Scrum / MASK</strong>Méthodes agiles : Kanban (flux continu), Scrum (sprints itératifs), MASK (Méthode d'Audit des Systèmes de Connaissances) pour la capitalisation et le transfert de savoir.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-wcag" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>WCAG AAA</button><div class="tool-tooltip" role="tooltip" id="tt-wcag"><strong>WCAG AAA</strong>Web Content Accessibility Guidelines niveau AAA — le standard d'accessibilité numérique le plus exigeant : contraste ≥ 7:1, navigation clavier complète, ARIA. Intégralement implémenté sur ce portfolio.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-nielsen" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Heuristiques Nielsen</button><div class="tool-tooltip" role="tooltip" id="tt-nielsen"><strong>Heuristiques de Nielsen</strong>10 principes fondamentaux d'ergonomie des interfaces formulés par Jakob Nielsen. Outil structuré d'évaluation de l'utilisabilité et de détection des problèmes UX.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-amdec" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>AMDEC / HFMEA</button><div class="tool-tooltip" role="tooltip" id="tt-amdec"><strong>AMDEC / HFMEA</strong>Analyse des Modes de Défaillance, Effets et Criticité. La HFMEA intègre les facteurs humains — outil de sécurité des systèmes critiques indispensable en nucléaire, aéro et défense.</div></div>
+            </div>
           </div>
 
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-3d" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Impression 3D</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-3d"><strong>Impression 3D</strong>Fabrication additive par dépôt de matière pour le prototypage rapide. Utilisée pour les boîtiers et pièces mécaniques dans Poul'Pong et Ombre Sensible.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-laser" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Découpe laser</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-laser"><strong>Découpe laser</strong>Fabrication soustractive de précision sur matériaux plans (bois, acrylique). Utilisée pour les panneaux du boîtier de Poul'Pong — intégration entre conception 3D et fabrication.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-cao" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Conception 3D</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-cao"><strong>Conception 3D (CAO)</strong>Modélisation de pièces en 3D pour l'impression ou la simulation. Capacité à passer d'une idée à un fichier de fabrication — lien entre la conception et la réalisation physique.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-wcag" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>WCAG AAA</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-wcag"><strong>WCAG AAA</strong>Web Content Accessibility Guidelines niveau AAA — le standard d'accessibilité numérique le plus exigeant : contraste ≥ 7:1, navigation clavier complète, ARIA. Intégralement implémenté sur ce portfolio.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-nielsen" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Heuristiques Nielsen</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-nielsen"><strong>Heuristiques de Nielsen</strong>10 principes fondamentaux d'ergonomie des interfaces formulés par Jakob Nielsen. Outil structuré d'évaluation de l'utilisabilité et de détection des problèmes UX.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-amdec" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>AMDEC / HFMEA</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-amdec"><strong>AMDEC / HFMEA</strong>Analyse des Modes de Défaillance, Effets et Criticité. La HFMEA intègre les facteurs humains — outil de sécurité des systèmes critiques indispensable en nucléaire, aéro et défense.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-pico" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Raspberry Pi Pico W</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-pico"><strong>Raspberry Pi Pico W</strong>Microcontrôleur compact avec connectivité WiFi, programmé en MicroPython. Cœur de Poul'Pong : gère en temps réel les capteurs physiologiques, la logique du jeu et la communication réseau.</div>
-          </div>
-
-          <div class="tool-item">
-            <button class="tool-chip-btn" aria-describedby="tt-capteurs" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Capteurs physiologiques</button>
-            <div class="tool-tooltip" role="tooltip" id="tt-capteurs"><strong>Capteurs physiologiques</strong>Capteurs mesurant des signaux biologiques en temps réel (fréquence cardiaque, signal vocal). Utilisés pour créer des interfaces biofeedback dans Poul'Pong — l'humain comme contrôleur.</div>
+          <div class="skills-row">
+            <span class="skills-row-cat">Fabrication &amp;<br>embarqué</span>
+            <div class="skills-row-items">
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-3d" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Impression 3D</button><div class="tool-tooltip" role="tooltip" id="tt-3d"><strong>Impression 3D</strong>Fabrication additive par dépôt de matière pour le prototypage rapide. Utilisée pour les boîtiers et pièces mécaniques dans Poul'Pong et Ombre Sensible.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-laser" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Découpe laser</button><div class="tool-tooltip" role="tooltip" id="tt-laser"><strong>Découpe laser</strong>Fabrication soustractive de précision sur matériaux plans (bois, acrylique). Utilisée pour les panneaux du boîtier de Poul'Pong — intégration entre conception 3D et fabrication.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-cao" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Conception 3D</button><div class="tool-tooltip" role="tooltip" id="tt-cao"><strong>Conception 3D (CAO)</strong>Modélisation de pièces en 3D pour l'impression ou la simulation. Capacité à passer d'une idée à un fichier de fabrication — lien entre la conception et la réalisation physique.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-pico" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Raspberry Pi Pico W</button><div class="tool-tooltip" role="tooltip" id="tt-pico"><strong>Raspberry Pi Pico W</strong>Microcontrôleur compact avec connectivité WiFi, programmé en MicroPython. Cœur de Poul'Pong : gère en temps réel les capteurs physiologiques, la logique du jeu et la communication réseau.</div></div>
+              <div class="tool-item"><button class="tool-chip-btn" aria-describedby="tt-capteurs" aria-expanded="false"><span class="tool-dot tool-purple" aria-hidden="true"></span>Capteurs physiologiques</button><div class="tool-tooltip" role="tooltip" id="tt-capteurs"><strong>Capteurs physiologiques</strong>Capteurs mesurant des signaux biologiques en temps réel (fréquence cardiaque, signal vocal). Utilisés pour créer des interfaces biofeedback dans Poul'Pong — l'humain comme contrôleur.</div></div>
+            </div>
           </div>
 
         </div>
       </section>
 
       <!-- ── FEATURED : Ingénierie cognitive ── -->
-      <section aria-label="Compétence principale">
+      <section id="sec-cognitique" aria-label="Compétence principale">
         <div class="skills-featured">
           <div class="feat-orb" aria-hidden="true"></div>
           <div>
@@ -490,7 +459,7 @@
         <div class="skills-grid">
 
           <!-- Facteur humain & ergonomie -->
-          <div class="scard sd1">
+          <div class="scard sd1" id="sec-facteur-humain">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -512,7 +481,7 @@
           </div>
 
           <!-- IHM & UX industriel -->
-          <div class="scard sd2">
+          <div class="scard sd2" id="sec-ihm">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -535,7 +504,7 @@
           </div>
 
           <!-- Programmation -->
-          <div class="scard sd3">
+          <div class="scard sd3" id="sec-programmation">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -565,7 +534,7 @@
         <div class="skills-grid">
 
           <!-- Systèmes embarqués -->
-          <div class="scard sd4">
+          <div class="scard sd4" id="sec-embarque">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -591,7 +560,7 @@
           </div>
 
           <!-- IA & traitement de données -->
-          <div class="scard sd5">
+          <div class="scard sd5" id="sec-ia">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -615,7 +584,7 @@
           </div>
 
           <!-- Recherche scientifique -->
-          <div class="scard sd6">
+          <div class="scard sd6" id="sec-recherche">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -645,7 +614,7 @@
         <div class="skills-grid-2">
 
           <!-- Gestion de projet & management -->
-          <div class="scard sd7">
+          <div class="scard sd7" id="sec-management">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -669,7 +638,7 @@
           </div>
 
           <!-- Communication & langues -->
-          <div class="scard sd8">
+          <div class="scard sd8" id="sec-langues">
             <div class="scard-bar" aria-hidden="true"></div>
             <div class="scard-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">

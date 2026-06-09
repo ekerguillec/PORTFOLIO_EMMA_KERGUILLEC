@@ -97,6 +97,8 @@ html.light-mode .navbar .dropdown-item       { color: #334155 !important; }
 html.light-mode .navbar .dropdown-item:hover,
 html.light-mode .navbar .dropdown-item:focus { background: rgba(37,99,235,0.06) !important; color: #0f172a !important; }
 html.light-mode .navbar .dropdown-divider    { border-color: rgba(0,0,0,0.07) !important; }
+html.light-mode .navbar .dropdown-submenu-menu { background: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important; }
+html.light-mode .navbar .dropdown-submenu .has-submenu svg { color: #64748b; }
 
 /* ── Footer (nouveau site-footer) ── */
 html.light-mode .site-footer {
