@@ -96,8 +96,6 @@ html:not(.light-mode) .navbar .navbar-nav a[href="../Compétences/Compétences.h
     .tool-green{background:#34d399;}
     .tool-orange{background:#fb923c;}
 
-    [id^="sec-"]{scroll-margin-top:130px;}
-
     /* ── SKILLS TABLE LAYOUT ── */
     .skills-table{display:flex;flex-direction:column;margin-bottom:14px;}
     .skills-row{display:grid;grid-template-columns:148px 1fr;gap:0 20px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:start;}

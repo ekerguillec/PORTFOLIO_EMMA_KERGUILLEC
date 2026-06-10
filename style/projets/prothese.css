@@ -16,21 +16,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 10; }
-    .navbar {
-      padding: 22px 8%;
-      backdrop-filter: blur(10px);
-      background: rgba(15,23,42,0.65);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .navbar-brand { font-size: 21px; font-weight: 600; letter-spacing: 1px; color: #f1f5f9; text-decoration: none; transition: color 0.3s; }
-    .navbar-brand:hover { color: #93c5fd; }
-    .nav-link { color: #cbd5f5; margin-left: 26px; font-size: 14px; letter-spacing: 0.4px; transition: color 0.3s; }
-    .nav-link:hover { color: #93c5fd; }
-    .navbar-toggler { border: none; background: transparent; }
-    .navbar-toggler .close-icon { display: none; color: #f1f5f9; font-size: 20px; }
-    .navbar-toggler:not(.collapsed) .navbar-toggler-icon { display: none; }
-    .navbar-toggler:not(.collapsed) .close-icon { display: block; }
 
     .project-page { position: relative; z-index: 2; padding: 130px 8% 100px; }
     .project-inner { max-width: 1060px; margin: 0 auto; }

@@ -43,18 +43,22 @@
       });
     })();
 
+// ── Scroll vers l'ancre initiale (cross-page) sans déclencher le verrou natif ──
 (function () {
-  // Délai de fermeture sur les dropdowns principaux
-  document.querySelectorAll('.navbar .nav-item.dropdown').forEach(item => {
-    let t;
-    item.addEventListener('mouseenter', () => { clearTimeout(t); item.classList.add('is-hovered'); });
-    item.addEventListener('mouseleave', () => { t = setTimeout(() => item.classList.remove('is-hovered'), 200); });
-  });
+  var hash = window.__portfolioHash;
+  if (!hash) return;
+  delete window.__portfolioHash;
 
-  // Délai de fermeture sur le sous-menu Ingénierie cognitive
-  document.querySelectorAll('.navbar .dropdown-submenu').forEach(li => {
-    let t;
-    li.addEventListener('mouseenter', () => { clearTimeout(t); li.classList.add('is-open'); });
-    li.addEventListener('mouseleave', () => { t = setTimeout(() => li.classList.remove('is-open'), 200); });
+  document.addEventListener('DOMContentLoaded', function () {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        var target = document.getElementById(hash.slice(1));
+        if (!target) return;
+        var navH = parseInt(getComputedStyle(document.documentElement).scrollPaddingTop, 10) || 130;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+        window.scrollTo(0, Math.max(0, top));
+        history.replaceState(null, '', hash);
+      });
+    });
   });
 })();

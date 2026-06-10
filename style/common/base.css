@@ -51,6 +51,10 @@
 
 /* ================= RESET ================= */
 
+html {
+  scroll-padding-top: 130px;
+}
+
 *{
 margin:0;
 padding:0;
@@ -382,13 +386,7 @@ html:not(.light-mode) .navbar .navbar-nav a.nav-link[aria-current="page"] {
 .nav-caret:hover { color: var(--nav-caret-hover); }
 .nav-caret:focus-visible { outline: 2px solid var(--clr-focus); border-radius: 4px; }
 
-/* Hover sur le nav-item → affiche le dropdown */
-@media (hover: hover) and (pointer: fine) {
-  .navbar .nav-item.dropdown:hover > .dropdown-menu { display: block; }
-  .navbar .dropdown-submenu:hover > .dropdown-menu.dropdown-submenu-menu,
-  .navbar .dropdown-submenu:focus-within > .dropdown-menu.dropdown-submenu-menu { max-height: 400px; }
-}
-
+/* Dropdown principal : contrôlé par JS via is-hovered (mouseenter/mouseleave) */
 .navbar .nav-item.dropdown.is-hovered > .dropdown-menu { display: block; }
 
 /* ── Sous-menu Ingénierie cognitive (expand en place) ── */

@@ -97,6 +97,62 @@
         }
       });
     });
+
+    // ── Hover desktop sur les dropdowns principaux (is-hovered) ──────────
+    var isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)');
+    document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function (ddItem) {
+      var t;
+      ddItem.addEventListener('mouseenter', function () {
+        if (isDesktop.matches) { clearTimeout(t); ddItem.classList.add('is-hovered'); }
+      });
+      ddItem.addEventListener('mouseleave', function () {
+        if (isDesktop.matches) { t = setTimeout(function () { ddItem.classList.remove('is-hovered'); }, 200); }
+      });
+    });
+
+    // ── Hover desktop sur les sous-menus ─────────────────────────────────
+    document.querySelectorAll('.navbar .dropdown-submenu').forEach(function (sub) {
+      var t;
+      sub.addEventListener('mouseenter', function () {
+        if (isDesktop.matches) { clearTimeout(t); sub.classList.add('is-open'); }
+      });
+      sub.addEventListener('mouseleave', function () {
+        if (isDesktop.matches) { t = setTimeout(function () { sub.classList.remove('is-open'); }, 200); }
+      });
+    });
+
+    // ── Fermer dropdown + menu mobile quand on clique un item ─────────────
+    document.querySelectorAll('.navbar .dropdown-item').forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        // Desktop : retire is-hovered → le dropdown se ferme
+        var ddParent = item.closest('.nav-item.dropdown');
+        if (ddParent) ddParent.classList.remove('is-hovered');
+        // Ferme sous-menus et hamburger mobile
+        closeAllDropdowns();
+        document.querySelectorAll('.navbar-collapse.nav-open').forEach(function (c) {
+          c.classList.remove('nav-open');
+          var nb = c.closest('.navbar');
+          if (nb) {
+            var tog = nb.querySelector('.navbar-toggler');
+            if (tog) { tog.classList.remove('is-open'); tog.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+
+        // Ancre intra-page : scroll JS pour éviter le verrou natif du navigateur
+        var href = item.getAttribute('href');
+        if (href && href.charAt(0) === '#') {
+          var target = document.getElementById(href.slice(1));
+          if (target) {
+            e.preventDefault();
+            var padTop = parseInt(getComputedStyle(document.documentElement).scrollPaddingTop, 10) || 130;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - padTop;
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+            history.pushState(null, '', href);
+          }
+        }
+      });
+    });
+
   });
 
   function closeAllDropdowns() {
