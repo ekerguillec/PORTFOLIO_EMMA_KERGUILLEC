@@ -6,352 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CV d'Emma Kerguillec, élève-ingénieure à l'ENSC Bordeaux INP.">
   <meta name="author" content="Emma Kerguillec">
-  <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../style/styleExp.css">
-  <link rel="stylesheet" href="../../style/theme.css">
+  <link rel="stylesheet" href="../../style/common/base.css">
+  <link rel="stylesheet" href="../../style/pages/cv.css">
+  <link rel="stylesheet" href="../../style/common/theme.css">
   <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>CV — Emma Kerguillec</title>
-  <style>
-    /* ── Wrapper page ── */
-    .cv-page-wrapper {
-      padding: 32px 0 60px;
-    }
-
-    :root {
-      --cv-text:        #1a1a1a;
-      --cv-muted:       #636363;
-      --cv-line:        #e0e0e0;
-      --cv-sidebar-bg:  #f6f6f6;
-    }
-
-    /* ── Toolbar ── */
-    .cv-toolbar {
-      width: 794px;
-      max-width: 100%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0 0 12px;
-    }
-    .cv-print-btn {
-      padding: 6px 14px;
-      background: #1a1a1a;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 11.5px;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .cv-print-btn:hover { background: #333; }
-
-    /* ── CV card ── */
-    .cv-card {
-      width: 794px;
-      max-width: 100%;
-      margin: 0 auto;
-      background: #fff;
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      grid-template-rows: auto 1px 1fr;
-      box-shadow: 0 4px 40px rgba(0,0,0,0.09);
-      font-family: 'Poppins', sans-serif;
-      color: var(--cv-text);
-    }
-
-    /* ── Top zone ── */
-    .cv-top-left {
-      padding: 26px 22px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--cv-sidebar-bg);
-    }
-    .cv-top-right { padding: 26px 30px 20px; }
-
-    .cv-full-sep {
-      grid-column: 1 / -1;
-      height: 1px;
-      background: var(--cv-line);
-    }
-
-    /* Photo */
-    .cv-photo-wrap {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-      border: 2px solid #ddd;
-    }
-    .cv-photo-wrap img {
-      width: 100%;
-      height: 115%;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    /* Nom & infos */
-    .cv-name {
-      font-size: 23px;
-      font-weight: 600;
-      color: var(--cv-text);
-      letter-spacing: 0.2px;
-      margin: 0 0 3px;
-    }
-    .cv-title {
-      font-size: 12.5px;
-      font-weight: 400;
-      color: var(--cv-muted);
-      margin: 0 0 12px;
-    }
-    .cv-stage {
-      font-size: 12px;
-      font-style: italic;
-      margin: 0 0 2px;
-      color: var(--cv-text);
-    }
-    .cv-dispo {
-      font-size: 11px;
-      font-style: italic;
-      color: var(--cv-muted);
-      margin: 0 0 10px;
-    }
-    .cv-tagline {
-      font-size: 11.5px;
-      font-style: italic;
-      color: var(--cv-muted);
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    /* ── Sidebar ── */
-    .cv-sidebar {
-      padding: 20px 22px 24px;
-      background: var(--cv-sidebar-bg);
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Séparateur visuel entre sections sur écran */
-    .cv-sidebar .cv-section + .cv-section {
-      border-top: 1px solid var(--cv-line);
-      padding-top: 13px;
-      margin-top: 13px;
-    }
-
-    .cv-sb-h {
-      font-size: 9px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--cv-text);
-      margin: 0 0 9px;
-      padding-bottom: 5px;
-      border-bottom: 1.5px solid var(--cv-text);
-    }
-
-    .cv-contact-list {
-      list-style: none;
-      margin: 0; padding: 0;
-      font-size: 11px;
-      color: var(--cv-muted);
-      line-height: 1.7;
-    }
-    .cv-contact-list li {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 4px;
-    }
-    .cv-ico {
-      width: 13px;
-      text-align: center;
-      font-size: 11px;
-      color: var(--cv-muted);
-      flex-shrink: 0;
-    }
-
-    .cv-skill-list {
-      list-style: none;
-      margin: 0; padding: 0;
-      font-size: 11px;
-      color: var(--cv-muted);
-      line-height: 1.75;
-    }
-    .cv-skill-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 7px;
-    }
-    .cv-bullet {
-      flex-shrink: 0;
-      font-size: 8px;
-      line-height: 1.75;
-      color: var(--cv-muted);
-    }
-
-    .cv-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .cv-tool {
-      font-size: 10px;
-      color: var(--cv-muted);
-      padding: 2px 8px;
-      border: 1px solid #d5d5d5;
-      border-radius: 3px;
-      line-height: 1.6;
-      background: #fff;
-    }
-
-    .cv-lang { font-size: 11px; color: var(--cv-muted); margin: 5px 0; }
-    .cv-lang strong { color: var(--cv-text); font-weight: 500; }
-
-    /* ── Main ── */
-    .cv-main {
-      padding: 20px 30px 24px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Séparateur visuel entre sections sur écran */
-    .cv-main .cv-section + .cv-section {
-      border-top: 1px solid var(--cv-line);
-      padding-top: 14px;
-      margin-top: 14px;
-    }
-
-    .cv-main-h {
-      font-size: 9px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--cv-text);
-      margin: 0 0 11px;
-      padding-bottom: 5px;
-      border-bottom: 1.5px solid var(--cv-text);
-    }
-
-    .cv-entry { margin-bottom: 12px; display: flex; gap: 8px; }
-    .cv-entry:last-child { margin-bottom: 0; }
-    .cv-entry-bullet {
-      font-size: 8px;
-      color: var(--cv-muted);
-      flex-shrink: 0;
-      line-height: 1.8;
-    }
-    .cv-entry-body { flex: 1; min-width: 0; }
-    .cv-entry-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--cv-text);
-      line-height: 1.4;
-    }
-    .cv-entry-meta {
-      font-size: 11px;
-      color: var(--cv-muted);
-      font-weight: 400;
-    }
-    .cv-entry-body p {
-      margin: 3px 0 0;
-      font-size: 11px;
-      color: var(--cv-muted);
-      line-height: 1.55;
-    }
-    .cv-entry-body .cv-detail { font-style: italic; }
-    .cv-entry-body .cv-org { font-style: normal; font-weight: 600; color: var(--cv-text); }
-    .cv-entry-body p strong { font-weight: 500; color: var(--cv-text); font-style: normal; }
-
-    /* ── Responsive (AVANT print) ── */
-    @media only screen and (max-width: 820px) {
-      .cv-card { grid-template-columns: 1fr; }
-      .cv-full-sep { grid-column: 1; }
-      .cv-top-left { justify-content: flex-start; }
-    }
-
-    /* ── Print ── */
-    @media print {
-      @page { size: A4 portrait; margin: 0; }
-      html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
-      header, .site-footer, .cv-toolbar, .cv-print-btn { display: none !important; }
-      .cv-page-wrapper { padding: 0 !important; margin: 0 !important; }
-
-      .cv-card {
-        width: 210mm !important;
-        height: 297mm !important;
-        max-width: none !important;
-        grid-template-columns: 240px 1fr !important;
-        grid-template-rows: auto 1px 1fr !important;
-        box-shadow: none !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-      }
-      .cv-full-sep { grid-column: 1 / -1 !important; }
-
-      /* Préserver les couleurs de fond */
-      .cv-top-left,
-      .cv-sidebar {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        background: var(--cv-sidebar-bg) !important;
-      }
-      .cv-tool {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        background: #fff !important;
-      }
-
-      .cv-top-left  { padding: 20px 22px 16px !important; }
-      .cv-top-right { padding: 20px 28px 16px !important; }
-      .cv-photo-wrap { width: 82px !important; height: 82px !important; }
-
-      /* Les deux colonnes distribuent l'espace entre sections */
-      .cv-sidebar {
-        padding: 18px 22px 22px !important;
-        justify-content: space-between !important;
-      }
-      .cv-main {
-        padding: 18px 28px 22px !important;
-        justify-content: space-between !important;
-      }
-
-      /* Supprimer les séparateurs visuels (remplacés par l'espacement flex) */
-      .cv-sidebar .cv-section + .cv-section,
-      .cv-main .cv-section + .cv-section {
-        border-top: none !important;
-        padding-top: 0 !important;
-        margin-top: 0 !important;
-      }
-
-      /* Les en-têtes de section gardent leur soulignement comme repère visuel */
-      .cv-sb-h, .cv-main-h {
-        margin-bottom: 7px !important;
-      }
-      .cv-entry { margin-bottom: 10px !important; }
-      .cv-entry:last-child { margin-bottom: 0 !important; }
-    }
-  </style>
 </head>
 <body>
 
   <!-- ══ HEADER SITE ══ -->
   <header>
-    <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+    <nav class="navbar" aria-label="Navigation principale">
       <div class="container-fluid px-0">
         <a class="navbar-brand" href="../../index.html">Portfolio</a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarCV" aria-controls="navbarCV" aria-expanded="false" aria-label="Ouvrir le menu">
+        <button class="navbar-toggler" type="button" aria-controls="navbarCV" aria-expanded="false" aria-label="Ouvrir le menu">
           <span class="navbar-toggler-icon" aria-hidden="true"></span>
           <span class="navbar-toggler-icon" aria-hidden="true"></span>
           <span class="navbar-toggler-icon" aria-hidden="true"></span>
@@ -361,12 +33,12 @@
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCV">
-          <div class="navbar-nav ms-auto">
+        <div class="navbar-collapse" id="navbarCV">
+          <div class="navbar-nav">
             <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
             <div class="nav-item dropdown">
               <a class="nav-link" href="../Projets/Main.html">PROJETS</a>
-              <button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Projets">
+              <button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Projets">
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
               </button>
               <ul class="dropdown-menu">
@@ -379,7 +51,7 @@
             </div>
             <div class="nav-item dropdown">
               <a class="nav-link" href="../Experience/Experience.html">EXPERIENCE</a>
-              <button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Expérience">
+              <button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Expérience">
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
               </button>
               <ul class="dropdown-menu">
@@ -396,7 +68,7 @@
               </ul>
             </div>
             <div class="nav-item dropdown">
-              <a class="nav-link" href="../Compétences/Compétences.html">COMPÉTENCES</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <a class="nav-link" href="../Compétences/Compétences.html">COMPÉTENCES</a><button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Compétences/Compétences.html">Toutes les compétences</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -644,8 +316,8 @@
     </div>
   </footer>
 
-  <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../../style/theme.js"></script>
+  <script src="../../js/theme-toggle.js"></script>
 
+  <script src="../../js/navbar.js"></script>
 </body>
 </html>

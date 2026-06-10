@@ -70,7 +70,10 @@ html.light-mode .navbar-brand { color: #0f172a !important; }
 html.light-mode .navbar-brand:hover { color: #2563eb !important; }
 html.light-mode .nav-link { color: #334155 !important; }
 html.light-mode .nav-link:hover { color: #2563eb !important; }
+html.light-mode .navbar-toggler { color: #334155 !important; border-color: rgba(0,0,0,0.18) !important; }
+html.light-mode .navbar-toggler:hover { border-color: #2563eb !important; color: #2563eb !important; }
 html.light-mode .navbar-toggler-icon { background-color: #334155 !important; }
+html.light-mode .navbar-collapse { border-top-color: rgba(0,0,0,0.07) !important; }
 
 html.light-mode .theme-toggle {
   background: rgba(0,0,0,0.04);

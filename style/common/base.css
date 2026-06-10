@@ -6,6 +6,9 @@ padding:0;
 box-sizing:border-box;
 }
 
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+
 /* ================= SKIP LINK ================= */
 
 .skip-link {
@@ -103,16 +106,143 @@ z-index:0;
 }
 
 
-.navbar{
+.navbar {
+  padding: 22px 8%;
+  backdrop-filter: blur(8px);
+  background: rgba(15,23,42,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-padding:22px 8%;
+/* ── Wrapper interne (remplace Bootstrap .container-fluid) ── */
+.navbar > .container-fluid {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0;
+}
 
-backdrop-filter:blur(8px);
+/* ── Zone collapsible — poussée à droite par margin-left: auto ── */
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
 
-background:rgba(15,23,42,0.6);
+/* ── Liste de liens ── */
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-border-bottom:1px solid rgba(255,255,255,0.05);
+/* ── Bouton hamburger (masqué sur desktop) ── */
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #94a3b8;
+  padding: 6px 9px;
+  border-radius: 7px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-left: 8px;
+  min-height: 44px;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.navbar-toggler:hover { border-color: rgba(125,211,252,0.5); color: #7dd3fc; }
 
+.navbar-toggler-icon {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.close-icon {
+  display: none;
+  font-size: 18px;
+  line-height: 1;
+}
+.navbar-toggler.is-open .navbar-toggler-icon { display: none; }
+.navbar-toggler.is-open .close-icon { display: block; }
+
+/* ── Menu mobile (≤ 991px) ── */
+@media (max-width: 991px) {
+  .navbar { padding: 14px 6%; }
+
+  .navbar-brand { order: 1; }
+  .theme-toggle  { order: 2; margin-left: auto; }
+  .navbar-toggler {
+    display: flex;
+    order: 3;
+    margin-left: 10px;
+  }
+  .navbar-collapse {
+    order: 10;
+    width: 100%;
+    margin-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 6px 0 14px;
+  }
+  .navbar-collapse.nav-open { display: flex; }
+  .navbar > .container-fluid { flex-wrap: wrap; }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .nav-link {
+    margin-left: 0 !important;
+    width: 100%;
+    padding: 10px 4px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* Dropdown mobile : statique, sous le lien */
+  .navbar .nav-item.dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .navbar .nav-item.dropdown > .dropdown-menu {
+    position: static !important;
+    display: none !important;
+    top: unset !important;
+    left: unset !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 8px !important;
+    background: rgba(255,255,255,0.02) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding-left: 10px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    margin-top: 2px !important;
+  }
+  .navbar .nav-item.dropdown.mobile-open > .dropdown-menu { display: block !important; }
+  .nav-caret {
+    margin-left: auto;
+    padding: 10px 14px;
+    min-height: 44px;
+  }
 }
 
 .navbar-brand{
@@ -161,6 +291,13 @@ color:#93c5fd;
 
 }
 
+html:not(.light-mode) .navbar .navbar-nav a.nav-link[aria-current="page"] {
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.5) !important;
+}
+
 /* ── Caret séparé du lien ── */
 .navbar .nav-item.dropdown {
   display: flex;
@@ -185,7 +322,7 @@ color:#93c5fd;
   align-items: center;
   line-height: 1;
   transition: color 0.2s;
-  margin-left: -4px;
+  margin-left: 2px;
 }
 .nav-caret:hover { color: #7dd3fc; }
 .nav-caret:focus-visible { outline: 2px solid #7dd3fc; border-radius: 4px; }
@@ -193,6 +330,8 @@ color:#93c5fd;
 /* Hover sur le nav-item → affiche le dropdown */
 @media (hover: hover) and (pointer: fine) {
   .navbar .nav-item.dropdown:hover > .dropdown-menu { display: block; }
+  .navbar .dropdown-submenu:hover > .dropdown-menu.dropdown-submenu-menu,
+  .navbar .dropdown-submenu:focus-within > .dropdown-menu.dropdown-submenu-menu { max-height: 400px; }
 }
 
 .navbar .nav-item.dropdown.is-hovered > .dropdown-menu { display: block; }
@@ -216,7 +355,8 @@ color:#93c5fd;
 }
 
 /* Le sous-menu s'ouvre dans le même panneau : pas de panel latéral, pas de gap à traverser */
-.navbar .dropdown-submenu-menu {
+/* Spécificité 0,3,0 — bat les règles .navbar .dropdown-menu (0,2,0) quelle que soit leur position */
+.navbar .dropdown-menu.dropdown-submenu-menu {
   position: static !important;
   display: block !important;
   max-height: 0;
@@ -234,23 +374,23 @@ color:#93c5fd;
   top: unset !important;
   left: unset !important;
 }
-.navbar .dropdown-submenu-menu .dropdown-item {
+.navbar .dropdown-menu.dropdown-submenu-menu .dropdown-item {
   padding-left: 26px !important;
   color: #7ca8c0 !important;
 }
-.navbar .dropdown-submenu-menu .dropdown-item:hover,
-.navbar .dropdown-submenu-menu .dropdown-item:focus {
+.navbar .dropdown-menu.dropdown-submenu-menu .dropdown-item:hover,
+.navbar .dropdown-menu.dropdown-submenu-menu .dropdown-item:focus {
   color: #f1f5f9 !important;
 }
 
-/* APRÈS */
-.navbar .dropdown-submenu.is-open > .dropdown-submenu-menu,
-.navbar .dropdown-submenu:focus-within > .dropdown-submenu-menu {
+.navbar .dropdown-submenu.is-open > .dropdown-menu.dropdown-submenu-menu,
+.navbar .dropdown-submenu:focus-within > .dropdown-menu.dropdown-submenu-menu {
   max-height: 400px;
 }
 
 /* Positionnement CSS direct (sans Popper.js) */
 .navbar .nav-item.dropdown { position: relative !important; }
+.navbar .dropdown-menu { display: none; }
 .navbar .dropdown-menu {
   position: absolute !important;
   inset: unset !important;       /* reset avant les overrides individuels */
@@ -275,6 +415,8 @@ color:#93c5fd;
   min-width: 220px;
 }
 .navbar .dropdown-item {
+  display: block;
+  width: 100%;
   color: #94a3b8;
   border-radius: 8px;
   padding: 9px 14px;

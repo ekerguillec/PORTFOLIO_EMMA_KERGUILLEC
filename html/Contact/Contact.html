@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique — Contact.">
     <meta name="author" content="Emma Kerguillec">
-    <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../style/styleExp.css">
+    <link rel="stylesheet" href="../../style/common/base.css">
     <link rel="icon" type="image/svg+xml" href="../../images/favicon/favicon-ek-monogram.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,367 +14,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <title>Contact — Emma Kerguillec</title>
 
-    <style>
-        /* ── CONTACT PAGE ── */
-        .contact-page {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            padding: 140px 8% 100px;
-            overflow: hidden;
-        }
-
-        /* Lumières ambiantes */
-        .contact-page::before {
-            content: '';
-            position: absolute;
-            width: 700px; height: 700px;
-            top: -100px; right: -200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(125,211,252,0.07) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .contact-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 1080px;
-            margin: 0 auto;
-        }
-
-        /* ── HEADER ── */
-        .contact-header {
-            margin-bottom: 72px;
-            opacity: 0;
-            animation: fadeUp 0.9s ease forwards;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 60px;
-        }
-
-        .contact-header-left { flex: 0 0 auto; }
-
-        .contact-header h1 {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: clamp(42px, 5.5vw, 64px);
-            font-weight: 400;
-            color: #f1f5f9;
-            line-height: 1.15;
-            margin-top: 20px;
-        }
-
-        .contact-header h1 em {
-            color: #7dd3fc;
-            font-style: italic;
-        }
-
-        .contact-header .sub {
-            flex: 1;
-            font-size: 15px;
-            color: #aabcce;
-            line-height: 1.85;
-            max-width: 380px;
-            padding-bottom: 6px;
-        }
-
-        /* ── BENTO GRID ── */
-        .bento {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr 1fr;
-            grid-template-rows: 310px 190px;
-            gap: 18px;
-        }
-
-        /* ── BASE CARD ── */
-        .bcard {
-            position: relative;
-            border-radius: 22px;
-            padding: 42px 38px;
-            text-decoration: none;
-            overflow: hidden;
-            transition: transform 0.38s cubic-bezier(.22,.68,0,1.15), box-shadow 0.38s ease;
-            opacity: 0;
-            animation: fadeUp 0.85s ease forwards;
-        }
-
-        .bcard::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: border-color 0.3s;
-            pointer-events: none;
-        }
-
-        .bcard:hover {
-            transform: translateY(-7px) scale(1.01);
-            box-shadow: 0 28px 56px rgba(0,0,0,.4);
-        }
-
-        .bcard:hover::after { border-color: rgba(125,211,252,0.22); }
-
-        .bcard:nth-child(1) { animation-delay: .1s }
-        .bcard:nth-child(2) { animation-delay: .2s }
-        .bcard:nth-child(3) { animation-delay: .3s }
-        .bcard:nth-child(4) { animation-delay: .38s }
-        .bcard:nth-child(5) { animation-delay: .46s }
-
-        /* ── HERO CARD ── */
-        .bcard-hero {
-            grid-column: 1 / 2;
-            grid-row: 1 / 3;
-            background:
-                radial-gradient(ellipse at 80% 20%, rgba(125,211,252,0.08) 0%, transparent 55%),
-                linear-gradient(155deg, rgba(17,30,75,0.97) 0%, rgba(11,18,45,0.97) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Orbe déco */
-        .hero-orb {
-            position: absolute;
-            right: -40px; top: -40px;
-            width: 200px; height: 200px;
-            border-radius: 50%;
-            border: 1px solid rgba(125,211,252,0.07);
-            pointer-events: none;
-        }
-        .hero-orb::before {
-            content: '';
-            position: absolute;
-            inset: 30px;
-            border-radius: 50%;
-            border: 1px solid rgba(125,211,252,0.05);
-        }
-
-        .hero-eyebrow {
-            font-size: 11px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: #7dd3fc;
-            font-weight: 500;
-        }
-
-        .hero-title {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: clamp(26px, 3vw, 36px);
-            color: #f1f5f9;
-            line-height: 1.25;
-            margin-top: 14px;
-        }
-
-        .hero-title em { color: #7dd3fc; font-style: italic; }
-
-        .hero-desc {
-            margin-top: 14px;
-            font-size: 14px;
-            color: #aabcce;
-            line-height: 1.72;
-            max-width: 300px;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            margin-top: 28px;
-            padding: 12px 24px;
-            background: rgba(125,211,252,0.12);
-            border: 1px solid rgba(125,211,252,0.28);
-            border-radius: 50px;
-            color: #7dd3fc;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.2px;
-            transition: all 0.3s;
-            text-decoration: none;
-            width: fit-content;
-        }
-
-        .bcard-hero:hover .hero-cta {
-            background: rgba(125,211,252,0.22);
-            border-color: rgba(125,211,252,0.5);
-        }
-
-        .hero-cta svg { width: 14px; height: 14px; transition: transform .3s; }
-        .bcard-hero:hover .hero-cta svg { transform: translate(3px, -3px); }
-
-        /* ── CARD LINKEDIN ── */
-        .bcard-linkedin {
-            grid-column: 2 / 3;
-            grid-row: 1 / 2;
-            background:
-                radial-gradient(ellipse at 20% 80%, rgba(125,211,252,0.05) 0%, transparent 60%),
-                rgba(15,25,60,0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* ── CARD CV ── */
-        .bcard-cv {
-            grid-column: 3 / 4;
-            grid-row: 1 / 2;
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* ── CARD TEL ── */
-        .bcard-tel {
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
-            background: rgba(255,255,255,0.025);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        /* ── CARD EMAIL ── */
-        .bcard-email {
-            grid-column: 3 / 4;
-            grid-row: 2 / 3;
-            background: rgba(255,255,255,0.025);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        /* ── CARD CONTENT COMMUN ── */
-        .card-pill-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px; height: 42px;
-            border-radius: 12px;
-            background: rgba(125,211,252,0.07);
-            border: 1px solid rgba(125,211,252,0.14);
-            margin-bottom: 20px;
-            transition: background 0.3s;
-        }
-        .bcard:hover .card-pill-icon {
-            background: rgba(125,211,252,0.15);
-        }
-        .card-pill-icon svg {
-            width: 18px; height: 18px;
-        }
-
-        .card-label {
-            font-size: 11px;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            color: #9ab5c8;
-            font-weight: 500;
-            margin-bottom: 6px;
-        }
-
-        .card-val {
-            font-size: 17px;
-            font-weight: 500;
-            color: #e2e8f0;
-            line-height: 1.35;
-        }
-
-        .card-sub {
-            margin-top: 8px;
-            font-size: 12.5px;
-            color: #9ab5c8;
-            line-height: 1.6;
-        }
-
-        /* Arrow top-right */
-        .card-ext {
-            position: absolute;
-            top: 22px; right: 22px;
-            width: 26px; height: 26px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s;
-        }
-        .card-ext svg { width: 11px; height: 11px; }
-        .bcard:hover .card-ext {
-            background: rgba(125,211,252,0.1);
-            border-color: rgba(125,211,252,0.3);
-            transform: translate(2px, -2px);
-        }
-
-        /* Séparateur */
-        .card-sep {
-            height: 1px;
-            background: rgba(255,255,255,0.05);
-            margin: 16px 0;
-        }
-
-        /* LinkedIn badge */
-        .li-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            background: rgba(125,211,252,0.08);
-            border: 1px solid rgba(125,211,252,0.15);
-            border-radius: 6px;
-            font-size: 11px;
-            color: #7dd3fc;
-            letter-spacing: 0.3px;
-        }
-
-        /* ── FOOTER (identique styleExp) ── */
-        .footer-contact {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 55px 20px;
-            margin-top: 80px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            background: rgba(15,23,42,0.6);
-            backdrop-filter: blur(6px);
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 860px) {
-            .contact-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .contact-header .sub { max-width: 100%; }
-            .bento {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto auto auto;
-            }
-            .bcard-hero    { grid-column: 1 / 3; grid-row: 1 / 2; min-height: 280px; }
-            .bcard-linkedin { grid-column: 1 / 2; grid-row: 2 / 3; }
-            .bcard-cv      { grid-column: 2 / 3; grid-row: 2 / 3; }
-            .bcard-tel     { grid-column: 1 / 2; grid-row: 3 / 4; }
-            .bcard-email   { grid-column: 2 / 3; grid-row: 3 / 4; }
-        }
-
-        @media (max-width: 560px) {
-            .contact-page { padding: 120px 5% 80px; }
-            .bento { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .bcard-hero, .bcard-linkedin, .bcard-cv, .bcard-tel, .bcard-email {
-                grid-column: 1 / 2;
-                grid-row: auto;
-            }
-            .footer-contact { flex-direction: column; gap: 18px; align-items: center; }
-        }
-    </style>
-  <link rel="stylesheet" href="../../style/theme.css">
+  <link rel="stylesheet" href="../../style/pages/contact.css">
+  <link rel="stylesheet" href="../../style/common/theme.css">
 </head>
 
 <body>
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <!-- NAVBAR -->
     <header class="header">
-        <nav class="navbar navbar-expand-lg" aria-label="Navigation principale">
+        <nav class="navbar" aria-label="Navigation principale">
             <div class="container-fluid px-0">
                 <a class="navbar-brand" href="../../index.html">Portfolio</a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+                <button class="navbar-toggler" type="button" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
                     <span class="navbar-toggler-icon" aria-hidden="true"></span>
                     <span class="navbar-toggler-icon" aria-hidden="true"></span>
                     <span class="navbar-toggler-icon" aria-hidden="true"></span>
@@ -385,11 +35,11 @@
                   <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
                   <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
+                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
                         <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
                         <div class="nav-item dropdown">
-              <a class="nav-link" href="../Projets/Main.html">PROJETS</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Projets"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <a class="nav-link" href="../Projets/Main.html">PROJETS</a><button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Projets"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Projets/Main.html">Tous les projets</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -399,7 +49,7 @@
               </ul>
             </div>
                         <div class="nav-item dropdown">
-              <a class="nav-link" href="../Experience/Experience.html">EXPERIENCE</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Expérience"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <a class="nav-link" href="../Experience/Experience.html">EXPERIENCE</a><button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Expérience"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Experience/Experience.html">Toutes les expériences</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -414,7 +64,7 @@
               </ul>
             </div>
             <div class="nav-item dropdown">
-              <a class="nav-link" href="../Compétences/Compétences.html">COMPÉTENCES</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <a class="nav-link" href="../Compétences/Compétences.html">COMPÉTENCES</a><button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Compétences/Compétences.html">Toutes les compétences</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -550,31 +200,6 @@
 
             </div>
         </div>
-        <style>
-            .bcard::after {
-                content: '';
-                position: absolute;
-                inset: 0;
-                border-radius: inherit;
-                border: 1px solid rgba(255,255,255,0.18);
-                box-shadow:
-                    inset 0 1px 0 rgba(255,255,255,0.25),
-                    inset 0 -1px 0 rgba(255,255,255,0.05),
-                    inset 1px 0 0 rgba(255,255,255,0.10),
-                    inset -1px 0 0 rgba(255,255,255,0.10);
-                transition: border-color 0.3s, box-shadow 0.3s;
-                pointer-events: none;
-            }
-
-            .bcard:hover::after {
-                border-color: rgba(125,211,252,0.35);
-                box-shadow:
-                    inset 0 1px 0 rgba(125,211,252,0.3),
-                    inset 0 -1px 0 rgba(125,211,252,0.08),
-                    inset 1px 0 0 rgba(125,211,252,0.15),
-                    inset -1px 0 0 rgba(125,211,252,0.15);
-            }
-        </style>
     </main>
 
     <!-- FOOTER -->
@@ -614,30 +239,13 @@
     </div>
   </footer>
 
-    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../style/theme.js"></script>
     <script src="../../config/contact.js"></script>
-    <script>
-      (function () {
-        var c = window.CONTACT;
-        if (!c) return;
-        var hero = document.getElementById('contact-hero');
-        if (hero) hero.href = 'mailto:' + c.email;
-        var tel = document.getElementById('contact-tel');
-        if (tel) { tel.href = 'tel:' + c.phone; tel.setAttribute('aria-label', 'Appeler le ' + c.phoneDisplay); }
-        var telDisplay = document.getElementById('contact-tel-display');
-        if (telDisplay) telDisplay.textContent = c.phoneDisplay;
-        var email = document.getElementById('contact-email');
-        if (email) { email.href = 'mailto:' + c.email; email.setAttribute('aria-label', 'Envoyer un email à ' + c.email); }
-        var emailDisplay = document.getElementById('contact-email-display');
-        if (emailDisplay) emailDisplay.textContent = c.email;
-      })();
-    </script>
+    <script src="../../js/contact-init.js"></script>
+    <script src="../../js/theme-toggle.js"></script>
+    
+  <script src="../../js/navbar.js"></script>
 </body>
 </html>
-
-
-
 
 <!-- <!DOCTYPE html>
 <html lang="fr">
@@ -646,29 +254,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio professionnel d'un élève-ingénieur en cognitique spécialisé en IA et analyse de données partie contact.">
     <meta name="author" content="Emma Kerguillec">
-    <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../style/styleExp.css">
-    <link rel="icon" type="image/png" href="../image/Favicon.png"> 
-    <title> Contact - Emma KERGUILLEC</title> 
+    <link rel="icon" type="image/png" href="../image/Favicon.png">
+    <title> Contact - Emma KERGUILLEC</title>
 </head>
 
 <body>
     <header class="header">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar">
             <div class="container-fluid px-0"> 
                 <a class="navbar-brand" href="../../index.html">Portfolio</a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
                     <span class="close-icon">&#10005;</span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav ms-auto">
+                <div class="navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
                         <a href="../../index.html" class="nav-link">ACCUEIL</a>
                         <a href="../A propos/A propos.html" class="nav-link">A PROPOS</a>
                         <div class="nav-item dropdown">
-              <a class="nav-link" href="../Projets/Main.html">PROJETS</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Projets"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <a class="nav-link" href="../Projets/Main.html">PROJETS</a><button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Projets"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Projets/Main.html">Tous les projets</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -678,7 +284,7 @@
               </ul>
             </div>
                         <div class="nav-item dropdown">
-              <a class="nav-link" href="../Experience/Experience.html">EXPERIENCE</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Expérience"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+              <a class="nav-link" href="../Experience/Experience.html">EXPERIENCE</a><button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Expérience"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../Experience/Experience.html">Toutes les expériences</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -694,16 +300,8 @@
             </div>
                         <a href="../CV/CV.html" class="nav-link">CV</a>
             <a href="../Contact/Contact.html" class="nav-link active page"><strong><em>CONTACT</em></strong></a> 
-                        <style>
-                            .navbar .navbar-nav a[href="../Contact/Contact.html"] {
-                                color: white !important;
-                                font-size: 16px !important;
-                                font-weight: 600 !important;
-                                text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.5) !important;
-                            }
-                        </style>
                         <div class="nav-item dropdown">
-                          <a class="nav-link" href="../Compétences/Compétences.html">COMPÉTENCES</a><button class="nav-caret" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+                          <a class="nav-link" href="../Compétences/Compétences.html">COMPÉTENCES</a><button class="nav-caret" aria-expanded="false" aria-label="Sous-pages Compétences"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
                           <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="../Compétences/Compétences.html">Toutes les compétences</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -733,7 +331,7 @@
     </header>
 
     <section class="contact-grid">
-        <a href="tel:0649558221" class="contact-card-highlight" >
+        <a id="contact-quick-tel" href="#" class="contact-card-highlight">
             <div class="liens-externe"> 
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="29.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
                     <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="10px">
@@ -758,7 +356,7 @@
         </a>
 
         
-        <a href="tel:0649558221" class="ccontact-info-card" class="contact-info-card">
+        <a id="contact-grid-tel" href="#" class="contact-info-card">
             <div class="liens-externe">
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="29.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
                     <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="10px">
@@ -779,12 +377,12 @@
                     <path d="M6558 9611 c-121 -31 -218 -115 -275 -237 -26 -54 -28 -69 -28 -174 0 -106 2 -120 28 -172 43 -88 116 -162 202 -204 67 -33 85 -37 226 -50 296 -28 537 -93 774 -208 236 -114 389 -221 574 -401 185 -180 310 -348 420 -565 141 -278 196 -482 240 -890 19 -172 102 -294 248 -363 119 -55 275 -48 389 19 59 35 141 125 170 188 39 85 46 148 34 293 -84 1008 -643 1887 -1521 2391 -364 210 -793 343 -1229 382 -149 13 -172 12 -252 -9z"/>
                     </g>
                 </svg>
-                <span>06 49 55 82 21</span>
+                <span id="contact-grid-tel-display"></span>
             </div>
         </a>
 
         
-        <a href="mailto:ekerguillec@ensc.fr" class="scontact-info-card" class="contact-info-card">
+        <a id="contact-grid-email" href="#" class="contact-info-card">
             <div class="liens-externe"> 
                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="27.000000pt" height="29.000000pt" viewBox="0 0 1280.000000 1113.000000" preserveAspectRatio="xMidYMid meet">
                     <g transform="translate(0.000000,1113.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="10px">
@@ -802,7 +400,7 @@
                     <path d="M1195 9129 c-510 -65 -953 -428 -1121 -921 -71 -209 -65 100 -70 -3578 -2 -2270 0 -3345 7 -3410 26 -237 116 -468 257 -660 66 -91 204 -229 290 -290 144 -103 334 -190 511 -232 85 -20 117 -21 2261 -29 1196 -5 3552 -8 5235 -6 l3060 3 85 21 c137 34 207 60 335 123 409 202 684 594 744 1059 8 59 11 1079 11 3445 -1 2774 -3 3371 -14 3416 -42 173 -109 327 -202 467 -71 107 -203 246 -313 329 -88 67 -300 177 -399 208 -30 10 -95 27 -145 39 l-92 22 -5185 1 c-2961 1 -5215 -2 -5255 -7z m7845 -3165 c-1678 -1678 -2471 -2465 -2505 -2485 -69 -40 -150 -41 -217 -1 -29 17 -948 928 -2507 2485 l-2461 2457 5072 0 5073 0 -2455 -2456z m3070 -1326 l-5 -3423 -22 -77 c-58 -204 -153 -318 -326 -391 l-72 -30 -1727 1734 -1727 1734 1937 1938 c1065 1065 1939 1937 1942 1937 3 0 3 -1540 0 -3422z m-9430 1487 l1905 -1905 -1747 -1747 -1747 -1747 -62 29 c-123 59 -208 173 -246 330 -16 65 -18 301 -20 3508 -2 1890 0 3437 4 3437 5 0 865 -857 1913 -1905z m3005 -3000 c451 -455 620 -619 649 -631 50 -20 133 -20 182 1 28 11 207 184 634 610 l595 595 1503 -1503 c826 -826 1502 -1504 1502 -1507 0 -3 -1964 -5 -4365 -5 -2401 0 -4365 2 -4365 5 0 6 3043 3050 3050 3050 3 0 280 -276 615 -615z"/>
                     </g>
                 </svg>
-                <div>ekerguillec@ensc.fr</div>
+                <div id="contact-grid-email-display"></div>
             </div>
         </a>
 
@@ -836,7 +434,7 @@
         </a>
 
       
-        <a href="mailto:ekerguillec@ensc.fr" class="contact-cta-card" style="text-decoration:none;">
+        <a id="contact-cta" href="#" class="contact-cta-card" style="text-decoration:none;">
             <h2>Envie d’un échange ? </h2>
             <p>
                 Disponible pour discuter de votre besoin RH, d'une collaboration ou d'un échange sur mon parcours.
@@ -905,7 +503,6 @@
     </div>
   </footer>
 
-    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html> -->

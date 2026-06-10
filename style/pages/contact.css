@@ -1,0 +1,378 @@
+/* ── CONTACT PAGE ── */
+        .contact-page {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            padding: 140px 8% 100px;
+            overflow: hidden;
+        }
+
+        /* Lumières ambiantes */
+        .contact-page::before {
+            content: '';
+            position: absolute;
+            width: 700px; height: 700px;
+            top: -100px; right: -200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(125,211,252,0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* ── HEADER ── */
+        .contact-header {
+            margin-bottom: 72px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .contact-header-left { flex: 0 0 auto; }
+
+        .contact-header h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: clamp(42px, 5.5vw, 64px);
+            font-weight: 400;
+            color: #f1f5f9;
+            line-height: 1.15;
+            margin-top: 20px;
+        }
+
+        .contact-header h1 em {
+            color: #7dd3fc;
+            font-style: italic;
+        }
+
+        .contact-header .sub {
+            flex: 1;
+            font-size: 15px;
+            color: #aabcce;
+            line-height: 1.85;
+            max-width: 380px;
+            padding-bottom: 6px;
+        }
+
+        /* ── BENTO GRID ── */
+        .bento {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr;
+            grid-template-rows: 310px 190px;
+            gap: 18px;
+        }
+
+        /* ── BASE CARD ── */
+        .bcard {
+            position: relative;
+            border-radius: 22px;
+            padding: 42px 38px;
+            text-decoration: none;
+            overflow: hidden;
+            transition: transform 0.38s cubic-bezier(.22,.68,0,1.15), box-shadow 0.38s ease;
+            opacity: 0;
+            animation: fadeUp 0.85s ease forwards;
+        }
+
+        .bcard::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: border-color 0.3s;
+            pointer-events: none;
+        }
+
+        .bcard:hover {
+            transform: translateY(-7px) scale(1.01);
+            box-shadow: 0 28px 56px rgba(0,0,0,.4);
+        }
+
+        .bcard:hover::after { border-color: rgba(125,211,252,0.22); }
+
+        .bcard:nth-child(1) { animation-delay: .1s }
+        .bcard:nth-child(2) { animation-delay: .2s }
+        .bcard:nth-child(3) { animation-delay: .3s }
+        .bcard:nth-child(4) { animation-delay: .38s }
+        .bcard:nth-child(5) { animation-delay: .46s }
+
+        /* ── HERO CARD ── */
+        .bcard-hero {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+            background:
+                radial-gradient(ellipse at 80% 20%, rgba(125,211,252,0.08) 0%, transparent 55%),
+                linear-gradient(155deg, rgba(17,30,75,0.97) 0%, rgba(11,18,45,0.97) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Orbe déco */
+        .hero-orb {
+            position: absolute;
+            right: -40px; top: -40px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            border: 1px solid rgba(125,211,252,0.07);
+            pointer-events: none;
+        }
+        .hero-orb::before {
+            content: '';
+            position: absolute;
+            inset: 30px;
+            border-radius: 50%;
+            border: 1px solid rgba(125,211,252,0.05);
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #7dd3fc;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: clamp(26px, 3vw, 36px);
+            color: #f1f5f9;
+            line-height: 1.25;
+            margin-top: 14px;
+        }
+
+        .hero-title em { color: #7dd3fc; font-style: italic; }
+
+        .hero-desc {
+            margin-top: 14px;
+            font-size: 14px;
+            color: #aabcce;
+            line-height: 1.72;
+            max-width: 300px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 28px;
+            padding: 12px 24px;
+            background: rgba(125,211,252,0.12);
+            border: 1px solid rgba(125,211,252,0.28);
+            border-radius: 50px;
+            color: #7dd3fc;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: all 0.3s;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .bcard-hero:hover .hero-cta {
+            background: rgba(125,211,252,0.22);
+            border-color: rgba(125,211,252,0.5);
+        }
+
+        .hero-cta svg { width: 14px; height: 14px; transition: transform .3s; }
+        .bcard-hero:hover .hero-cta svg { transform: translate(3px, -3px); }
+
+        /* ── CARD LINKEDIN ── */
+        .bcard-linkedin {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(125,211,252,0.05) 0%, transparent 60%),
+                rgba(15,25,60,0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ── CARD CV ── */
+        .bcard-cv {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ── CARD TEL ── */
+        .bcard-tel {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            background: rgba(255,255,255,0.025);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* ── CARD EMAIL ── */
+        .bcard-email {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+            background: rgba(255,255,255,0.025);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* ── CARD CONTENT COMMUN ── */
+        .card-pill-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            background: rgba(125,211,252,0.07);
+            border: 1px solid rgba(125,211,252,0.14);
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
+        .bcard:hover .card-pill-icon {
+            background: rgba(125,211,252,0.15);
+        }
+        .card-pill-icon svg {
+            width: 18px; height: 18px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #9ab5c8;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .card-val {
+            font-size: 17px;
+            font-weight: 500;
+            color: #e2e8f0;
+            line-height: 1.35;
+        }
+
+        .card-sub {
+            margin-top: 8px;
+            font-size: 12.5px;
+            color: #9ab5c8;
+            line-height: 1.6;
+        }
+
+        /* Arrow top-right */
+        .card-ext {
+            position: absolute;
+            top: 22px; right: 22px;
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s;
+        }
+        .card-ext svg { width: 11px; height: 11px; }
+        .bcard:hover .card-ext {
+            background: rgba(125,211,252,0.1);
+            border-color: rgba(125,211,252,0.3);
+            transform: translate(2px, -2px);
+        }
+
+        /* Séparateur */
+        .card-sep {
+            height: 1px;
+            background: rgba(255,255,255,0.05);
+            margin: 16px 0;
+        }
+
+        /* LinkedIn badge */
+        .li-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(125,211,252,0.08);
+            border: 1px solid rgba(125,211,252,0.15);
+            border-radius: 6px;
+            font-size: 11px;
+            color: #7dd3fc;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── FOOTER (identique styleExp) ── */
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 55px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            background: rgba(15,23,42,0.6);
+            backdrop-filter: blur(6px);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 860px) {
+            .contact-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .contact-header .sub { max-width: 100%; }
+            .bento {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto auto;
+            }
+            .bcard-hero    { grid-column: 1 / 3; grid-row: 1 / 2; min-height: 280px; }
+            .bcard-linkedin { grid-column: 1 / 2; grid-row: 2 / 3; }
+            .bcard-cv      { grid-column: 2 / 3; grid-row: 2 / 3; }
+            .bcard-tel     { grid-column: 1 / 2; grid-row: 3 / 4; }
+            .bcard-email   { grid-column: 2 / 3; grid-row: 3 / 4; }
+        }
+
+        @media (max-width: 560px) {
+            .contact-page { padding: 120px 5% 80px; }
+            .bento { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .bcard-hero, .bcard-linkedin, .bcard-cv, .bcard-tel, .bcard-email {
+                grid-column: 1 / 2;
+                grid-row: auto;
+            }
+            .footer-contact { flex-direction: column; gap: 18px; align-items: center; }
+        }
+
+.bcard::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                border: 1px solid rgba(255,255,255,0.18);
+                box-shadow:
+                    inset 0 1px 0 rgba(255,255,255,0.25),
+                    inset 0 -1px 0 rgba(255,255,255,0.05),
+                    inset 1px 0 0 rgba(255,255,255,0.10),
+                    inset -1px 0 0 rgba(255,255,255,0.10);
+                transition: border-color 0.3s, box-shadow 0.3s;
+                pointer-events: none;
+            }
+
+            .bcard:hover::after {
+                border-color: rgba(125,211,252,0.35);
+                box-shadow:
+                    inset 0 1px 0 rgba(125,211,252,0.3),
+                    inset 0 -1px 0 rgba(125,211,252,0.08),
+                    inset 1px 0 0 rgba(125,211,252,0.15),
+                    inset -1px 0 0 rgba(125,211,252,0.15);
+            }
+
+.navbar .navbar-nav a[href="../Contact/Contact.html"] {
+                                color: white !important;
+                                font-size: 16px !important;
+                                font-weight: 600 !important;
+                                text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.5) !important;
+                            }
