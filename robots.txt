@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/sitemap.xml

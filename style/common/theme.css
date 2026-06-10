@@ -53,27 +53,61 @@
    MODE CLAIR — html.light-mode
    ============================================================ */
 
+/* ── Variables : toute la charte dark → light en un seul bloc ── */
+html.light-mode {
+  /* Texte & focus */
+  --clr-text:    #0f172a;
+  --clr-focus:   #2563eb;
+
+  /* Navbar */
+  --navbar-bg:                rgba(255,255,255,0.92);
+  --navbar-border:            rgba(0,0,0,0.07);
+  --navbar-shadow:            0 1px 12px rgba(0,0,0,0.08);
+  --navbar-brand:             #0f172a;
+  --navbar-brand-hover:       #2563eb;
+  --nav-link:                 #334155;
+  --nav-link-hover:           #2563eb;
+  --nav-caret:                #64748b;
+  --nav-caret-hover:          #1e40af;
+  --nav-toggler-border:       rgba(0,0,0,0.18);
+  --nav-toggler-color:        #334155;
+  --nav-toggler-hover-border: #2563eb;
+  --nav-toggler-hover-color:  #2563eb;
+  --nav-collapse-border:      rgba(0,0,0,0.07);
+  --nav-link-border:          rgba(0,0,0,0.05);
+  --nav-mobile-dd-bg:         rgba(0,0,0,0.02);
+
+  /* Dropdown */
+  --dd-bg:            #ffffff;
+  --dd-border:        rgba(0,0,0,0.08);
+  --dd-shadow:        0 8px 32px rgba(0,0,0,0.1);
+  --dd-item:          #334155;
+  --dd-item-hover-bg: rgba(37,99,235,0.06);
+  --dd-item-hover:    #0f172a;
+  --dd-divider:       rgba(0,0,0,0.07);
+  --dd-sub-item:      #4a6a82;
+  --dd-sub-hover:     #0f172a;
+
+  /* Footer */
+  --footer-bg:      #ffffff;
+  --footer-border:  rgba(0,0,0,0.08);
+  --footer-name:    #0f172a;
+  --footer-role:    #1e40af;
+  --footer-school:  #64748b;
+  --footer-tagline: #475569;
+  --footer-nav-lbl: #94a3b8;
+  --footer-nav-lnk: #334155;
+  --footer-nav-hvr: #0f172a;
+  --footer-cr:      #64748b;
+  --footer-social:  #334155;
+  --footer-soc-hvr: #1e40af;
+}
+
 /* ── Fond & texte de base ── */
 html.light-mode body {
   background: #f1f5f9 !important;
-  color: #0f172a !important;
 }
 html.light-mode body::before { opacity: 0 !important; }
-
-/* ── Navbar ── */
-html.light-mode .navbar {
-  background: rgba(255,255,255,0.92) !important;
-  border-bottom-color: rgba(0,0,0,0.07) !important;
-  box-shadow: 0 1px 12px rgba(0,0,0,0.08);
-}
-html.light-mode .navbar-brand { color: #0f172a !important; }
-html.light-mode .navbar-brand:hover { color: #2563eb !important; }
-html.light-mode .nav-link { color: #334155 !important; }
-html.light-mode .nav-link:hover { color: #2563eb !important; }
-html.light-mode .navbar-toggler { color: #334155 !important; border-color: rgba(0,0,0,0.18) !important; }
-html.light-mode .navbar-toggler:hover { border-color: #2563eb !important; color: #2563eb !important; }
-html.light-mode .navbar-toggler-icon { background-color: #334155 !important; }
-html.light-mode .navbar-collapse { border-top-color: rgba(0,0,0,0.07) !important; }
 
 html.light-mode .theme-toggle {
   background: rgba(0,0,0,0.04);
@@ -87,40 +121,7 @@ html.light-mode .theme-toggle:hover {
 }
 html.light-mode .theme-toggle:focus-visible { outline-color: #2563eb; }
 
-/* ── Dropdowns navbar ── */
-html.light-mode .navbar .dropdown-menu {
-  background: #ffffff !important;
-  border-color: rgba(0,0,0,0.08) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
-  backdrop-filter: none !important;
-}
-html.light-mode .nav-caret       { color: #64748b !important; }
-html.light-mode .nav-caret:hover { color: #1e40af !important; }
-html.light-mode .navbar .dropdown-item       { color: #334155 !important; }
-html.light-mode .navbar .dropdown-item:hover,
-html.light-mode .navbar .dropdown-item:focus { background: rgba(37,99,235,0.06) !important; color: #0f172a !important; }
-html.light-mode .navbar .dropdown-divider    { border-color: rgba(0,0,0,0.07) !important; }
-html.light-mode .navbar .dropdown-submenu .has-submenu svg { color: #64748b; }
-html.light-mode .navbar .dropdown-submenu-menu .dropdown-item { color: #4a6a82 !important; }
-html.light-mode .navbar .dropdown-submenu-menu .dropdown-item:hover { color: #0f172a !important; }
-
-/* ── Footer (nouveau site-footer) ── */
-html.light-mode .site-footer {
-  background: #ffffff !important;
-  border-top-color: rgba(0,0,0,0.08) !important;
-  box-shadow: 0 -1px 0 rgba(0,0,0,0.04), 0 -8px 32px rgba(0,0,0,0.04) !important;
-}
-html.light-mode .footer-inner       { border-bottom-color: rgba(0,0,0,0.07) !important; }
-html.light-mode .footer-name        { color: #0f172a !important; }
-html.light-mode .footer-role        { color: #1e40af !important; }
-html.light-mode .footer-school      { color: #64748b !important; }
-html.light-mode .footer-tagline     { color: #475569 !important; }
-html.light-mode .footer-nav-label   { color: #94a3b8 !important; }
-html.light-mode .footer-nav-list a  { color: #334155 !important; }
-html.light-mode .footer-nav-list a:hover { color: #0f172a !important; }
-html.light-mode .footer-copyright   { color: #64748b !important; }
-html.light-mode .footer-social-link { color: #334155 !important; font-weight: 500 !important; }
-html.light-mode .footer-social-link:hover { color: #1e40af !important; }
+html.light-mode .navbar .dropdown-menu { backdrop-filter: none !important; }
 
 /* ── Badges & accents ── */
 html.light-mode .about-badge {

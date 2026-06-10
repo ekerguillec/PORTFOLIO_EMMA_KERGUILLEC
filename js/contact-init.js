@@ -27,4 +27,10 @@
         setLink('contact-cta',        'mailto:' + c.email);
         setText('contact-grid-tel-display',   c.phoneDisplay);
         setText('contact-grid-email-display', c.email);
+
+        // ── CV page ──────────────────────────────────────────────────────
+        setLink('cv-phone', 'tel:' + c.phone, 'Appeler le ' + c.phoneDisplay);
+        setText('cv-phone', c.phoneDisplay);
+        setLink('cv-email', 'mailto:' + c.email, 'Envoyer un email à ' + c.email);
+        setText('cv-email', c.email);
       })();

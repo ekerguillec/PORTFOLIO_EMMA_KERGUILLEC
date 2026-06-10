@@ -15,6 +15,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <title>CV — Emma Kerguillec</title>
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Emma Kerguillec — Portfolio">
+  <meta property="og:title"       content="CV — Emma Kerguillec">
+  <meta property="og:description" content="CV d'Emma Kerguillec, élève-ingénieure à l'ENSC Bordeaux INP.">
+  <meta property="og:url"         content="https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/CV/CV.html">
+  <meta property="og:image"       content="https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/images/MaPhotoCorrigee.png">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="CV — Emma Kerguillec">
+  <meta name="twitter:description" content="CV d'Emma Kerguillec, élève-ingénieure à l'ENSC Bordeaux INP.">
+  <meta name="twitter:image"       content="https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/images/MaPhotoCorrigee.png">
 </head>
 <body>
 
@@ -114,7 +124,10 @@
       <!-- ZONE HAUTE -->
       <div class="cv-top-left">
         <div class="cv-photo-wrap">
-          <img src="../../images/MaPhotoCorrigee.png" alt="Emma Kerguillec">
+          <picture>
+            <source srcset="../../images/MaPhotoCorrigee.webp" type="image/webp">
+            <img src="../../images/MaPhotoCorrigee.png" alt="Emma Kerguillec">
+          </picture>
         </div>
       </div>
 
@@ -134,8 +147,8 @@
         <div class="cv-section">
           <p class="cv-sb-h">Contact</p>
           <ul class="cv-contact-list">
-            <li><span class="cv-ico"><i class="fa-solid fa-phone"></i></span>+33 6 49 55 82 21</li>
-            <li><span class="cv-ico"><i class="fa-solid fa-envelope"></i></span>ekerguillec@ensc.fr</li>
+            <li><span class="cv-ico"><i class="fa-solid fa-phone"></i></span><a id="cv-phone" href="#"></a></li>
+            <li><span class="cv-ico"><i class="fa-solid fa-envelope"></i></span><a id="cv-email" href="#"></a></li>
             <li><span class="cv-ico"><i class="fa-brands fa-linkedin"></i></span>Emma KERGUILLEC</li>
             <li><span class="cv-ico"><i class="fa-brands fa-github"></i></span>ekerguillec</li>
             <li><span class="cv-ico"><i class="fa-solid fa-location-dot"></i></span>Talence (33)</li>
@@ -295,6 +308,7 @@
           <li><a href="../Projets/Main.html">Projets</a></li>
           <li><a href="../Experience/Experience.html">Expérience</a></li>
           <li><a href="../Compétences/Compétences.html">Compétences</a></li>
+          <li><a href="../CV/CV.html">CV</a></li>
           <li><a href="../Contact/Contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -308,7 +322,7 @@
       </nav>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copyright">© 2025 Emma Kerguillec · ENSC Bordeaux INP</p>
+      <p class="footer-copyright">© 2026 Emma Kerguillec · ENSC Bordeaux INP</p>
       <div class="footer-socials">
         <a href="../CV/CV.html" class="footer-social-link" aria-current="page">CV</a>
         <a href="https://www.linkedin.com/in/emma-kerguillec-b86959226" target="_blank" rel="noopener noreferrer" class="footer-social-link">LinkedIn ↗</a>
@@ -319,5 +333,7 @@
   <script src="../../js/theme-toggle.js"></script>
 
   <script src="../../js/navbar.js"></script>
+  <script src="../../config/contact.js"></script>
+  <script src="../../js/contact-init.js"></script>
 </body>
 </html>

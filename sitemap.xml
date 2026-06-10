@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ── Accueil ── -->
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ── Pages principales ── -->
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/A%20propos/A%20propos.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/CV/CV.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Contact/Contact.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ── Projets ── -->
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Projets/Main.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Projets/Poulpong.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Projets/Audiosensible.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Projets/Prothese.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ── Expériences ── -->
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/Experience.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/BDE.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/ing%C3%A9nib.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/Le%20T%C3%A9l%C3%A9gramme.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/E.Leclerc.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/Mam.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/Pharmacie.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/SNU.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Experience/i2c.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ── Compétences ── -->
+  <url>
+    <loc>https://ekerguillec.github.io/PORTFOLIO_EMMA_KERGUILLEC/html/Comp%C3%A9tences/Comp%C3%A9tences.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
