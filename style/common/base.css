@@ -508,7 +508,7 @@ position:relative;
 
 z-index:2;
 
-padding: 150px 8% 80px;
+padding: 150px 8% 20px;
 
 }
 
@@ -813,7 +813,7 @@ transform:translateY(0);
 
 .experience-home{
 
-padding:90px 6%;
+padding:90px 6% 20px;
 
 }
 

@@ -3,7 +3,7 @@
             position: relative;
             z-index: 2;
             min-height: 100vh;
-            padding: 140px 8% 100px;
+            padding: 140px 8% 20px;
             overflow: hidden;
         }
 
@@ -337,7 +337,7 @@
         }
 
         @media (max-width: 560px) {
-            .contact-page { padding: 120px 5% 80px; }
+            .contact-page { padding: 120px 5% 20px; }
             .bento { grid-template-columns: 1fr; grid-template-rows: auto; }
             .bcard-hero, .bcard-linkedin, .bcard-cv, .bcard-tel, .bcard-email {
                 grid-column: 1 / 2;

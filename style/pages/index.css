@@ -216,7 +216,7 @@
       opacity: 0; animation: fadeUp 0.8s ease forwards;
     }
     .acc-exp-item:hover { transform: translateX(6px); border-color: rgba(125,211,252,0.2); background: rgba(125,211,252,0.03); }
-    .acc-exp-period { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #334155; font-weight: 500; min-width: 80px; flex-shrink: 0; }
+    .acc-exp-period { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #334155; font-weight: 500; width: 200px; flex-shrink: 0; }
     .acc-exp-dot    { width: 6px; height: 6px; border-radius: 50%; background: rgba(125,211,252,0.4); flex-shrink: 0; }
     .acc-exp-name   { font-size: 15px; color: #f1f5f9; font-weight: 500; flex: 1; }
     .acc-exp-role   { font-size: 13px; color: #475569; flex-shrink: 0; }
@@ -224,7 +224,7 @@
     .acc-exp-item:hover .acc-exp-chevron { transform: translateX(4px); color: #7dd3fc; }
 
     /* Contact CTA */
-    .acc-contact-section { padding: 0 8% 120px; opacity: 0; animation: fadeUp 0.8s ease forwards; }
+    .acc-contact-section { padding: 0 8% 20px; opacity: 0; animation: fadeUp 0.8s ease forwards; }
     .acc-contact-inner {
       background: radial-gradient(ellipse at 80% 50%, rgba(125,211,252,0.07) 0%, transparent 60%), rgba(255,255,255,0.025);
       border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 64px 72px;

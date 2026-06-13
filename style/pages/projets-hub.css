@@ -3,7 +3,7 @@
       position: relative;
       z-index: 2;
       min-height: 100vh;
-      padding: 140px 8% 100px;
+      padding: 140px 8% 20px;
       overflow: hidden;
     }
 
@@ -458,7 +458,7 @@
     }
 
     @media (max-width: 560px) {
-      .projects-page { padding: 120px 5% 80px; }
+      .projects-page { padding: 120px 5% 20px; }
       .project-content { padding: 32px 24px; }
       .footer-projects { flex-direction: column; gap: 18px; align-items: center; }
     }

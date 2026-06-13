@@ -164,6 +164,15 @@ html.light-mode .card-h em,
 html.light-mode .about-title em,
 html.light-mode .hero-title em { color: #2563eb !important; }
 
+html.light-mode .eloc-body { color: #334155 !important; }
+html.light-mode .eloc-link { color: #2563eb !important; border-bottom-color: rgba(37,99,235,0.35) !important; }
+
+/* Décorations SVG — cyan → bleu foncé en mode clair */
+html.light-mode .crea-deco,
+html.light-mode .crea-deco-left { color: #2563eb !important; }
+html.light-mode .sport-orb { border-color: rgba(37,99,235,0.18) !important; }
+html.light-mode .sport-orb::before { border-color: rgba(37,99,235,0.12) !important; }
+
 html.light-mode .detail-subtitle,
 html.light-mode .section-body,
 html.light-mode .scard-body,
